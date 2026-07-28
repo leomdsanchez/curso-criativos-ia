@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { CoursePortal } from './CoursePortal'
 import './styles.css'
 import './pillar-summary.css'
+import './typography.css'
 
 const root = document.getElementById('root')
 
