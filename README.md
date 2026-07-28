@@ -23,3 +23,5 @@ El repositorio incluye un workflow de GitHub Actions que construye el proyecto y
 La URL prevista es:
 
 `https://leomdsanchez.github.io/curso-criativos-ia/`
+
+<!-- pages deploy trigger: 2026-07-28 -->
