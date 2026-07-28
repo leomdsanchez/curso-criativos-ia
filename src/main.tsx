@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CoursePortal } from './CoursePortal'
 import './styles.css'
+import './pillar-summary.css'
 
 const root = document.getElementById('root')
 
