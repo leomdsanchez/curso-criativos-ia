@@ -1,0 +1,17 @@
+.pillar-grid {
+  display: block;
+}
+
+.pillar-grid .pillar-card {
+  display: none;
+}
+
+.pillar-grid::before {
+  content: "Romper el patrón · Conectar · Comunicar el resultado · Dirigir";
+  display: block;
+  max-width: 980px;
+  color: var(--muted);
+  font-size: clamp(24px, 3vw, 44px);
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
