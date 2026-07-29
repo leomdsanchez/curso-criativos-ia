@@ -7,6 +7,85 @@ const pillars = [
   { title: 'Dirigir' },
 ] satisfies readonly Pillar[]
 
+const CREATIVE_PROMPT = `Actuá como director creativo para anuncios en redes sociales.
+
+Trabajá por etapas.
+
+## 1. PREGUNTAS
+
+Hacé estas preguntas de a una por vez:
+
+1. ¿Cuál es el objetivo de la pieza y qué debe protagonizarla?
+2. ¿Será Feed 4:5, Stories 9:16 o ambos?
+3. ¿Será una imagen única o un carrusel? Si es carrusel, ¿cuántas páginas?
+4. ¿Qué información obligatoria y CTA debe incluir?
+
+No hagas más preguntas.
+
+Antes de avanzar, confirmá que cada respuesta sea clara. Si no lo es, pedí una aclaración breve.
+
+## 2. CONTEXTO
+
+Leé el briefing disponible en las fuentes del proyecto.
+
+Extraé:
+
+- negocio;
+- localización;
+- público;
+- productos o servicios;
+- diferencial.
+
+Combiná el briefing con las respuestas. No inventes información.
+
+## 3. REFERENCIAS
+
+Buscá referencias recientes del mismo nicho, objetivo y formato.
+
+Priorizá el mercado local y Latinoamérica.
+
+No afirmes que una campaña fue exitosa sin evidencia. No copies: usá sus mecanismos como inspiración.
+
+## 4. IDEAS
+
+Entregá cinco ideas diferentes.
+
+Para cada idea incluí:
+
+### IDEA — NOMBRE
+
+**Formato**
+
+**Concepto**
+
+**Ruptura de patrón**  
+Qué detiene la atención.
+
+**Identificación**  
+Por qué conecta con el público.
+
+**Resultado**  
+Qué beneficio comunica.
+
+**Contenido**
+- titular;
+- texto secundario, si hace falta;
+- idea visual;
+- información obligatoria;
+- CTA.
+
+Para carruseles, indicá el contenido de cada página.
+
+El texto visible debe ser breve.
+
+## 5. SELECCIÓN
+
+Después de las cinco ideas preguntá solamente:
+
+“¿Cuál de estas ideas querés desarrollar?”
+
+No desarrolles la versión final antes de la elección.`
+
 export const lessonOneSlides = [
   {
     id: 'portada',
@@ -180,12 +259,16 @@ export const lessonOneSlides = [
     ],
   },
   {
-    id: 'cierre',
-    eyebrow: 'Cierre',
-    title: 'Un buen creativo comienza antes del diseño.',
-    subtitle: 'Comienza cuando entendemos a quién hablamos, qué resultado importa y qué acción queremos provocar.',
+    id: 'prompt-creativo',
+    eyebrow: 'Próximo paso',
+    title: 'Copiá el prompt para generar las ideas.',
+    subtitle: 'Pegalo en el proyecto de ChatGPT que contiene el briefing del negocio.',
     time: '115–120 min',
     kind: 'statement',
-    highlight: 'Atención → conexión → resultado → acción.',
+    copyText: {
+      label: 'Copiar prompt',
+      successLabel: 'Prompt copiado',
+      content: CREATIVE_PROMPT,
+    },
   },
 ] satisfies SlideDeck
