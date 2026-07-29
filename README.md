@@ -9,9 +9,10 @@ npm install
 npm run dev
 ```
 
-Para validar a versão de produção:
+Validações:
 
 ```bash
+npm run typecheck
 npm run build
 ```
 
@@ -29,6 +30,8 @@ src/
 │   └── useSlideNavigation.ts # URL, teclado, scroll e swipe
 ├── types/
 │   └── slide.ts              # Tipos compartilhados
+├── utils/
+│   └── events.ts             # Utilitários de interação do navegador
 ├── CoursePortal.tsx          # Home, panorama e seleção da aula
 ├── routes.ts                 # Convenção das URLs
 └── main.tsx                  # Inicialização da aplicação
@@ -45,7 +48,7 @@ Cada slide possui uma URL própria:
 #aula-1/cierre
 ```
 
-Ao atualizar a página, a apresentação permanece no slide atual.
+Ao atualizar a página, a apresentação permanece no slide atual. Os botões voltar e avançar do navegador também funcionam entre os slides visitados.
 
 ## Controles
 
@@ -57,13 +60,14 @@ Ao atualizar a página, a apresentação permanece no slide atual.
 
 ## Regra para novas aulas
 
-1. Criar somente o arquivo de conteúdo em `src/data/`.
+1. Criar o conteúdo da aula em `src/data/`.
 2. Reutilizar `LessonDeck` e `useSlideNavigation`.
-3. Não alterar textos por JavaScript global, `MutationObserver` ou CSS com `content`.
-4. Manter conteúdo, navegação e apresentação visual em responsabilidades separadas.
+3. Registrar a aula no portal e nas rotas.
+4. Não alterar textos por JavaScript global, `MutationObserver` ou CSS com `content`.
+5. Manter conteúdo, navegação e apresentação visual em responsabilidades separadas.
 
 ## Publicação
 
-O workflow do GitHub Actions constrói o projeto e publica `dist` no GitHub Pages:
+O workflow do GitHub Actions executa a verificação de tipos, constrói o projeto e publica `dist` no GitHub Pages:
 
 `https://leomdsanchez.github.io/curso-criativos-ia/`
