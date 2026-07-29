@@ -26,15 +26,21 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
   }, [lessonNumber, slideIds])
 
   const [index, setIndex] = useState(indexFromUrl)
+  const indexRef = useRef(index)
   const wheelDelta = useRef(0)
   const wheelLocked = useRef(false)
   const touchStart = useRef({ x: 0, y: 0, startedAt: 0 })
+
+  const setCurrentIndex = useCallback((nextIndex: number) => {
+    indexRef.current = nextIndex
+    setIndex(nextIndex)
+  }, [])
 
   const goTo = useCallback((requestedIndex: number, replace = false) => {
     const nextIndex = clamp(requestedIndex, slideIds.length - 1)
     const hash = lessonSlideHash(lessonNumber, slideIds[nextIndex])
 
-    setIndex(nextIndex)
+    setCurrentIndex(nextIndex)
 
     if (window.location.hash === hash) return
 
@@ -44,16 +50,16 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
     }
 
     window.location.hash = hash.slice(1)
-  }, [lessonNumber, slideIds])
+  }, [lessonNumber, setCurrentIndex, slideIds])
 
   useEffect(() => {
     const slideId = getLessonSlideId(lessonNumber)
     if (!slideId || !slideIds.includes(slideId)) goTo(0, true)
 
-    const handleHashChange = () => setIndex(indexFromUrl())
+    const handleHashChange = () => setCurrentIndex(indexFromUrl())
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [goTo, indexFromUrl, lessonNumber, slideIds])
+  }, [goTo, indexFromUrl, lessonNumber, setCurrentIndex, slideIds])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -62,13 +68,13 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
 
       if (NEXT_KEYS.includes(event.key)) {
         event.preventDefault()
-        goTo(index + 1)
+        goTo(indexRef.current + 1)
         return
       }
 
       if (PREVIOUS_KEYS.includes(event.key)) {
         event.preventDefault()
-        goTo(index - 1)
+        goTo(indexRef.current - 1)
         return
       }
 
@@ -86,7 +92,7 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [goTo, index, slideIds.length])
+  }, [goTo, slideIds.length])
 
   useEffect(() => {
     let resetTimer: number | undefined
@@ -105,7 +111,7 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
 
       if (Math.abs(wheelDelta.current) < WHEEL_THRESHOLD) return
 
-      goTo(index + (wheelDelta.current > 0 ? 1 : -1))
+      goTo(indexRef.current + (wheelDelta.current > 0 ? 1 : -1))
       wheelDelta.current = 0
       wheelLocked.current = true
       unlockTimer = window.setTimeout(() => {
@@ -118,8 +124,10 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
       window.removeEventListener('wheel', handleWheel)
       window.clearTimeout(resetTimer)
       window.clearTimeout(unlockTimer)
+      wheelDelta.current = 0
+      wheelLocked.current = false
     }
-  }, [goTo, index])
+  }, [goTo])
 
   useEffect(() => {
     const handleTouchStart = (event: TouchEvent) => {
@@ -141,7 +149,7 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
       if (duration > MAX_SWIPE_DURATION) return
       if (Math.abs(deltaX) <= Math.abs(deltaY) || Math.abs(deltaX) < MIN_SWIPE_DISTANCE) return
 
-      goTo(index + (deltaX < 0 ? 1 : -1))
+      goTo(indexRef.current + (deltaX < 0 ? 1 : -1))
     }
 
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
@@ -150,10 +158,10 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
       window.removeEventListener('touchstart', handleTouchStart)
       window.removeEventListener('touchend', handleTouchEnd)
     }
-  }, [goTo, index])
+  }, [goTo])
 
-  const next = useCallback(() => goTo(index + 1), [goTo, index])
-  const previous = useCallback(() => goTo(index - 1), [goTo, index])
+  const next = useCallback(() => goTo(indexRef.current + 1), [goTo])
+  const previous = useCallback(() => goTo(indexRef.current - 1), [goTo])
 
   return { index, goTo, next, previous }
 }
