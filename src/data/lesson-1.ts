@@ -159,9 +159,9 @@ export const lessonOneSlides = [
     kind: 'briefing',
     bullets: [
       'Datos del negocio: pet shop especializado en higiene y estética canina. Resuelve el baño y el cuidado del perro sin que el dueño tenga que dedicar tiempo al proceso ni organizar el traslado.',
-      'Localización: Rivera, Uruguay. Servicio dirigido al mercado local, con retiro y entrega a domicilio dentro de la zona de atención.',
+      'Localización: zona central de las ciudades de Rivera y Santana do Livramento. El retiro y la entrega a domicilio se realizan dentro de esa área de atención.',
       'Público objetivo: personas con poco tiempo para bañar, peinar o trasladar a su perro, que valoran la comodidad y quieren recibirlo limpio, cuidado y presentable.',
-      'Productos y servicios: baño, corte, peinado, retiro en el domicilio y entrega del perro una vez finalizado el servicio.',
+      'Productos y servicios: baño, corte y peinado. Precio: $450 para perros chicos y $800 para perros grandes. Retiro y entrega a domicilio por $100 adicionales. Todos los valores están expresados en pesos uruguayos.',
       'Diferencial: buscamos al perro en su casa y lo devolvemos impecable. El cliente resuelve todo el cuidado con poco esfuerzo y sin alterar su rutina.',
     ],
   },
