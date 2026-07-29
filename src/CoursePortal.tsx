@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { BriefingPage } from './components/BriefingPage'
 import { LessonDeck } from './components/LessonDeck'
 import { COURSE_TITLE, courseLessons } from './data/course'
 import { lessonOneSlides } from './data/lesson-1'
@@ -42,6 +43,10 @@ export function CoursePortal() {
   const goHome = () => {
     window.history.pushState(null, '', `${window.location.pathname}${window.location.search}`)
     setView('home')
+  }
+
+  if (view === 'briefing') {
+    return <BriefingPage onBack={goHome} />
   }
 
   if (view === 'lesson-1-overview') {
