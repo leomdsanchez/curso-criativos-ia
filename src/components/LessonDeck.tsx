@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useFullscreen } from '../navigation/useFullscreen'
 import { useSlideNavigation } from '../navigation/useSlideNavigation'
-import type { CopyLinkAction, Slide, SlideDeck } from '../types/slide'
+import type { CopyLinkAction, CopyTextAction, Slide, SlideDeck } from '../types/slide'
 import { copyText } from '../utils/clipboard'
 
 type LessonDeckProps = {
@@ -42,6 +42,25 @@ function CopyLinkButton({ action }: { action: CopyLinkAction }) {
   return (
     <button className="slide-copy-link" type="button" onClick={() => void handleCopy()}>
       {copied ? 'Enlace copiado' : action.label}
+    </button>
+  )
+}
+
+function CopyTextButton({ action }: { action: CopyTextAction }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await copyText(action.content)
+      setCopied(true)
+    } catch {
+      setCopied(false)
+    }
+  }
+
+  return (
+    <button className="slide-copy-link" type="button" onClick={() => void handleCopy()}>
+      {copied ? action.successLabel ?? 'Texto copiado' : action.label}
     </button>
   )
 }
@@ -124,6 +143,7 @@ function SlideContent({ slide }: { slide: Slide }) {
       )}
       {slide.highlight && <div className="highlight-box">{slide.highlight}</div>}
       {slide.copyLink && <CopyLinkButton action={slide.copyLink} />}
+      {slide.copyText && <CopyTextButton action={slide.copyText} />}
     </div>
   )
 }
