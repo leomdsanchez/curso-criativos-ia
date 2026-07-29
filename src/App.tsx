@@ -31,7 +31,7 @@ const pillars: Pillar[] = [
     accent: '02',
   },
   {
-    title: 'Comunicar el resultado',
+    title: 'Comunicar',
     description: 'Mostrar la consecuencia positiva que genera la oferta, no solamente sus características.',
     accent: '03',
   },
@@ -71,7 +71,7 @@ const slides: Slide[] = [
     id: 'funcion',
     eyebrow: 'Concepto básico',
     title: 'La función del anuncio no es vender directamente.',
-    subtitle: 'Su función principal es generar tráfico: llevar personas hacia el negocio.',
+    subtitle: 'Su función principal es generar flujo: llevar personas hacia el negocio.',
     time: '12–20 min',
     kind: 'statement',
     highlight: 'El anuncio abre la puerta. La venta ocurre después.',
@@ -79,7 +79,7 @@ const slides: Slide[] = [
   {
     id: 'atencion',
     eyebrow: 'La pregunta clave',
-    title: '¿Cómo genera tráfico un anuncio?',
+    title: '¿Cómo genera flujo un anuncio?',
     subtitle: 'Primero necesita conquistar algo mucho más escaso que el dinero: la atención.',
     time: '20–25 min',
     kind: 'statement',
@@ -88,8 +88,8 @@ const slides: Slide[] = [
   {
     id: 'mercado',
     eyebrow: 'Mercado de la atención',
-    title: 'Las empresas no compiten solamente por clientes.',
-    subtitle: 'Compiten contra videos, mensajes, noticias, entretenimiento y cientos de estímulos al mismo tiempo.',
+    title: 'El mercado de la atención',
+    subtitle: 'Las empresas compiten contra videos, mensajes, noticias, entretenimiento y cientos de estímulos al mismo tiempo.',
     time: '25–30 min',
     kind: 'statement',
     highlight: 'El primer adversario de tu anuncio es la indiferencia.',
@@ -144,36 +144,11 @@ const slides: Slide[] = [
     highlight: 'CTA: Call to Action · llamado a la acción.',
   },
   {
-    id: 'proceso',
-    eyebrow: 'Visión general',
-    title: 'Vamos a trabajar dentro de GPT en tres etapas.',
-    subtitle: 'Cada etapa transforma información en una salida más concreta.',
-    time: '55–65 min',
-    kind: 'process',
-    process: [
-      {
-        step: '01',
-        title: 'Investigación y briefing',
-        description: 'Definir público, contexto, objetivo y la información relevante para el anuncio.',
-      },
-      {
-        step: '02',
-        title: 'Líneas creativas',
-        description: 'Desarrollar enfoques aplicando los cuatro pilares fundamentales.',
-      },
-      {
-        step: '03',
-        title: 'Creación del anuncio',
-        description: 'Transformar la línea elegida en una pieza consistente y lista para usar.',
-      },
-    ],
-  },
-  {
     id: 'etapa-1',
     eyebrow: 'Etapa 01',
     title: 'Investigación y briefing',
     subtitle: 'No se trata de juntar la mayor cantidad posible de información, sino la información que realmente cambia la pieza.',
-    time: '65–75 min',
+    time: '55–70 min',
     kind: 'bullets',
     bullets: [
       'Quién es el público objetivo.',
@@ -187,7 +162,7 @@ const slides: Slide[] = [
     eyebrow: 'Etapa 02',
     title: 'Líneas creativas',
     subtitle: 'Usamos el briefing para desarrollar distintas formas de presentar la misma oferta.',
-    time: '75–80 min',
+    time: '70–80 min',
     kind: 'bullets',
     bullets: [
       'Variar el gancho y la forma de romper el patrón.',
