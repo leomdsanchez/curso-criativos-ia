@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { App } from './App'
 import './portal.css'
+import './portal-compact.css'
 import './overview.css'
 
 type View = 'home' | 'lesson-1-overview' | 'lesson-1'
