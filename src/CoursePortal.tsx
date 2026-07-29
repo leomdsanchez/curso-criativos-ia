@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { LessonDeck } from './components/LessonDeck'
+import { COURSE_TITLE, courseLessons } from './data/course'
 import { lessonOneSlides } from './data/lesson-1'
 import {
   getCourseView,
@@ -10,36 +11,6 @@ import {
 import './portal.css'
 import './portal-compact.css'
 import './overview.css'
-
-type Lesson = {
-  number: string
-  title: string
-  description: string
-  status: 'available' | 'soon'
-}
-
-const lessons: Lesson[] = [
-  {
-    number: '01',
-    title: 'De la atención al briefing',
-    description: 'Atención, anuncios y construcción del briefing.',
-    status: 'available',
-  },
-  {
-    number: '02',
-    title: 'Copy y líneas creativas',
-    description: 'Ideas, enfoques y textos para las piezas.',
-    status: 'soon',
-  },
-  {
-    number: '03',
-    title: 'Creación de piezas con IA',
-    description: 'Diseño y adaptación a distintos formatos.',
-    status: 'soon',
-  },
-]
-
-const COURSE_TITLE = 'IA aplicada al marketing'
 
 export function CoursePortal() {
   const [view, setView] = useState<CourseView>(getCourseView)
@@ -140,7 +111,7 @@ export function CoursePortal() {
         </header>
 
         <section className="lesson-grid" aria-label="Clases del curso">
-          {lessons.map((lesson) => {
+          {courseLessons.map((lesson) => {
             const isAvailable = lesson.status === 'available'
 
             return (
