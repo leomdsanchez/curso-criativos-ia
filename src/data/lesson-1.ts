@@ -1,7 +1,5 @@
 export type Pillar = {
   title: string
-  description: string
-  accent: string
 }
 
 export type Slide = {
@@ -11,35 +9,21 @@ export type Slide = {
   subtitle?: string
   time: string
   kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice'
-  bullets?: string[]
+  bullets?: readonly string[]
   highlight?: string
-  pillars?: Pillar[]
+  pillars?: readonly Pillar[]
 }
 
-const pillars: Pillar[] = [
-  {
-    title: 'Romper el patrón',
-    description: 'Interrumpir el desplazamiento con una imagen, frase o recurso visual que llame la atención.',
-    accent: '01',
-  },
-  {
-    title: 'Conectar',
-    description: 'Hacer que la persona sienta que el mensaje fue pensado para ella y para su situación.',
-    accent: '02',
-  },
-  {
-    title: 'Comunicar',
-    description: 'Mostrar la consecuencia positiva que genera la oferta, no solamente sus características.',
-    accent: '03',
-  },
-  {
-    title: 'Dirigir',
-    description: 'Indicar con claridad cuál es la próxima acción mediante un llamado a la acción.',
-    accent: '04',
-  },
-]
+export type SlideDeck = readonly [Slide, ...Slide[]]
 
-export const lessonOneSlides: Slide[] = [
+const pillars = [
+  { title: 'Romper el patrón' },
+  { title: 'Conectar' },
+  { title: 'Comunicar' },
+  { title: 'Dirigir' },
+] satisfies readonly Pillar[]
+
+export const lessonOneSlides = [
   {
     id: 'portada',
     eyebrow: 'Clase 01 · 2 horas',
@@ -215,4 +199,4 @@ export const lessonOneSlides: Slide[] = [
     kind: 'statement',
     highlight: 'Atención → conexión → resultado → acción.',
   },
-]
+] satisfies SlideDeck
