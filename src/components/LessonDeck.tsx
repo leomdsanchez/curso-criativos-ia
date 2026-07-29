@@ -99,6 +99,19 @@ function SlideContent({ slide }: { slide: Slide }) {
     )
   }
 
+  if (slide.kind === 'briefing') {
+    return (
+      <div className="briefing-slide-layout">
+        <SlideHeading slide={slide} />
+        <section className="briefing-slide-card">
+          <ul>
+            {slide.bullets?.map((bullet) => <li key={bullet}>{bullet}</li>)}
+          </ul>
+        </section>
+      </div>
+    )
+  }
+
   return (
     <div className={`slide-content ${slide.kind === 'practice' ? 'practice-slide' : ''}`}>
       <SlideHeading slide={slide} />
