@@ -3,6 +3,7 @@ import { App } from './App'
 import './portal.css'
 import './portal-compact.css'
 import './overview.css'
+import './lesson-title-override.css'
 
 type View = 'home' | 'lesson-1-overview' | 'lesson-1'
 
@@ -83,7 +84,7 @@ export function CoursePortal() {
           <header className="overview-heading">
             <div className="portal-mark">IA</div>
             <p className="portal-eyebrow">Panorama del curso</p>
-            <h1>Vamos a construir una máquina para generar creativos.</h1>
+            <h1>Qué vamos a aprender en este curso.</h1>
             <p className="overview-lead">
               Un proceso sencillo dentro de ChatGPT para desarrollar piezas que generen flujo hacia el negocio.
             </p>
