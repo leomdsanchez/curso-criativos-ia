@@ -4,12 +4,28 @@ import { copyText } from '../utils/clipboard'
 
 const STORAGE_KEY = 'curso-criativos-ia:briefing:v1'
 
+const ANALYSIS_PROMPT = `Tengo el siguiente briefing de un negocio.
+
+Quiero que trabajes como analista de marketing y estrategia:
+
+1. Analizá la claridad, coherencia y calidad de la información.
+2. Evaluá el negocio considerando el mercado local indicado en la localización.
+3. Si tenés acceso a internet, investigá referencias actuales del mercado local. Si no tenés acceso, diferenciá claramente hechos, supuestos e hipótesis.
+4. Identificá oportunidades, riesgos, información faltante y posibles mejoras en el público, la oferta, el posicionamiento y el diferencial.
+5. Antes de cerrar la evaluación, haceme las preguntas necesarias y trabajá conmigo de forma iterativa. No prepares una versión final hasta que yo confirme las decisiones.
+6. Cuando yo apruebe la versión, entregame únicamente el briefing final revisado dentro de un bloque de texto, sin explicaciones adicionales, listo para copiar y usar.`
+
 type BriefingData = {
   business: string
   location: string
   audience: string
   products: string
   differential: string
+}
+
+type Toast = {
+  message: string
+  tone: 'success' | 'error'
 }
 
 const EMPTY_BRIEFING: BriefingData = {
@@ -21,11 +37,31 @@ const EMPTY_BRIEFING: BriefingData = {
 }
 
 const fields: Array<{ key: keyof BriefingData; label: string; placeholder: string }> = [
-  { key: 'business', label: 'Datos del negocio', placeholder: '¿Qué negocio es y qué hace?' },
-  { key: 'location', label: 'Localización', placeholder: 'Ciudad, barrio o zona donde trabaja.' },
-  { key: 'audience', label: 'Público objetivo', placeholder: '¿A qué tipo de personas quiere llegar?' },
-  { key: 'products', label: 'Productos y servicios', placeholder: '¿Qué vende u ofrece?' },
-  { key: 'differential', label: 'Diferencial', placeholder: '¿Qué lo hace distinto o más conveniente?' },
+  {
+    key: 'business',
+    label: 'Datos del negocio',
+    placeholder: 'Nombre, rubro, qué hace y en qué etapa se encuentra el negocio.',
+  },
+  {
+    key: 'location',
+    label: 'Localización',
+    placeholder: 'Ciudad, barrio y zona donde vende o presta el servicio.',
+  },
+  {
+    key: 'audience',
+    label: 'Público objetivo',
+    placeholder: 'Quién compra, qué necesita y qué problema busca resolver.',
+  },
+  {
+    key: 'products',
+    label: 'Productos y servicios',
+    placeholder: 'Principales productos o servicios y cuáles quiere priorizar.',
+  },
+  {
+    key: 'differential',
+    label: 'Diferencial',
+    placeholder: 'Por qué elegir este negocio y qué evidencia sostiene esa diferencia.',
+  },
 ]
 
 function readStoredBriefing(): BriefingData {
@@ -47,7 +83,7 @@ function readStoredBriefing(): BriefingData {
 }
 
 function formatBriefing(data: BriefingData) {
-  return [
+  const briefing = [
     'BRIEFING',
     '',
     `Datos del negocio:\n${data.business.trim()}`,
@@ -60,6 +96,8 @@ function formatBriefing(data: BriefingData) {
     '',
     `Diferencial:\n${data.differential.trim()}`,
   ].join('\n')
+
+  return `${ANALYSIS_PROMPT}\n\n---\n\n${briefing}`
 }
 
 type BriefingPageProps = {
@@ -69,6 +107,7 @@ type BriefingPageProps = {
 export function BriefingPage({ onBack }: BriefingPageProps) {
   const [briefing, setBriefing] = useState<BriefingData>(readStoredBriefing)
   const [message, setMessage] = useState('Se guarda automáticamente en este dispositivo.')
+  const [toast, setToast] = useState<Toast | null>(null)
 
   useEffect(() => {
     document.title = `Briefing · ${COURSE_TITLE}`
@@ -83,12 +122,26 @@ export function BriefingPage({ onBack }: BriefingPageProps) {
     }
   }, [briefing])
 
+  useEffect(() => {
+    if (!toast) return
+
+    const timer = window.setTimeout(() => setToast(null), 2800)
+    return () => window.clearTimeout(timer)
+  }, [toast])
+
   const handleCopy = async () => {
+    const hasContent = Object.values(briefing).some((value) => value.trim().length > 0)
+
+    if (!hasContent) {
+      setToast({ message: 'Completá al menos un campo antes de copiar.', tone: 'error' })
+      return
+    }
+
     try {
       await copyText(formatBriefing(briefing))
-      setMessage('Briefing copiado. Ahora podés pegarlo en ChatGPT.')
+      setToast({ message: 'Briefing copiado con el prompt para ChatGPT.', tone: 'success' })
     } catch {
-      setMessage('No fue posible copiar. Seleccioná el texto manualmente.')
+      setToast({ message: 'No fue posible copiar el briefing.', tone: 'error' })
     }
   }
 
@@ -133,10 +186,17 @@ export function BriefingPage({ onBack }: BriefingPageProps) {
           <p aria-live="polite">{message}</p>
           <div>
             <button className="briefing-secondary" type="button" onClick={handleClear}>Limpiar</button>
-            <button className="briefing-primary" type="button" onClick={() => void handleCopy()}>Copiar briefing</button>
+            <button className="briefing-primary" type="button" onClick={() => void handleCopy()}>Copiar para ChatGPT</button>
           </div>
         </footer>
       </section>
+
+      {toast && (
+        <div className={`briefing-toast is-${toast.tone}`} role="status" aria-live="polite">
+          <span aria-hidden="true">{toast.tone === 'success' ? '✓' : '!'}</span>
+          {toast.message}
+        </div>
+      )}
     </main>
   )
 }
