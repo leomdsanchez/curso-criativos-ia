@@ -65,11 +65,18 @@ export function useSlideNavigation(slideIds: string[]) {
       if (event.key === 'Home') {
         event.preventDefault()
         goTo(0)
+        return
       }
 
       if (event.key === 'End') {
         event.preventDefault()
         goTo(slideIds.length - 1)
+        return
+      }
+
+      if (event.key.toLowerCase() === 'f') {
+        event.preventDefault()
+        void document.documentElement.requestFullscreen?.()
       }
     }
 
