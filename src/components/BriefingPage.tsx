@@ -4,16 +4,17 @@ import { copyText } from '../utils/clipboard'
 
 const STORAGE_KEY = 'curso-criativos-ia:briefing:v1'
 
-const ANALYSIS_PROMPT = `Tengo el siguiente briefing de un negocio.
+const ANALYSIS_PROMPT = `Evaluá el siguiente contenido únicamente como un briefing mínimo para comenzar un trabajo de marketing.
 
-Quiero que trabajes como analista de marketing y estrategia:
+Respondé de forma breve y directa con esta estructura:
 
-1. Analizá la claridad, coherencia y calidad de la información.
-2. Evaluá el negocio considerando el mercado local indicado en la localización.
-3. Si tenés acceso a internet, investigá referencias actuales del mercado local. Si no tenés acceso, diferenciá claramente hechos, supuestos e hipótesis.
-4. Identificá oportunidades, riesgos, información faltante y posibles mejoras en el público, la oferta, el posicionamiento y el diferencial.
-5. Antes de cerrar la evaluación, haceme las preguntas necesarias y trabajá conmigo de forma iterativa. No prepares una versión final hasta que yo confirme las decisiones.
-6. Cuando yo apruebe la versión, entregame únicamente el briefing final revisado dentro de un bloque de texto, sin explicaciones adicionales, listo para copiar y usar.`
+1. Nota general del briefing, de 1 a 10.
+2. Justificación breve de la nota, en un máximo de tres frases.
+3. Qué información está clara y sirve para trabajar.
+4. Qué información está débil, incompleta o necesita más precisión.
+5. Hasta cinco sugerencias concretas para mejorar el briefing.
+
+No hagas una lista de preguntas. No investigues el mercado. No desarrolles una estrategia completa. No reescribas el briefing. Limitate a evaluarlo y sugerir mejoras.`
 
 type BriefingData = {
   business: string
@@ -139,7 +140,7 @@ export function BriefingPage({ onBack }: BriefingPageProps) {
 
     try {
       await copyText(formatBriefing(briefing))
-      setToast({ message: 'Briefing copiado con el prompt para ChatGPT.', tone: 'success' })
+      setToast({ message: 'Briefing copiado para evaluar en ChatGPT.', tone: 'success' })
     } catch {
       setToast({ message: 'No fue posible copiar el briefing.', tone: 'error' })
     }
