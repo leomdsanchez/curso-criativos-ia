@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react'
-import type { Slide, SlideDeck } from '../data/lesson-1'
 import { useFullscreen } from '../navigation/useFullscreen'
 import { useSlideNavigation } from '../navigation/useSlideNavigation'
+import type { Slide, SlideDeck } from '../types/slide'
 
 type LessonDeckProps = {
   lessonNumber: number
