@@ -7,6 +7,12 @@ export type CopyLinkAction = {
   hash: string
 }
 
+export type CopyTextAction = {
+  label: string
+  content: string
+  successLabel?: string
+}
+
 export type Slide = {
   id: string
   eyebrow: string
@@ -18,6 +24,7 @@ export type Slide = {
   highlight?: string
   pillars?: readonly Pillar[]
   copyLink?: CopyLinkAction
+  copyText?: CopyTextAction
 }
 
 export type SlideDeck = readonly [Slide, ...Slide[]]
