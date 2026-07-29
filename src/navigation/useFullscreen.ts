@@ -1,9 +1,5 @@
 import { useCallback, useEffect } from 'react'
-
-function isInteractiveTarget(target: EventTarget | null) {
-  if (!(target instanceof HTMLElement)) return false
-  return target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'A'].includes(target.tagName)
-}
+import { isInteractiveTarget } from '../utils/events'
 
 export function useFullscreen() {
   const toggleFullscreen = useCallback(async () => {
