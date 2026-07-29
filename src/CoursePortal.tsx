@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { App } from './App'
+import { lessonOneSlides } from './data/lesson-1'
+import {
+  getCourseView,
+  LESSON_ONE_OVERVIEW_HASH,
+  lessonOneSlideHash,
+  type CourseView,
+} from './routes'
 import './portal.css'
 import './portal-compact.css'
 import './overview.css'
-import './lesson-title-override.css'
-
-type View = 'home' | 'lesson-1-overview' | 'lesson-1'
 
 type Lesson = {
   number: string
@@ -35,33 +39,21 @@ const lessons: Lesson[] = [
   },
 ]
 
-function getViewFromHash(): View {
-  if (window.location.hash === '#aula-1-contenido') {
-    return 'lesson-1'
-  }
-
-  if (window.location.hash === '#aula-1') {
-    return 'lesson-1-overview'
-  }
-
-  return 'home'
-}
-
 export function CoursePortal() {
-  const [view, setView] = useState<View>(getViewFromHash)
+  const [view, setView] = useState<CourseView>(getCourseView)
 
   useEffect(() => {
-    const handleHashChange = () => setView(getViewFromHash())
+    const handleHashChange = () => setView(getCourseView())
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
 
   const openLessonOne = () => {
-    window.location.hash = 'aula-1'
+    window.location.hash = LESSON_ONE_OVERVIEW_HASH.slice(1)
   }
 
   const startLessonOne = () => {
-    window.location.hash = 'aula-1-contenido'
+    window.location.hash = lessonOneSlideHash(lessonOneSlides[0].id).slice(1)
   }
 
   const goHome = () => {
