@@ -131,6 +131,10 @@ export const lessonOneSlides = [
       'Productos y servicios.',
       'Diferencial.',
     ],
+    copyLink: {
+      label: 'Copiar enlace del briefing',
+      hash: '#briefing',
+    },
   },
   {
     id: 'case',
