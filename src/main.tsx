@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CoursePortal } from './CoursePortal'
+import './wheel-navigation'
 import './styles.css'
 import './pillar-summary.css'
 import './typography.css'
