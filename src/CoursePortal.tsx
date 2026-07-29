@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { App } from './App'
+import { LessonDeck } from './components/LessonDeck'
 import { lessonOneSlides } from './data/lesson-1'
 import {
   getCourseView,
-  LESSON_ONE_OVERVIEW_HASH,
-  lessonOneSlideHash,
+  lessonOverviewHash,
+  lessonSlideHash,
   type CourseView,
 } from './routes'
 import './portal.css'
@@ -39,21 +39,33 @@ const lessons: Lesson[] = [
   },
 ]
 
+const COURSE_TITLE = 'IA aplicada al marketing'
+
 export function CoursePortal() {
   const [view, setView] = useState<CourseView>(getCourseView)
 
   useEffect(() => {
-    const handleHashChange = () => setView(getCourseView())
-    window.addEventListener('hashchange', handleHashChange)
-    return () => window.removeEventListener('hashchange', handleHashChange)
+    const handleRouteChange = () => setView(getCourseView())
+    window.addEventListener('hashchange', handleRouteChange)
+    window.addEventListener('popstate', handleRouteChange)
+
+    return () => {
+      window.removeEventListener('hashchange', handleRouteChange)
+      window.removeEventListener('popstate', handleRouteChange)
+    }
   }, [])
 
+  useEffect(() => {
+    if (view === 'home') document.title = COURSE_TITLE
+    if (view === 'lesson-1-overview') document.title = `De la atención al briefing · ${COURSE_TITLE}`
+  }, [view])
+
   const openLessonOne = () => {
-    window.location.hash = LESSON_ONE_OVERVIEW_HASH.slice(1)
+    window.location.hash = lessonOverviewHash(1).slice(1)
   }
 
   const startLessonOne = () => {
-    window.location.hash = lessonOneSlideHash(lessonOneSlides[0].id).slice(1)
+    window.location.hash = lessonSlideHash(1, lessonOneSlides[0].id).slice(1)
   }
 
   const goHome = () => {
@@ -110,7 +122,7 @@ export function CoursePortal() {
           <span aria-hidden="true">←</span>
           Inicio
         </button>
-        <App />
+        <LessonDeck lessonNumber={1} slides={lessonOneSlides} courseTitle={COURSE_TITLE} />
       </div>
     )
   }
@@ -124,7 +136,7 @@ export function CoursePortal() {
         <header className="portal-header">
           <div className="portal-mark">IA</div>
           <p className="portal-eyebrow">Material de consulta</p>
-          <h1>IA aplicada al marketing</h1>
+          <h1>{COURSE_TITLE}</h1>
         </header>
 
         <section className="lesson-grid" aria-label="Clases del curso">
