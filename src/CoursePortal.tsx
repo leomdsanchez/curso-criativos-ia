@@ -10,30 +10,26 @@ type Lesson = {
   title: string
   description: string
   status: 'available' | 'soon'
-  meta: string
 }
 
 const lessons: Lesson[] = [
   {
     number: '01',
     title: 'De la atención al briefing',
-    description: 'Función del anuncio, mercado de la atención, cuatro pilares y construcción del primer briefing.',
+    description: 'Atención, anuncios y construcción del briefing.',
     status: 'available',
-    meta: '2 horas · Disponible',
   },
   {
     number: '02',
     title: 'Copy y líneas creativas',
-    description: 'Desarrollo de enfoques creativos usando el briefing y los cuatro pilares fundamentales.',
+    description: 'Ideas, enfoques y textos para las piezas.',
     status: 'soon',
-    meta: 'Próximamente',
   },
   {
     number: '03',
     title: 'Creación de piezas con IA',
-    description: 'Transformación de la línea creativa en anuncios consistentes para distintos formatos.',
+    description: 'Diseño y adaptación a distintos formatos.',
     status: 'soon',
-    meta: 'Próximamente',
   },
 ]
 
@@ -134,10 +130,7 @@ export function CoursePortal() {
         <header className="portal-header">
           <div className="portal-mark">IA</div>
           <p className="portal-eyebrow">Material de consulta</p>
-          <h1>Criativos con IA</h1>
-          <p>
-            Accedé a las clases, repasá los conceptos y retomá el contenido cuando lo necesites.
-          </p>
+          <h1>IA aplicada al marketing</h1>
         </header>
 
         <section className="lesson-grid" aria-label="Clases del curso">
@@ -158,25 +151,18 @@ export function CoursePortal() {
                   <p>{lesson.description}</p>
                 </div>
 
-                <div className="lesson-card-footer">
-                  <span>{lesson.meta}</span>
-                  {isAvailable ? (
+                {isAvailable && (
+                  <div className="lesson-card-footer">
                     <button onClick={openLessonOne} type="button">
-                      Abrir clase
+                      Abrir
                       <span aria-hidden="true">→</span>
                     </button>
-                  ) : (
-                    <span className="lesson-disabled-action">Todavía no disponible</span>
-                  )}
-                </div>
+                  </div>
+                )}
               </article>
             )
           })}
         </section>
-
-        <footer className="portal-footer">
-          El contenido se va a actualizar a medida que avance el curso.
-        </footer>
       </section>
     </main>
   )
