@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { getLessonSlideId, lessonSlideHash } from '../routes'
+import { isInteractiveTarget } from '../utils/events'
 
 const NEXT_KEYS = ['ArrowRight', 'PageDown', ' ', 'Enter']
 const PREVIOUS_KEYS = ['ArrowLeft', 'PageUp', 'Backspace']
@@ -15,11 +16,6 @@ type SlideNavigationOptions = {
 
 function clamp(value: number, maximum: number) {
   return Math.min(Math.max(value, 0), maximum)
-}
-
-function isInteractiveTarget(target: EventTarget | null) {
-  if (!(target instanceof HTMLElement)) return false
-  return target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'A'].includes(target.tagName)
 }
 
 export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOptions) {
