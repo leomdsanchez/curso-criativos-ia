@@ -1,19 +1,31 @@
 export type CourseView = 'home' | 'lesson-1-overview' | 'lesson-1'
 
-export const LESSON_ONE_OVERVIEW_HASH = '#aula-1'
-const LESSON_ONE_SLIDE_PREFIX = '#aula-1/'
+const LEGACY_LESSON_ONE_CONTENT_HASH = '#aula-1-contenido'
 
-export function lessonOneSlideHash(slideId: string) {
-  return `${LESSON_ONE_SLIDE_PREFIX}${slideId}`
+export function lessonOverviewHash(lessonNumber: number) {
+  return `#aula-${lessonNumber}`
 }
 
-export function getLessonOneSlideId(hash = window.location.hash) {
-  if (!hash.startsWith(LESSON_ONE_SLIDE_PREFIX)) return null
-  return decodeURIComponent(hash.slice(LESSON_ONE_SLIDE_PREFIX.length))
+export function lessonSlideHash(lessonNumber: number, slideId: string) {
+  return `${lessonOverviewHash(lessonNumber)}/${encodeURIComponent(slideId)}`
+}
+
+export function getLessonSlideId(lessonNumber: number, hash = window.location.hash) {
+  const prefix = `${lessonOverviewHash(lessonNumber)}/`
+  if (!hash.startsWith(prefix)) return null
+
+  const encodedSlideId = hash.slice(prefix.length)
+  if (!encodedSlideId) return null
+
+  try {
+    return decodeURIComponent(encodedSlideId)
+  } catch {
+    return null
+  }
 }
 
 export function getCourseView(hash = window.location.hash): CourseView {
-  if (getLessonOneSlideId(hash)) return 'lesson-1'
-  if (hash === LESSON_ONE_OVERVIEW_HASH) return 'lesson-1-overview'
+  if (hash === LEGACY_LESSON_ONE_CONTENT_HASH || getLessonSlideId(1, hash)) return 'lesson-1'
+  if (hash === lessonOverviewHash(1)) return 'lesson-1-overview'
   return 'home'
 }
