@@ -6,6 +6,7 @@ import './pillar-summary.css'
 import './typography.css'
 import './mobile-layout.css'
 import './briefing.css'
+import './briefing-slide.css'
 
 const root = document.getElementById('root')
 
