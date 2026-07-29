@@ -2,6 +2,11 @@ export type Pillar = {
   title: string
 }
 
+export type CopyLinkAction = {
+  label: string
+  hash: string
+}
+
 export type Slide = {
   id: string
   eyebrow: string
@@ -12,6 +17,7 @@ export type Slide = {
   bullets?: readonly string[]
   highlight?: string
   pillars?: readonly Pillar[]
+  copyLink?: CopyLinkAction
 }
 
 export type SlideDeck = readonly [Slide, ...Slide[]]
