@@ -7,7 +7,7 @@
 }
 
 .pillar-grid::before {
-  content: "Romper el patrón · Conectar · Comunicar el resultado · Dirigir";
+  content: "Romper el patrón · Conectar · Comunicar · Dirigir";
   display: block;
   max-width: 980px;
   color: var(--muted);
