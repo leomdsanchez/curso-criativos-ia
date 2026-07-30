@@ -154,14 +154,13 @@ export function LessonDeck({ lessonNumber, slides, courseTitle = 'IA aplicada al
   const { index, next, previous } = useSlideNavigation({
     lessonNumber,
     slideIds,
-    scrollContainerRef: stageRef,
+    navigationRef: stageRef,
   })
   const toggleFullscreen = useFullscreen()
   const slide = slides[index]
   const progress = ((index + 1) / slides.length) * 100
 
   useEffect(() => {
-    stageRef.current?.scrollTo({ top: 0 })
     document.title = `${slide.title} · ${courseTitle}`
   }, [courseTitle, slide.title])
 
