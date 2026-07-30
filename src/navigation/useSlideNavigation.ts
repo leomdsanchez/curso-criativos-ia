@@ -199,6 +199,27 @@ export function useSlideNavigation({
       }
     }
 
+    const handleTouchMove = (event: TouchEvent) => {
+      const start = touchStart.current
+      if (!start.startedAt) return
+
+      const touch = event.changedTouches[0]
+      const deltaX = touch.clientX - start.x
+      const deltaY = touch.clientY - start.y
+      const horizontal = Math.abs(deltaX) > Math.abs(deltaY)
+
+      if (horizontal) {
+        event.preventDefault()
+        return
+      }
+
+      const swipingUp = deltaY < 0
+      const shouldCapture = !start.canScroll
+        || (swipingUp ? start.startedAtBottom : start.startedAtTop)
+
+      if (shouldCapture) event.preventDefault()
+    }
+
     const handleTouchEnd = (event: TouchEvent) => {
       const start = touchStart.current
       if (!start.startedAt) return
@@ -229,11 +250,13 @@ export function useSlideNavigation({
     }
 
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchmove', handleTouchMove, { passive: false })
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
     window.addEventListener('touchcancel', resetTouch, { passive: true })
 
     return () => {
       window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
       window.removeEventListener('touchcancel', resetTouch)
     }
