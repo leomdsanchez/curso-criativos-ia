@@ -150,9 +150,13 @@ function SlideContent({ slide }: { slide: Slide }) {
 
 export function LessonDeck({ lessonNumber, slides, courseTitle = 'IA aplicada al marketing' }: LessonDeckProps) {
   const slideIds = useMemo(() => slides.map((slide) => slide.id), [slides])
-  const { index, next, previous } = useSlideNavigation({ lessonNumber, slideIds })
-  const toggleFullscreen = useFullscreen()
   const stageRef = useRef<HTMLElement>(null)
+  const { index, next, previous } = useSlideNavigation({
+    lessonNumber,
+    slideIds,
+    scrollContainerRef: stageRef,
+  })
+  const toggleFullscreen = useFullscreen()
   const slide = slides[index]
   const progress = ((index + 1) / slides.length) * 100
 
