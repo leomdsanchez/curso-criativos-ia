@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
 import { getLessonSlideId, lessonSlideHash } from '../routes'
 import { isInteractiveTarget } from '../utils/events'
 
@@ -8,17 +8,53 @@ const WHEEL_THRESHOLD = 42
 const WHEEL_COOLDOWN = 650
 const MIN_SWIPE_DISTANCE = 52
 const MAX_SWIPE_DURATION = 700
+const SCROLL_EDGE_TOLERANCE = 4
 
 type SlideNavigationOptions = {
   lessonNumber: number
   slideIds: readonly string[]
+  scrollContainerRef: RefObject<HTMLElement | null>
+}
+
+type TouchStart = {
+  x: number
+  y: number
+  startedAt: number
+  startedAtTop: boolean
+  startedAtBottom: boolean
+  canScroll: boolean
 }
 
 function clamp(value: number, maximum: number) {
   return Math.min(Math.max(value, 0), maximum)
 }
 
-export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOptions) {
+function getScrollState(element: HTMLElement | null) {
+  if (!element) {
+    return { canScroll: false, atTop: true, atBottom: true }
+  }
+
+  const maximum = element.scrollHeight - element.clientHeight
+  const canScroll = maximum > SCROLL_EDGE_TOLERANCE
+
+  return {
+    canScroll,
+    atTop: !canScroll || element.scrollTop <= SCROLL_EDGE_TOLERANCE,
+    atBottom: !canScroll || element.scrollTop >= maximum - SCROLL_EDGE_TOLERANCE,
+  }
+}
+
+function canScrollInDirection(element: HTMLElement | null, delta: number) {
+  const state = getScrollState(element)
+  if (!state.canScroll) return false
+  return delta > 0 ? !state.atBottom : !state.atTop
+}
+
+export function useSlideNavigation({
+  lessonNumber,
+  slideIds,
+  scrollContainerRef,
+}: SlideNavigationOptions) {
   const indexFromUrl = useCallback(() => {
     const slideId = getLessonSlideId(lessonNumber)
     const foundIndex = slideId ? slideIds.indexOf(slideId) : -1
@@ -29,7 +65,14 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
   const indexRef = useRef(index)
   const wheelDelta = useRef(0)
   const wheelLocked = useRef(false)
-  const touchStart = useRef({ x: 0, y: 0, startedAt: 0 })
+  const touchStart = useRef<TouchStart>({
+    x: 0,
+    y: 0,
+    startedAt: 0,
+    startedAtTop: true,
+    startedAtBottom: true,
+    canScroll: false,
+  })
 
   const setCurrentIndex = useCallback((nextIndex: number) => {
     indexRef.current = nextIndex
@@ -101,6 +144,11 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
     const handleWheel = (event: WheelEvent) => {
       if (event.ctrlKey || wheelLocked.current || Math.abs(event.deltaY) < 1) return
 
+      if (canScrollInDirection(scrollContainerRef.current, event.deltaY)) {
+        wheelDelta.current = 0
+        return
+      }
+
       event.preventDefault()
       wheelDelta.current += event.deltaY
 
@@ -127,38 +175,69 @@ export function useSlideNavigation({ lessonNumber, slideIds }: SlideNavigationOp
       wheelDelta.current = 0
       wheelLocked.current = false
     }
-  }, [goTo])
+  }, [goTo, scrollContainerRef])
 
   useEffect(() => {
+    const resetTouch = () => {
+      touchStart.current.startedAt = 0
+    }
+
     const handleTouchStart = (event: TouchEvent) => {
+      resetTouch()
       if (isInteractiveTarget(event.target)) return
 
       const touch = event.changedTouches[0]
-      touchStart.current = { x: touch.clientX, y: touch.clientY, startedAt: Date.now() }
+      const scrollState = getScrollState(scrollContainerRef.current)
+
+      touchStart.current = {
+        x: touch.clientX,
+        y: touch.clientY,
+        startedAt: Date.now(),
+        startedAtTop: scrollState.atTop,
+        startedAtBottom: scrollState.atBottom,
+        canScroll: scrollState.canScroll,
+      }
     }
 
     const handleTouchEnd = (event: TouchEvent) => {
-      if (!touchStart.current.startedAt) return
+      const start = touchStart.current
+      if (!start.startedAt) return
 
       const touch = event.changedTouches[0]
-      const deltaX = touch.clientX - touchStart.current.x
-      const deltaY = touch.clientY - touchStart.current.y
-      const duration = Date.now() - touchStart.current.startedAt
-      touchStart.current.startedAt = 0
+      const deltaX = touch.clientX - start.x
+      const deltaY = touch.clientY - start.y
+      const duration = Date.now() - start.startedAt
+      resetTouch()
 
       if (duration > MAX_SWIPE_DURATION) return
-      if (Math.abs(deltaX) <= Math.abs(deltaY) || Math.abs(deltaX) < MIN_SWIPE_DISTANCE) return
 
-      goTo(indexRef.current + (deltaX < 0 ? 1 : -1))
+      const horizontal = Math.abs(deltaX) > Math.abs(deltaY)
+      const distance = horizontal ? Math.abs(deltaX) : Math.abs(deltaY)
+      if (distance < MIN_SWIPE_DISTANCE) return
+
+      if (horizontal) {
+        goTo(indexRef.current + (deltaX < 0 ? 1 : -1))
+        return
+      }
+
+      const swipingUp = deltaY < 0
+      const canNavigate = !start.canScroll
+        || (swipingUp ? start.startedAtBottom : start.startedAtTop)
+
+      if (!canNavigate) return
+      goTo(indexRef.current + (swipingUp ? 1 : -1))
     }
 
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
+    window.addEventListener('touchcancel', resetTouch, { passive: true })
+
     return () => {
       window.removeEventListener('touchstart', handleTouchStart)
       window.removeEventListener('touchend', handleTouchEnd)
+      window.removeEventListener('touchcancel', resetTouch)
     }
-  }, [goTo])
+  }, [goTo, scrollContainerRef])
 
   const next = useCallback(() => goTo(indexRef.current + 1), [goTo])
   const previous = useCallback(() => goTo(indexRef.current - 1), [goTo])
