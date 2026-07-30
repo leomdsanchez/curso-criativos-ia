@@ -216,7 +216,7 @@ export function useSlideNavigation({
     }
 
     const handleTouchEnd = (event: TouchEvent) => {
-      const start = touchStart.current
+      const start = { ...touchStart.current }
       if (!start.startedAt) return
 
       const touch = event.changedTouches[0]
