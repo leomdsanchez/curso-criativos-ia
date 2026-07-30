@@ -161,6 +161,7 @@ export function LessonDeck({ lessonNumber, slides, courseTitle = 'IA aplicada al
   const progress = ((index + 1) / slides.length) * 100
 
   useEffect(() => {
+    stageRef.current?.scrollTo({ top: 0, behavior: 'auto' })
     document.title = `${slide.title} · ${courseTitle}`
   }, [courseTitle, slide.title])
 
