@@ -5,9 +5,12 @@ import { isInteractiveTarget } from '../utils/events'
 const NEXT_KEYS = ['ArrowRight', 'PageDown', ' ', 'Enter']
 const PREVIOUS_KEYS = ['ArrowLeft', 'PageUp', 'Backspace']
 const WHEEL_THRESHOLD = 48
-const WHEEL_IDLE_DELAY = 220
-const MIN_SWIPE_DISTANCE = 44
-const MAX_SWIPE_DURATION = 900
+const WHEEL_IDLE_DELAY = 240
+const HORIZONTAL_SWIPE_DISTANCE = 52
+const VERTICAL_SWIPE_DISTANCE = 64
+const MAX_SWIPE_DURATION = 1000
+const SCROLL_EDGE_TOLERANCE = 6
+const DESKTOP_BREAKPOINT = 980
 
 type SlideNavigationOptions = {
   lessonNumber: number
@@ -19,6 +22,9 @@ type TouchStart = {
   x: number
   y: number
   startedAt: number
+  canScroll: boolean
+  atTop: boolean
+  atBottom: boolean
 }
 
 function clamp(value: number, maximum: number) {
@@ -29,6 +35,19 @@ function normalizeWheelDelta(event: WheelEvent) {
   if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16
   if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) return event.deltaY * window.innerHeight
   return event.deltaY
+}
+
+function getScrollState(element: HTMLElement | null) {
+  if (!element) return { canScroll: false, atTop: true, atBottom: true }
+
+  const maximum = Math.max(0, element.scrollHeight - element.clientHeight)
+  const canScroll = maximum > SCROLL_EDGE_TOLERANCE
+
+  return {
+    canScroll,
+    atTop: !canScroll || element.scrollTop <= SCROLL_EDGE_TOLERANCE,
+    atBottom: !canScroll || element.scrollTop >= maximum - SCROLL_EDGE_TOLERANCE,
+  }
 }
 
 export function useSlideNavigation({
@@ -46,7 +65,14 @@ export function useSlideNavigation({
   const indexRef = useRef(index)
   const wheelDelta = useRef(0)
   const wheelLocked = useRef(false)
-  const touchStart = useRef<TouchStart>({ x: 0, y: 0, startedAt: 0 })
+  const touchStart = useRef<TouchStart>({
+    x: 0,
+    y: 0,
+    startedAt: 0,
+    canScroll: false,
+    atTop: true,
+    atBottom: true,
+  })
 
   const setCurrentIndex = useCallback((nextIndex: number) => {
     indexRef.current = nextIndex
@@ -126,7 +152,8 @@ export function useSlideNavigation({
     }
 
     const handleWheel = (event: WheelEvent) => {
-      if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
+      const isDesktopViewport = window.innerWidth > DESKTOP_BREAKPOINT
+      if (!isDesktopViewport || event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
 
       event.preventDefault()
 
@@ -175,10 +202,16 @@ export function useSlideNavigation({
       if (isInteractiveTarget(event.target)) return
 
       const touch = event.changedTouches[0]
+      if (!touch) return
+
+      const scrollState = getScrollState(element)
       touchStart.current = {
         x: touch.clientX,
         y: touch.clientY,
         startedAt: Date.now(),
+        canScroll: scrollState.canScroll,
+        atTop: scrollState.atTop,
+        atBottom: scrollState.atBottom,
       }
     }
 
@@ -187,32 +220,42 @@ export function useSlideNavigation({
       if (!start.startedAt) return
 
       const touch = event.changedTouches[0]
+      resetTouch()
+      if (!touch) return
+
       const deltaX = touch.clientX - start.x
       const deltaY = touch.clientY - start.y
       const duration = Date.now() - start.startedAt
-      resetTouch()
-
       if (duration > MAX_SWIPE_DURATION) return
 
-      const horizontal = Math.abs(deltaX) > Math.abs(deltaY)
-      const distance = horizontal ? Math.abs(deltaX) : Math.abs(deltaY)
-      if (distance < MIN_SWIPE_DISTANCE) return
+      const horizontalDistance = Math.abs(deltaX)
+      const verticalDistance = Math.abs(deltaY)
+      const horizontalGesture = horizontalDistance > verticalDistance * 1.15
 
-      const direction = horizontal
-        ? (deltaX < 0 ? 1 : -1)
-        : (deltaY < 0 ? 1 : -1)
+      if (horizontalGesture) {
+        if (horizontalDistance < HORIZONTAL_SWIPE_DISTANCE) return
+        goTo(indexRef.current + (deltaX < 0 ? 1 : -1))
+        return
+      }
 
-      goTo(indexRef.current + direction)
+      if (verticalDistance < VERTICAL_SWIPE_DISTANCE) return
+
+      const swipingUp = deltaY < 0
+      const canNavigateVertically = !start.canScroll
+        || (swipingUp ? start.atBottom : start.atTop)
+
+      if (!canNavigateVertically) return
+      goTo(indexRef.current + (swipingUp ? 1 : -1))
     }
 
     element.addEventListener('touchstart', handleTouchStart, { passive: true })
-    element.addEventListener('touchend', handleTouchEnd, { passive: true })
-    element.addEventListener('touchcancel', resetTouch, { passive: true })
+    window.addEventListener('touchend', handleTouchEnd, { passive: true })
+    window.addEventListener('touchcancel', resetTouch, { passive: true })
 
     return () => {
       element.removeEventListener('touchstart', handleTouchStart)
-      element.removeEventListener('touchend', handleTouchEnd)
-      element.removeEventListener('touchcancel', resetTouch)
+      window.removeEventListener('touchend', handleTouchEnd)
+      window.removeEventListener('touchcancel', resetTouch)
     }
   }, [goTo, navigationRef])
 
