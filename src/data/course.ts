@@ -16,8 +16,8 @@ export const courseLessons = [
   },
   {
     number: '02',
-    title: 'Copy y líneas creativas',
-    description: 'Automatización, ideas, enfoques y textos para las piezas.',
+    title: 'Diseño con IA',
+    description: 'Automatización, referencias y creación visual para las piezas.',
     status: 'available',
   },
   {
