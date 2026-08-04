@@ -102,12 +102,6 @@ export const lessonTwoSlides = [
         description: 'Composición, estilos, tipografía y recursos gráficos para explorar.',
       },
       {
-        name: 'Ads of the World',
-        url: 'https://www.adsoftheworld.com/',
-        focus: 'Publicidad real',
-        description: 'Campañas, conceptos y ejecuciones publicadas por marcas y agencias.',
-      },
-      {
         name: 'Pinterest',
         url: 'https://www.pinterest.com/',
         focus: 'Moodboards',
