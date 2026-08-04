@@ -17,6 +17,16 @@ Aplica el lenguaje visual y el logo, usando el briefing para crear la pieza soli
 - Si se solicita más de una imagen, genera cada una de forma independiente.
 - Usa el logo y los colores solicitados.`
 
+const CHAT_CAROUSEL_PROMPT = `Necesito que generes las imágenes del carrusel a continuación utilizando como input el logo que te envié y la referencia de diseño. Utiliza tonos verdes, al igual que el logo.
+
+---
+
+[BRIEFING]
+
+---
+
+Crea una sola imagen por vez. Empecemos con la primera imagen.`
+
 export const lessonTwoSlides = [
   {
     id: 'portada',
@@ -116,6 +126,19 @@ export const lessonTwoSlides = [
       label: 'Copiar prompt',
       successLabel: 'Prompt copiado',
       content: DESIGN_PROJECT_PROMPT,
+    },
+  },
+  {
+    id: 'prompt-chat',
+    eyebrow: 'Instrucción progresiva',
+    title: 'Prompt para GPT Chat.',
+    subtitle: 'Pegá el briefing y avanzá con una imagen por vez.',
+    time: '40–45 min',
+    kind: 'statement',
+    copyText: {
+      label: 'Copiar prompt',
+      successLabel: 'Prompt copiado',
+      content: CHAT_CAROUSEL_PROMPT,
     },
   },
 ] satisfies SlideDeck
