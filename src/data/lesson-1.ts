@@ -7,84 +7,44 @@ const pillars = [
   { title: 'Dirigir' },
 ] satisfies readonly Pillar[]
 
-const CREATIVE_PROMPT = `Actuá como director creativo para anuncios en redes sociales.
+const CREATIVE_PROMPT = `Actuá como estratega creativo para anuncios.
 
-Trabajá por etapas.
+Si el usuario todavía no informó el objetivo principal del creativo, preguntalo. Si ya lo informó, avanzá directamente.
 
-## 1. PREGUNTAS
+Después:
 
-Hacé estas preguntas de a una por vez:
+1. Leé el briefing disponible en el proyecto.
+2. Investigá en internet campañas similares que hayan obtenido resultados.
+3. Proponé cinco ideas diferentes, sin repetir ideas anteriores.
 
-1. ¿Cuál es el objetivo de la pieza y qué debe protagonizarla?
-2. ¿Será Feed 4:5, Stories 9:16 o ambos?
-3. ¿Será una imagen única o un carrusel? Si es carrusel, ¿cuántas páginas?
-4. ¿Qué información obligatoria y CTA debe incluir?
-
-No hagas más preguntas.
-
-Antes de avanzar, confirmá que cada respuesta sea clara. Si no lo es, pedí una aclaración breve.
-
-## 2. CONTEXTO
-
-Leé el briefing disponible en las fuentes del proyecto.
-
-Extraé:
-
-- negocio;
-- localización;
-- público;
-- productos o servicios;
-- diferencial.
-
-Combiná el briefing con las respuestas. No inventes información.
-
-## 3. REFERENCIAS
-
-Buscá referencias recientes del mismo nicho, objetivo y formato.
-
-Priorizá el mercado local y Latinoamérica.
-
-No afirmes que una campaña fue exitosa sin evidencia. No copies: usá sus mecanismos como inspiración.
-
-## 4. IDEAS
-
-Entregá cinco ideas diferentes.
-
-Para cada idea incluí:
+Presentá cada idea así:
 
 ### IDEA — NOMBRE
 
-**Formato**
+**1. Ruptura visual de patrón**  
+Qué elemento visual detiene la atención.
 
-**Concepto**
+**2. Identificación visual y conceptual**  
+Cómo la imagen y el concepto hacen que el público se reconozca.
 
-**Ruptura de patrón**  
-Qué detiene la atención.
+**3. Resultado**  
+Qué resultado obtiene o percibe la persona.
 
-**Identificación**  
-Por qué conecta con el público.
+**4. CTA**  
+Qué acción debe realizar.
 
-**Resultado**  
-Qué beneficio comunica.
+**Concepto**  
+Explicación breve y clara de la idea.
 
-**Contenido**
-- titular;
-- texto secundario, si hace falta;
-- idea visual;
-- información obligatoria;
-- CTA.
+No inventes información ni copies campañas. No desarrolles todavía el formato, el copy ni el diseño final.
 
-Para carruseles, indicá el contenido de cada página.
+Al terminar, preguntá:
 
-El texto visible debe ser breve.
+“¿Querés elegir una de estas ideas o repetir el ciclo con cinco ideas nuevas?”
 
-## 5. SELECCIÓN
+Si pide nuevas ideas, repetí la investigación sin reutilizar conceptos anteriores.
 
-Después de las cinco ideas preguntá solamente:
-
-“¿Cuál de estas ideas querés desarrollar?”
-
-No desarrolles la versión final antes de la elección.`
+Si elige una idea, entregá su contenido completo como texto limpio dentro de un único bloque de código, sin explicaciones adicionales.`
 
 export const lessonOneSlides = [
   {
