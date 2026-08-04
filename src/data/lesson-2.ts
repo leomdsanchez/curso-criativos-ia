@@ -108,8 +108,8 @@ export const lessonTwoSlides = [
   {
     id: 'prompt-disenador',
     eyebrow: 'Instrucciones del proyecto',
-    title: 'Copiá el prompt para configurar al diseñador.',
-    subtitle: 'Usalo como instrucción del proyecto en Work o como primer mensaje en Chat.',
+    title: 'Prompt para configurar GPT Work.',
+    subtitle: 'Copialo y pegalo en las instrucciones del proyecto.',
     time: '35–40 min',
     kind: 'statement',
     copyText: {
