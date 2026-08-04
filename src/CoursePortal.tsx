@@ -31,7 +31,7 @@ export function CoursePortal() {
   useEffect(() => {
     if (view === 'home') document.title = COURSE_TITLE
     if (view === 'lesson-1-overview') document.title = `De la atención al briefing · ${COURSE_TITLE}`
-    if (view === 'lesson-2') document.title = `Copy y líneas creativas · ${COURSE_TITLE}`
+    if (view === 'lesson-2') document.title = `Diseño con IA · ${COURSE_TITLE}`
   }, [view])
 
   const openLessonOne = () => {
