@@ -38,15 +38,19 @@ function normalizeWheelDelta(event: WheelEvent) {
 }
 
 function getScrollState(element: HTMLElement | null) {
-  if (!element) return { canScroll: false, atTop: true, atBottom: true }
+  const scrollElement = window.innerWidth <= DESKTOP_BREAKPOINT
+    ? document.scrollingElement
+    : element
 
-  const maximum = Math.max(0, element.scrollHeight - element.clientHeight)
+  if (!scrollElement) return { canScroll: false, atTop: true, atBottom: true }
+
+  const maximum = Math.max(0, scrollElement.scrollHeight - scrollElement.clientHeight)
   const canScroll = maximum > SCROLL_EDGE_TOLERANCE
 
   return {
     canScroll,
-    atTop: !canScroll || element.scrollTop <= SCROLL_EDGE_TOLERANCE,
-    atBottom: !canScroll || element.scrollTop >= maximum - SCROLL_EDGE_TOLERANCE,
+    atTop: !canScroll || scrollElement.scrollTop <= SCROLL_EDGE_TOLERANCE,
+    atBottom: !canScroll || scrollElement.scrollTop >= maximum - SCROLL_EDGE_TOLERANCE,
   }
 }
 
