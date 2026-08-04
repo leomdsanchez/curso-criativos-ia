@@ -156,6 +156,30 @@ function SlideContent({ slide }: { slide: Slide }) {
     )
   }
 
+  if (slide.kind === 'resources' && slide.references) {
+    return (
+      <div className="resource-layout">
+        <SlideHeading slide={slide} />
+        <div className="resource-grid">
+          {slide.references.map((reference) => (
+            <a
+              className="resource-card"
+              href={reference.url}
+              key={reference.name}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span>{reference.focus}</span>
+              <h3>{reference.name}</h3>
+              <p>{reference.description}</p>
+              <strong>Visitar <span aria-hidden="true">↗</span></strong>
+            </a>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={`slide-content ${slide.kind === 'practice' ? 'practice-slide' : ''} ${slide.density === 'compact' ? 'is-compact' : ''}`}>
       <SlideHeading slide={slide} />

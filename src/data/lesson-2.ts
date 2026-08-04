@@ -82,11 +82,45 @@ export const lessonTwoSlides = [
     highlight: 'Con Work automatizamos más. Con Chat avanzamos paso a paso.',
   },
   {
+    id: 'referencias-visuales',
+    eyebrow: 'Antes de crear',
+    title: 'Buscá referencias, no plantillas para copiar.',
+    subtitle: 'Explorá distintas fuentes y guardá solamente lo que ayuda a orientar la pieza.',
+    time: '25–30 min',
+    kind: 'resources',
+    references: [
+      {
+        name: 'Behance',
+        url: 'https://www.behance.net/galleries/advertising',
+        focus: 'Campañas completas',
+        description: 'Identidad, dirección de arte y aplicación de una idea en varias piezas.',
+      },
+      {
+        name: 'Dribbble',
+        url: 'https://dribbble.com/shots/popular',
+        focus: 'Soluciones visuales',
+        description: 'Composición, estilos, tipografía y recursos gráficos para explorar.',
+      },
+      {
+        name: 'Ads of the World',
+        url: 'https://www.adsoftheworld.com/',
+        focus: 'Publicidad real',
+        description: 'Campañas, conceptos y ejecuciones publicadas por marcas y agencias.',
+      },
+      {
+        name: 'Pinterest',
+        url: 'https://www.pinterest.com/',
+        focus: 'Moodboards',
+        description: 'Referencias de color, fotografía, formato y atmósfera visual.',
+      },
+    ],
+  },
+  {
     id: 'work-vs-chat',
     eyebrow: 'Dos caminos',
     title: 'Work entrega más consistencia. Chat exige más conducción.',
     subtitle: 'La diferencia no es si se puede hacer, sino cuánto contexto y control debemos aportar.',
-    time: '25–35 min',
+    time: '30–40 min',
     kind: 'comparison',
     comparison: [
       {
@@ -120,7 +154,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Instrucciones del proyecto',
     title: 'Prompt para configurar GPT Work.',
     subtitle: 'Copialo y pegalo en las instrucciones del proyecto.',
-    time: '35–40 min',
+    time: '40–45 min',
     kind: 'statement',
     copyText: {
       label: 'Copiar prompt',
@@ -133,7 +167,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Instrucción progresiva',
     title: 'Prompt para GPT Chat.',
     subtitle: 'Pegá el briefing y avanzá con una imagen por vez.',
-    time: '40–45 min',
+    time: '45–50 min',
     kind: 'statement',
     copyText: {
       label: 'Copiar prompt',
