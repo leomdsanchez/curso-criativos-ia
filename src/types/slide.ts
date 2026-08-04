@@ -13,16 +13,26 @@ export type CopyTextAction = {
   successLabel?: string
 }
 
+export type ComparisonColumn = {
+  label: string
+  title: string
+  items: readonly string[]
+  footer: string
+  tone?: 'accent' | 'neutral'
+}
+
 export type Slide = {
   id: string
   eyebrow: string
   title: string
   subtitle?: string
   time: string
-  kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice' | 'briefing'
+  density?: 'compact'
+  kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice' | 'briefing' | 'comparison'
   bullets?: readonly string[]
   highlight?: string
   pillars?: readonly Pillar[]
+  comparison?: readonly [ComparisonColumn, ComparisonColumn]
   copyLink?: CopyLinkAction
   copyText?: CopyTextAction
 }

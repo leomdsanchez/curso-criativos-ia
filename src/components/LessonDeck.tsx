@@ -131,8 +131,33 @@ function SlideContent({ slide }: { slide: Slide }) {
     )
   }
 
+  if (slide.kind === 'comparison' && slide.comparison) {
+    return (
+      <div className="comparison-layout">
+        <SlideHeading slide={slide} />
+        <div className="comparison-grid">
+          {slide.comparison.map((column) => (
+            <section
+              className={`comparison-card is-${column.tone ?? 'neutral'}`}
+              key={column.title}
+            >
+              <header>
+                <span>{column.label}</span>
+                <h3>{column.title}</h3>
+              </header>
+              <ul>
+                {column.items.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+              <p>{column.footer}</p>
+            </section>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className={`slide-content ${slide.kind === 'practice' ? 'practice-slide' : ''}`}>
+    <div className={`slide-content ${slide.kind === 'practice' ? 'practice-slide' : ''} ${slide.density === 'compact' ? 'is-compact' : ''}`}>
       <SlideHeading slide={slide} />
       {slide.bullets && (
         <ul className="bullet-list large-list">
