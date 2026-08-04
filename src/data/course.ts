@@ -17,8 +17,8 @@ export const courseLessons = [
   {
     number: '02',
     title: 'Copy y líneas creativas',
-    description: 'Ideas, enfoques y textos para las piezas.',
-    status: 'soon',
+    description: 'Automatización, ideas, enfoques y textos para las piezas.',
+    status: 'available',
   },
   {
     number: '03',
