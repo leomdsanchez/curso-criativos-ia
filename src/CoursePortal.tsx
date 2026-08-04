@@ -3,6 +3,7 @@ import { BriefingPage } from './components/BriefingPage'
 import { LessonDeck } from './components/LessonDeck'
 import { COURSE_TITLE, courseLessons } from './data/course'
 import { lessonOneSlides } from './data/lesson-1'
+import { lessonTwoSlides } from './data/lesson-2'
 import {
   getCourseView,
   lessonOverviewHash,
@@ -30,6 +31,7 @@ export function CoursePortal() {
   useEffect(() => {
     if (view === 'home') document.title = COURSE_TITLE
     if (view === 'lesson-1-overview') document.title = `De la atención al briefing · ${COURSE_TITLE}`
+    if (view === 'lesson-2') document.title = `Copy y líneas creativas · ${COURSE_TITLE}`
   }, [view])
 
   const openLessonOne = () => {
@@ -38,6 +40,10 @@ export function CoursePortal() {
 
   const startLessonOne = () => {
     window.location.hash = lessonSlideHash(1, lessonOneSlides[0].id).slice(1)
+  }
+
+  const startLessonTwo = () => {
+    window.location.hash = lessonSlideHash(2, lessonTwoSlides[0].id).slice(1)
   }
 
   const goHome = () => {
@@ -103,6 +109,18 @@ export function CoursePortal() {
     )
   }
 
+  if (view === 'lesson-2') {
+    return (
+      <div className="lesson-view">
+        <button className="lesson-home-button" onClick={goHome} type="button">
+          <span aria-hidden="true">←</span>
+          Inicio
+        </button>
+        <LessonDeck lessonNumber={2} slides={lessonTwoSlides} courseTitle={COURSE_TITLE} />
+      </div>
+    )
+  }
+
   return (
     <main className="portal-shell">
       <div className="portal-ambient portal-ambient-one" />
@@ -118,6 +136,7 @@ export function CoursePortal() {
         <section className="lesson-grid" aria-label="Clases del curso">
           {courseLessons.map((lesson) => {
             const isAvailable = lesson.status === 'available'
+            const openLesson = lesson.number === '01' ? openLessonOne : startLessonTwo
 
             return (
               <article className={`lesson-card ${isAvailable ? 'is-available' : 'is-locked'}`} key={lesson.number}>
@@ -135,8 +154,8 @@ export function CoursePortal() {
 
                 {isAvailable && (
                   <div className="lesson-card-footer">
-                    <button onClick={openLessonOne} type="button">
-                      Abrir
+                    <button onClick={openLesson} type="button">
+                      {lesson.number === '02' ? 'Iniciar la clase 2' : 'Abrir'}
                       <span aria-hidden="true">→</span>
                     </button>
                   </div>
