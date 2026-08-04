@@ -81,7 +81,7 @@ export const lessonTwoSlides = [
     comparison: [
       {
         label: 'Cuenta con Work',
-        title: 'ChatGPT Work',
+        title: 'GPT Work',
         tone: 'accent',
         items: [
           'Proyecto con instrucciones que se mantienen.',
@@ -93,7 +93,7 @@ export const lessonTwoSlides = [
       },
       {
         label: 'Cuenta gratuita',
-        title: 'Chat directo',
+        title: 'GPT Chat',
         tone: 'neutral',
         items: [
           'Empezamos un chat con el contexto disponible.',
