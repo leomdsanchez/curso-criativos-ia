@@ -31,7 +31,7 @@ export const lessonTwoSlides = [
   {
     id: 'portada',
     eyebrow: 'Clase 02',
-    title: 'Copy y líneas creativas',
+    title: 'Diseño con IA',
     subtitle: 'Primero vamos a cerrar el proceso anterior con una automatización.',
     time: '00–05 min',
     kind: 'cover',
