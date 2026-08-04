@@ -4,9 +4,9 @@ import { CoursePortal } from './CoursePortal'
 import './styles.css'
 import './pillar-summary.css'
 import './typography.css'
-import './mobile-layout.css'
 import './briefing.css'
 import './briefing-slide.css'
+import './mobile-layout.css'
 
 const root = document.getElementById('root')
 
