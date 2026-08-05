@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BriefingPage } from './components/BriefingPage'
 import { LessonDeck } from './components/LessonDeck'
+import { SurveyPage } from './components/SurveyPage'
 import { COURSE_TITLE, courseLessons } from './data/course'
 import { lessonOneSlides } from './data/lesson-1'
 import { lessonTwoSlides } from './data/lesson-2'
@@ -53,6 +54,10 @@ export function CoursePortal() {
 
   if (view === 'briefing') {
     return <BriefingPage onBack={goHome} />
+  }
+
+  if (view === 'survey') {
+    return <SurveyPage onBack={goHome} />
   }
 
   if (view === 'lesson-1-overview') {

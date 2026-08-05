@@ -71,8 +71,13 @@ function ExternalLinkButton({ action }: { action: ExternalLinkAction }) {
   }
 
   return (
-    <a className="slide-copy-link slide-external-link" href={action.url} rel="noreferrer" target="_blank">
-      {action.label} <span aria-hidden="true">↗</span>
+    <a
+      className="slide-copy-link slide-external-link"
+      href={action.url}
+      rel={action.url.startsWith('#') ? undefined : 'noreferrer'}
+      target={action.url.startsWith('#') ? undefined : '_blank'}
+    >
+      {action.label} {!action.url.startsWith('#') && <span aria-hidden="true">↗</span>}
     </a>
   )
 }

@@ -1,6 +1,6 @@
 # Encuesta final · Aula 2
 
-La encuesta queda disponible en la planilla compartida. Cada alumno debe elegir una alternativa por pregunta y registrar sus letras en una nueva fila de la pestaña **Respuestas**.
+La encuesta se responde dentro del sitio: cada alumno informa su nombre y avanza una pregunta por vez. Al finalizar, el sitio registra las respuestas y la puntuación en la planilla conectada.
 
 ## Campo obligatorio
 
@@ -130,5 +130,6 @@ La encuesta queda disponible en la planilla compartida. Cada alumno debe elegir 
 
 ## Enlaces configurados
 
-- `formUrl`: abre la pestaña **Cuestionario** para los alumnos.
-- `sheetUrl`: abre la pestaña **Respuestas** desde `/admin/`.
+- `formUrl`: abre la interfaz de encuesta dentro del sitio.
+- `appScriptUrl`: registra las respuestas y permite cargarlas en `/admin/`.
+- `sheetUrl`: abre la pestaña **Respuestas** como respaldo.

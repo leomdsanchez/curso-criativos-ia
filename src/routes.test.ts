@@ -5,6 +5,7 @@ import {
   getLessonSlideId,
   lessonOverviewHash,
   lessonSlideHash,
+  SURVEY_HASH,
 } from './routes'
 
 describe('course routes', () => {
@@ -22,6 +23,7 @@ describe('course routes', () => {
   it('maps hashes to the correct portal views', () => {
     expect(getCourseView('')).toBe('home')
     expect(getCourseView(BRIEFING_HASH)).toBe('briefing')
+    expect(getCourseView(SURVEY_HASH)).toBe('survey')
     expect(getCourseView('#aula-1')).toBe('lesson-1-overview')
     expect(getCourseView('#aula-1/portada')).toBe('lesson-1')
     expect(getCourseView('#aula-2')).toBe('lesson-2')
