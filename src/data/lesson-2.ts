@@ -206,43 +206,11 @@ export const lessonTwoSlides = [
     ],
   },
   {
-    id: 'work-vs-chat',
-    eyebrow: 'Mismas instrucciones',
-    title: 'El prompt es el mismo. La conducción cambia.',
-    subtitle: 'GPT Work aprovecha más el proyecto; en GPT Chat avanzamos de forma explícita y paso a paso.',
-    time: '33–35 min',
-    kind: 'comparison',
-    comparison: [
-      {
-        label: 'Con GPT Work',
-        title: 'Más autonomía',
-        tone: 'accent',
-        items: [
-          'Las fuentes e instrucciones permanecen disponibles en el proyecto.',
-          'Puede recuperar el contexto con menos conducción.',
-          'Usamos exactamente los mismos prompts.',
-        ],
-        footer: 'Mismo proceso, menos pasos manuales.',
-      },
-      {
-        label: 'Con GPT Chat',
-        title: 'Más conducción',
-        tone: 'neutral',
-        items: [
-          'Verificamos las fuentes e instrucciones antes de diseñar.',
-          'Pegamos la planificación creativa en el momento correcto.',
-          'Pedimos y revisamos una imagen por vez.',
-        ],
-        footer: 'Mismo resultado, con más dirección humana.',
-      },
-    ],
-  },
-  {
     id: 'proyecto-diseno',
     eyebrow: 'Proyecto 02',
     title: 'Creamos el proyecto de Diseño.',
     subtitle: 'Nombre sugerido: Diseño — nombre del emprendimiento.',
-    time: '35–38 min',
+    time: '33–36 min',
     kind: 'bullets',
     bullets: [
       'Subí el logo original del negocio.',
@@ -255,7 +223,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Instrucciones compartidas',
     title: 'Prompt del proyecto de Diseño.',
     subtitle: 'Es el mismo prompt para GPT Work y GPT Chat.',
-    time: '38–40 min',
+    time: '36–38 min',
     kind: 'statement',
     copyText: {
       label: 'Copiar prompt',
@@ -268,7 +236,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Paso obligatorio en GPT Chat',
     title: 'Antes de diseñar, pedimos las fuentes y las instrucciones.',
     subtitle: 'Esperá la respuesta. Recién después pegá la planificación creativa.',
-    time: '40–42 min',
+    time: '38–40 min',
     kind: 'statement',
     copyText: {
       label: 'Copiar pregunta',
@@ -281,7 +249,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Práctica individual',
     title: 'Generamos el diseño paso a paso.',
     subtitle: 'Usá el Bloque 1 de planificación creativa dentro del proyecto de Diseño.',
-    time: '42–50 min',
+    time: '40–50 min',
     kind: 'practice',
     bullets: [
       'En GPT Chat, primero recuperá las fuentes e instrucciones.',
