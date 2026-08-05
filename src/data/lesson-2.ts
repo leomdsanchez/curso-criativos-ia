@@ -97,14 +97,14 @@ export const lessonTwoSlides = [
   {
     id: 'aprendizajes-hoy',
     eyebrow: 'Objetivo de hoy',
-    title: 'Hoy transformamos una idea en una pieza lista para publicar.',
-    subtitle: 'Vamos a trabajar Copy, planificación creativa, diseño y edición.',
+    title: 'Hoy seguimos este flujo.',
+    subtitle: 'Vamos a pasar de una idea a piezas listas para publicar.',
     time: '13–16 min',
     kind: 'bullets',
     bullets: [
-      'Usar un proyecto de Copy para desarrollar una idea elegida.',
-      'Buscar referencias y configurar un proyecto de Diseño.',
-      'Crear, editar y adaptar una pieza para Feed o Stories.',
+      '1. Crear el proyecto de Copy y generar la planificación creativa.',
+      '2. Crear el proyecto de Diseño, buscar referencias y ajustar las instrucciones.',
+      '3. Crear, editar y adaptar piezas para distintos formatos.',
     ],
   },
   {
