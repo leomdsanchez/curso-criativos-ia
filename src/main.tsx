@@ -8,6 +8,10 @@ import './briefing.css'
 import './briefing-slide.css'
 import './mobile-layout.css'
 
+if (window.location.pathname.endsWith('/admin')) {
+  window.location.replace(`${window.location.pathname}/`)
+}
+
 const root = document.getElementById('root')
 
 if (!root) {

@@ -1,92 +1,166 @@
 import type { SlideDeck } from '../types/slide'
+import { surveyConfig } from './survey'
 
-const DESIGN_PROJECT_PROMPT = `Eres un diseñador experimentado, con formación publicitaria y conectado con el mercado actual. Odias la monotonía y repetir tendencias: generas tendencias y casos relevantes a partir de tu experiencia. En este proyecto recibirás un briefing. Consulta las fuentes del proyecto para identificar el logo y el lenguaje visual.
+const COPY_PROJECT_PROMPT = `Actuá como copywriter creativo para redes sociales.
 
-Usa las referencias de las fuentes del proyecto para orientar tu creación y la generación de imágenes, manteniendo siempre la paleta de verdes del logo y el logo original de la empresa, que también se encuentra en las fuentes.
+Recibís una idea creativa ya seleccionada. No cambies su concepto central, pero podés refinarla si necesita más claridad o fuerza.
+
+Si el formato todavía no fue informado, preguntá si será Feed 4:5, Stories 9:16 o ambos, y si será una pieza única o un carrusel. Si es carrusel, preguntá cuántas páginas tendrá.
+
+Después, presentá tres opciones diferentes de copy y propuesta visual dentro del mismo concepto.
+
+Para una pieza única, incluí:
+
+- texto visible;
+- descripción de la imagen.
+
+Para un carrusel, detallá cada página con:
+
+- texto visible;
+- descripción de la imagen.
+
+El usuario puede elegir una opción o pedir ajustes sobre cualquiera de ellas.
+
+Cuando apruebe una opción, escribí la descripción de la publicación y esperá su aprobación.
+
+Después de la aprobación final, entregá todo en dos bloques de código separados, sin explicaciones adicionales:
+
+Bloque 1 — Planificación creativa
+
+- formato;
+- texto visible de cada pieza o página;
+- descripción visual de cada pieza o página;
+- CTA.
+
+Bloque 2 — Descripción de la publicación
+
+- texto final que acompañará la publicación.
+
+No inventes información. No generes imágenes ni prompts para generarlas. Trabajá únicamente el copy y la descripción conceptual de lo que debe aparecer.`
+
+const DESIGN_PROJECT_PROMPT = `Eres un diseñador experimentado, con formación publicitaria y conectado al mercado actual. Odias la monotonía y repetir tendencias; generas tendencias y casos relevantes a partir de tu experiencia. En este proyecto recibirás un briefing. Consulta las fuentes del proyecto para identificar el logo y el lenguaje visual.
+
+Usa las referencias de las fuentes del proyecto para orientar tu creación y generación de imágenes, manteniendo siempre la paleta de verdes del logo y el logo original de la empresa, que también se encuentra en las fuentes.
 
 Aplica el lenguaje visual y el logo, usando el briefing para crear la pieza solicitada.
 
 # PROCESO
 1. Recibe el briefing.
 2. Verifica en las fuentes del proyecto el logo y el lenguaje visual de referencia.
-3. Valida lo que vas a hacer con un subagente 10/10, enviándole todas las instrucciones recibidas (incluidas las instrucciones del proyecto).
+3. Valida lo que vas a hacer con un subagente en 10/10, enviándole todas las instrucciones recibidas (incluidas las instrucciones del proyecto).
 4. Usa el logo y el lenguaje visual como input para generar la pieza solicitada en el briefing.
 
 ## Recomendaciones
-- Ejecuta el 100% usando tu capacidad de generación de imágenes.
-- Si se solicita más de una imagen, genera cada una de forma independiente.
+- Ejecuta el 100 % usando tu capacidad de generación de imágenes.
+- Si la solicitud de creación es un carrusel, genera una imagen independiente para cada página planificada; nunca coloques todas las páginas en un único archivo.
+- No uses numeración para las páginas.
 - Usa el logo y los colores solicitados.`
 
-const CHAT_CAROUSEL_PROMPT = `Necesito que generes las imágenes del carrusel a continuación utilizando como input el logo que te envié y la referencia de diseño. Utiliza tonos verdes, al igual que el logo.
-
----
-
-[BRIEFING]
-
----
-
-Crea una sola imagen por vez. Empecemos con la primera imagen.`
+const CHAT_CONTEXT_CHECK = '¿Cuáles son las fuentes y las instrucciones de este proyecto?'
 
 export const lessonTwoSlides = [
   {
     id: 'portada',
     eyebrow: 'Clase 02',
-    title: 'Diseño con IA',
-    subtitle: 'Primero vamos a cerrar el proceso anterior con una automatización.',
+    title: 'De la idea a la pieza con IA.',
+    subtitle: 'Copy, planificación creativa, diseño y edición en un proceso claro.',
     time: '00–05 min',
     kind: 'cover',
   },
   {
-    id: 'revision',
-    eyebrow: 'Revisión rápida',
-    title: '¿Qué aprendimos en la clase anterior?',
-    time: '05–10 min',
-    kind: 'bullets',
-    bullets: [
-      'La función del anuncio es generar flujo hacia el negocio.',
-      'Antes de vender, el anuncio compite en el mercado de la atención.',
-      'Los cuatro pilares: romper el patrón, conectar, comunicar el resultado y dirigir hacia una acción.',
-    ],
-  },
-  {
-    id: 'ia-trabajando-sola',
-    eyebrow: 'IA trabajando sola',
-    title: 'Vos definís la tarea. La IA la ejecuta.',
-    subtitle: 'Puede repetir un proceso sin que tengas que iniciarlo cada vez.',
-    time: '10–15 min',
-    kind: 'statement',
-    highlight: 'Puede trabajar aunque no estés usando ChatGPT.',
-  },
-  {
     id: 'tarea-programada',
     eyebrow: 'Agendamiento',
-    title: 'Vamos a crear una tarea programada.',
+    title: 'Primero: una tarea programada.',
     subtitle: 'Definimos qué debe hacer, cuándo y con qué frecuencia.',
-    time: '15–20 min',
-    kind: 'statement',
-    highlight: 'Ejemplo: cada lunes, traer nuevas ideas.',
-  },
-  {
-    id: 'sistema-creativo',
-    eyebrow: 'Después del agendamiento',
-    title: 'Vamos a montar nuestro sistema creativo.',
-    subtitle: 'Usaremos la investigación y el briefing de la clase anterior para darle contexto a la IA.',
-    time: '20–25 min',
-    density: 'compact',
+    time: '05–15 min',
     kind: 'bullets',
     bullets: [
-      'Reunir las instrucciones, la investigación y el briefing.',
-      'Configurar un proyecto para el negocio.',
-      'Pedir las primeras líneas creativas y los primeros copies.',
+      'Puede traer nuevas ideas en un día y horario definido.',
+      'Ejemplo: cada lunes, investigar y proponer nuevas líneas creativas.',
+      'La calidad depende de tener un briefing claro antes de programar.',
     ],
-    highlight: 'Con Work automatizamos más. Con Chat avanzamos paso a paso.',
+  },
+  {
+    id: 'mapa-proceso',
+    eyebrow: 'El recorrido de hoy',
+    title: 'Una idea pasa por cuatro etapas.',
+    subtitle: 'No mezclamos tareas: cada proyecto resuelve una parte del trabajo.',
+    time: '15–18 min',
+    kind: 'statement',
+    highlight: 'Idea creativa → Copy → Planificación creativa → Diseño',
+  },
+  {
+    id: 'correccion-ideas',
+    eyebrow: 'Corrección de la clase 1',
+    title: 'El primer prompt genera solamente ideas.',
+    subtitle: 'No pide copy, diseño ni imágenes. Quien quiera puede recrear sus ideas antes de continuar.',
+    time: '18–20 min',
+    kind: 'statement',
+    highlight: 'Elegimos una idea antes de empezar a trabajar el copy.',
+  },
+  {
+    id: 'proyecto-copy',
+    eyebrow: 'Proyecto 01',
+    title: 'Creamos el proyecto de Copy.',
+    subtitle: 'Nombre sugerido: Copy — nombre del emprendimiento.',
+    time: '20–25 min',
+    kind: 'bullets',
+    bullets: [
+      'Abrí un proyecto nuevo para este negocio.',
+      'Entrá en las configuraciones del proyecto.',
+      'Pegá las instrucciones de Copy en el mismo lugar, sin cambiarlas.',
+    ],
+  },
+  {
+    id: 'prompt-copy',
+    eyebrow: 'Instrucciones compartidas',
+    title: 'Prompt del proyecto de Copy.',
+    subtitle: 'Es el mismo prompt para GPT Work y GPT Chat.',
+    time: '25–28 min',
+    kind: 'statement',
+    copyText: {
+      label: 'Copiar prompt',
+      successLabel: 'Prompt copiado',
+      content: COPY_PROJECT_PROMPT,
+    },
+  },
+  {
+    id: 'practica-copy',
+    eyebrow: 'Práctica individual',
+    title: 'Ahora cada persona trabaja su Copy.',
+    subtitle: 'Usá una idea elegida en la clase 1. Si todavía no tenés una, retomá el caso del pet shop.',
+    time: '28–43 min',
+    kind: 'practice',
+    bullets: [
+      'Pegá la idea creativa seleccionada.',
+      'Elegí una de las tres opciones o pedí un ajuste.',
+      'Aprobá la descripción de la publicación.',
+    ],
+  },
+  {
+    id: 'entrega-copy',
+    eyebrow: 'Puente hacia el diseño',
+    title: 'Del Copy llevamos solamente la planificación creativa.',
+    subtitle: 'La descripción de la publicación queda lista para acompañar la pieza cuando se publique.',
+    time: '43–48 min',
+    kind: 'statement',
+    highlight: 'Copiá el Bloque 1: planificación creativa.',
+  },
+  {
+    id: 'buscar-referencias',
+    eyebrow: 'Antes del diseño',
+    title: 'Buscá referencias, no plantillas para copiar.',
+    subtitle: 'Guardá lo que orienta la pieza: composición, color, fotografía, tipografía y lenguaje visual.',
+    time: '48–55 min',
+    kind: 'statement',
+    highlight: 'Las referencias orientan. No reemplazan el criterio ni se copian.',
   },
   {
     id: 'referencias-visuales',
-    eyebrow: 'Antes de crear',
-    title: 'Buscá referencias, no plantillas para copiar.',
-    subtitle: 'Explorá distintas fuentes y guardá solamente lo que ayuda a orientar la pieza.',
-    time: '25–30 min',
+    eyebrow: 'Práctica individual',
+    title: 'Cuatro lugares para explorar.',
+    subtitle: 'Elegí y guardá referencias que ayuden a resolver la pieza de tu propio negocio.',
+    time: '55–62 min',
     kind: 'resources',
     references: [
       {
@@ -102,6 +176,12 @@ export const lessonTwoSlides = [
         description: 'Composición, estilos, tipografía y recursos gráficos para explorar.',
       },
       {
+        name: 'Ads of the World',
+        url: 'https://www.adsoftheworld.com/',
+        focus: 'Publicidad real',
+        description: 'Campañas, conceptos y ejecuciones publicadas por marcas y agencias.',
+      },
+      {
         name: 'Pinterest',
         url: 'https://www.pinterest.com/',
         focus: 'Moodboards',
@@ -111,44 +191,55 @@ export const lessonTwoSlides = [
   },
   {
     id: 'work-vs-chat',
-    eyebrow: 'Dos caminos',
-    title: 'Work entrega más consistencia. Chat exige más conducción.',
-    subtitle: 'La diferencia no es si se puede hacer, sino cuánto contexto y control debemos aportar.',
-    time: '30–40 min',
+    eyebrow: 'Mismas instrucciones',
+    title: 'El prompt es el mismo. La conducción cambia.',
+    subtitle: 'GPT Work aprovecha más el proyecto; en GPT Chat avanzamos de forma explícita y paso a paso.',
+    time: '62–67 min',
     kind: 'comparison',
     comparison: [
       {
-        label: 'Cuenta con Work',
-        title: 'GPT Work',
+        label: 'Con GPT Work',
+        title: 'Más autonomía',
         tone: 'accent',
         items: [
-          'Proyecto con instrucciones que se mantienen.',
-          'Investigación, briefing y referencias reunidos como fuentes.',
-          'Puede planificar y resolver varias etapas con el mismo contexto.',
-          'Menos repetición y resultados más consistentes.',
+          'Las fuentes e instrucciones permanecen disponibles en el proyecto.',
+          'Puede recuperar el contexto con menos conducción.',
+          'Usamos exactamente los mismos prompts.',
         ],
-        footer: 'Mejor resultado con menos conducción.',
+        footer: 'Mismo proceso, menos pasos manuales.',
       },
       {
-        label: 'Cuenta gratuita',
-        title: 'GPT Chat',
+        label: 'Con GPT Chat',
+        title: 'Más conducción',
         tone: 'neutral',
         items: [
-          'Empezamos un chat con el contexto disponible.',
-          'Trabajamos de forma progresiva: una etapa por vez.',
-          'Hay que revisar, corregir y pedir explícitamente el siguiente paso.',
-          'Lleva más trabajo manual, pero el proceso sigue siendo viable.',
+          'Verificamos las fuentes e instrucciones antes de diseñar.',
+          'Pegamos la planificación creativa en el momento correcto.',
+          'Pedimos y revisamos una imagen por vez.',
         ],
-        footer: 'Más trabajo, pero sin contratar un diseñador.',
+        footer: 'Mismo resultado, con más dirección humana.',
       },
     ],
   },
   {
+    id: 'proyecto-diseno',
+    eyebrow: 'Proyecto 02',
+    title: 'Creamos el proyecto de Diseño.',
+    subtitle: 'Nombre sugerido: Diseño — nombre del emprendimiento.',
+    time: '67–74 min',
+    kind: 'bullets',
+    bullets: [
+      'Subí el logo original del negocio.',
+      'Guardá las referencias visuales seleccionadas.',
+      'Agregá los materiales relevantes del emprendimiento.',
+    ],
+  },
+  {
     id: 'prompt-disenador',
-    eyebrow: 'Instrucciones del proyecto',
-    title: 'Prompt para configurar GPT Work.',
-    subtitle: 'Copialo y pegalo en las instrucciones del proyecto.',
-    time: '40–45 min',
+    eyebrow: 'Instrucciones compartidas',
+    title: 'Prompt del proyecto de Diseño.',
+    subtitle: 'Es el mismo prompt para GPT Work y GPT Chat.',
+    time: '74–77 min',
     kind: 'statement',
     copyText: {
       label: 'Copiar prompt',
@@ -157,16 +248,65 @@ export const lessonTwoSlides = [
     },
   },
   {
-    id: 'prompt-chat',
-    eyebrow: 'Instrucción progresiva',
-    title: 'Prompt para GPT Chat.',
-    subtitle: 'Pegá el briefing y avanzá con una imagen por vez.',
-    time: '45–50 min',
+    id: 'verificar-contexto',
+    eyebrow: 'Paso obligatorio en GPT Chat',
+    title: 'Antes de diseñar, pedimos las fuentes y las instrucciones.',
+    subtitle: 'Esperá la respuesta. Recién después pegá la planificación creativa.',
+    time: '77–82 min',
     kind: 'statement',
     copyText: {
-      label: 'Copiar prompt',
-      successLabel: 'Prompt copiado',
-      content: CHAT_CAROUSEL_PROMPT,
+      label: 'Copiar pregunta',
+      successLabel: 'Pregunta copiada',
+      content: CHAT_CONTEXT_CHECK,
+    },
+  },
+  {
+    id: 'practica-diseno',
+    eyebrow: 'Práctica individual',
+    title: 'Generamos el diseño paso a paso.',
+    subtitle: 'Usá el Bloque 1 de planificación creativa dentro del proyecto de Diseño.',
+    time: '82–102 min',
+    kind: 'practice',
+    bullets: [
+      'En GPT Chat, primero recuperá las fuentes e instrucciones.',
+      'Pegá la planificación creativa aprobada.',
+      'Pedí la primera imagen y revisala antes de pedir la siguiente.',
+      'En un carrusel, cada página es una imagen independiente.',
+    ],
+  },
+  {
+    id: 'editar-imagen',
+    eyebrow: 'Edición',
+    title: 'Una imagen lista también se puede ajustar.',
+    subtitle: 'No hace falta empezar de cero para corregir un detalle concreto.',
+    time: '102–110 min',
+    kind: 'bullets',
+    bullets: [
+      'Cambiar un texto o un elemento puntual.',
+      'Agregar, quitar o corregir un objeto.',
+      'Ajustar el fondo, el encuadre o un detalle de la composición.',
+    ],
+  },
+  {
+    id: 'adaptar-formato',
+    eyebrow: 'Último ajuste',
+    title: 'Adaptamos la pieza para Feed o Stories.',
+    subtitle: 'Conservamos el concepto y la identidad visual al preparar otra versión de la misma pieza.',
+    time: '110–115 min',
+    kind: 'statement',
+    highlight: 'Pedí un cambio de formato, no un concepto nuevo.',
+  },
+  {
+    id: 'encuesta-final',
+    eyebrow: 'Cierre',
+    title: 'Completá la encuesta antes de salir.',
+    subtitle: 'Nos ayuda a revisar lo que aprendimos y mejorar las próximas clases.',
+    time: '115–120 min',
+    kind: 'statement',
+    externalLink: {
+      label: 'Abrir encuesta',
+      url: surveyConfig.formUrl,
+      unavailableLabel: 'El enlace de la encuesta se configurará antes de la clase.',
     },
   },
 ] satisfies SlideDeck

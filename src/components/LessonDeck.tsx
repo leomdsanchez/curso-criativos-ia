@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useFullscreen } from '../navigation/useFullscreen'
 import { useSlideNavigation } from '../navigation/useSlideNavigation'
-import type { CopyLinkAction, CopyTextAction, Slide, SlideDeck } from '../types/slide'
+import type { CopyLinkAction, CopyTextAction, ExternalLinkAction, Slide, SlideDeck } from '../types/slide'
 import { copyText } from '../utils/clipboard'
 
 type LessonDeckProps = {
@@ -62,6 +62,18 @@ function CopyTextButton({ action }: { action: CopyTextAction }) {
     <button className="slide-copy-link" type="button" onClick={() => void handleCopy()}>
       {copied ? action.successLabel ?? 'Texto copiado' : action.label}
     </button>
+  )
+}
+
+function ExternalLinkButton({ action }: { action: ExternalLinkAction }) {
+  if (!action.url) {
+    return <p className="slide-link-pending">{action.unavailableLabel ?? 'El enlace estará disponible antes de la clase.'}</p>
+  }
+
+  return (
+    <a className="slide-copy-link slide-external-link" href={action.url} rel="noreferrer" target="_blank">
+      {action.label} <span aria-hidden="true">↗</span>
+    </a>
   )
 }
 
@@ -193,6 +205,7 @@ function SlideContent({ slide }: { slide: Slide }) {
       {slide.highlight && <div className="highlight-box">{slide.highlight}</div>}
       {slide.copyLink && <CopyLinkButton action={slide.copyLink} />}
       {slide.copyText && <CopyTextButton action={slide.copyText} />}
+      {slide.externalLink && <ExternalLinkButton action={slide.externalLink} />}
     </div>
   )
 }

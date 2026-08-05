@@ -13,6 +13,12 @@ export type CopyTextAction = {
   successLabel?: string
 }
 
+export type ExternalLinkAction = {
+  label: string
+  url?: string
+  unavailableLabel?: string
+}
+
 export type ComparisonColumn = {
   label: string
   title: string
@@ -43,6 +49,7 @@ export type Slide = {
   references?: readonly ReferenceLink[]
   copyLink?: CopyLinkAction
   copyText?: CopyTextAction
+  externalLink?: ExternalLinkAction
 }
 
 export type SlideDeck = readonly [Slide, ...Slide[]]

@@ -192,6 +192,19 @@ h2 { font-size: clamp(42px, 5.4vw, 86px); }
   letter-spacing: -0.025em;
 }
 
+.slide-external-link { display: inline-flex; gap: 8px; align-items: center; }
+
+.slide-link-pending {
+  width: fit-content;
+  max-width: 760px;
+  margin: 0;
+  padding: 14px 18px;
+  border: 1px dashed rgba(216, 255, 95, 0.35);
+  border-radius: 14px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
 .bullet-list {
   display: grid;
   gap: 18px;
