@@ -17,8 +17,8 @@ export const surveyQuestions = [
     options: ['Un archivo que guarda imágenes generadas.', 'Una herramienta para programar publicaciones.', 'Un formato obligatorio para carruseles.', 'Una instrucción que indica a la IA qué tarea debe realizar y con qué criterios.'],
   },
   {
-    question: '¿Qué información debe definirse al agendar una publicación?',
-    options: ['La fecha y la hora de publicación.', 'El nombre de la persona que verá el anuncio.', 'La cantidad de fuentes dentro del proyecto.', 'El tipo de cuenta de ChatGPT del público.'],
+    question: '¿Qué permite el agendamiento dentro de ChatGPT?',
+    options: ['Pedir que ChatGPT realice una tarea recurrente en un día u horario definido.', 'Publicar automáticamente una imagen en redes sociales.', 'Cambiar las fuentes de un proyecto.', 'Guardar una imagen en la biblioteca de ChatGPT.'],
   },
   {
     question: '¿Para qué se crea primero el proyecto de Copy?',
@@ -77,8 +77,8 @@ export const surveyQuestions = [
     options: ['Exactamente la misma composición, aunque no se lea bien.', 'El concepto central y la identidad visual de la pieza.', 'El mismo tamaño de imagen sin ajustes.', 'La fecha de creación del archivo original.'],
   },
   {
-    question: '¿Qué acción representa correctamente el agendamiento de una pieza terminada?',
-    options: ['Buscar nuevas referencias visuales.', 'Reescribir el briefing después de publicar.', 'Crear otro logo para la marca.', 'Definir cuándo se publicará el contenido.'],
+    question: '¿Cómo se puede usar el agendamiento para el proyecto de Ideas?',
+    options: ['Para crear una imagen nueva cada vez que se abre el proyecto.', 'Para publicar el copy sin revisión.', 'Para reemplazar las instrucciones del proyecto.', 'Para pedir que ChatGPT genere ideas cada lunes de forma recurrente.'],
   },
   {
     question: '¿Para qué sirven las instrucciones dentro de un proyecto de IA?',

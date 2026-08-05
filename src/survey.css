@@ -23,6 +23,7 @@
 .survey-card {
   width: min(860px, 100%);
   min-height: min(720px, calc(100vh - 120px));
+  max-height: calc(100vh - 72px);
   display: grid;
   align-content: center;
   padding: clamp(30px, 7vw, 84px);
@@ -30,6 +31,7 @@
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.055);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
+  overflow-y: auto;
 }
 
 .survey-eyebrow {
@@ -46,6 +48,12 @@
   font-size: clamp(38px, 5.2vw, 72px);
   line-height: 0.98;
   letter-spacing: -0.06em;
+}
+
+.survey-question h1 {
+  margin-bottom: 30px;
+  font-size: clamp(32px, 4.15vw, 58px);
+  line-height: 1.02;
 }
 
 .survey-card p:not(.survey-eyebrow) {
