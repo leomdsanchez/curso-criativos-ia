@@ -7,7 +7,7 @@ const pillars = [
   { title: 'Dirigir' },
 ] satisfies readonly Pillar[]
 
-const CREATIVE_PROMPT = `Actuá como estratega creativo para anuncios.
+export const CREATIVE_PROMPT = `Actuá como estratega creativo para anuncios.
 
 Si el usuario todavía no informó el objetivo principal del creativo, preguntalo. Si ya lo informó, avanzá directamente.
 

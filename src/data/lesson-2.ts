@@ -1,4 +1,5 @@
 import type { SlideDeck } from '../types/slide'
+import { CREATIVE_PROMPT } from './lesson-1'
 import { surveyConfig } from './survey'
 
 const COPY_PROJECT_PROMPT = `Actuá como copywriter creativo para redes sociales.
@@ -87,6 +88,11 @@ export const lessonTwoSlides = [
     time: '08–13 min',
     kind: 'statement',
     highlight: 'Quien quiera puede recrear sus ideas después de esta corrección.',
+    copyText: {
+      label: 'Copiar prompt de ideas',
+      successLabel: 'Prompt copiado',
+      content: CREATIVE_PROMPT,
+    },
   },
   {
     id: 'aprendizajes-hoy',
