@@ -7,6 +7,7 @@ import {
   lessonSlideHash,
   SURVEY_HASH,
 } from './routes'
+import { surveyAnswerKey, surveyQuestions } from './data/survey'
 
 describe('course routes', () => {
   it('builds overview and encoded slide hashes', () => {
@@ -28,5 +29,15 @@ describe('course routes', () => {
     expect(getCourseView('#aula-1/portada')).toBe('lesson-1')
     expect(getCourseView('#aula-2')).toBe('lesson-2')
     expect(getCourseView('#aula-2/portada')).toBe('lesson-2')
+  })
+
+  it('keeps the final survey concrete and balances correct alternatives', () => {
+    expect(surveyQuestions).toHaveLength(20)
+    expect(surveyAnswerKey).toHaveLength(20)
+    expect(surveyAnswerKey).toEqual(expect.arrayContaining(['A', 'B', 'C', 'D']))
+
+    for (const letter of ['A', 'B', 'C', 'D']) {
+      expect(surveyAnswerKey.filter((answer) => answer === letter)).toHaveLength(5)
+    }
   })
 })
