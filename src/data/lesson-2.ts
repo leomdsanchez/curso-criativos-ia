@@ -65,14 +65,14 @@ export const lessonTwoSlides = [
     eyebrow: 'Clase 02',
     title: 'De la idea a la pieza con IA.',
     subtitle: 'Copy, planificación creativa, diseño y edición en un proceso claro.',
-    time: '00–03 min',
+    time: '00–02 min',
     kind: 'cover',
   },
   {
     id: 'repaso-anterior',
     eyebrow: 'Repaso rápido',
     title: '¿Qué vimos en la clase anterior?',
-    time: '03–08 min',
+    time: '02–04 min',
     kind: 'bullets',
     bullets: [
       'La función del anuncio es generar flujo hacia el negocio.',
@@ -85,7 +85,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Corrección de la clase 1',
     title: 'Primero corregimos el prompt de ideas.',
     subtitle: 'Antes de programar una tarea, confirmamos que el prompt genere solamente ideas, sin copy, diseño ni imágenes.',
-    time: '08–13 min',
+    time: '04–07 min',
     kind: 'statement',
     highlight: 'Quien quiera puede recrear sus ideas después de esta corrección.',
     copyText: {
@@ -99,7 +99,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Agendamiento',
     title: 'Ahora sí: una tarea programada.',
     subtitle: 'Con el prompt corregido, definimos qué debe hacer, cuándo y con qué frecuencia.',
-    time: '13–23 min',
+    time: '07–12 min',
     kind: 'bullets',
     bullets: [
       'Puede traer nuevas ideas en un día y horario definido.',
@@ -112,7 +112,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Objetivo de hoy',
     title: 'Hoy seguimos este flujo.',
     subtitle: 'Vamos a pasar de una idea a piezas listas para publicar.',
-    time: '23–26 min',
+    time: '12–13 min',
     kind: 'bullets',
     bullets: [
       '1. Crear el proyecto de Copy y generar la planificación creativa.',
@@ -125,7 +125,7 @@ export const lessonTwoSlides = [
     eyebrow: 'El recorrido de hoy',
     title: 'Una idea pasa por cuatro etapas.',
     subtitle: 'No mezclamos tareas: cada proyecto resuelve una parte del trabajo.',
-    time: '26–28 min',
+    time: '13–14 min',
     kind: 'statement',
     highlight: 'Idea creativa → Copy → Planificación creativa → Diseño',
   },
@@ -134,7 +134,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Proyecto 01',
     title: 'Creamos el proyecto de Copy.',
     subtitle: 'Nombre sugerido: Copy — nombre del emprendimiento.',
-    time: '28–33 min',
+    time: '14–17 min',
     kind: 'bullets',
     bullets: [
       'Abrí un proyecto nuevo para este negocio.',
@@ -147,7 +147,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Instrucciones compartidas',
     title: 'Prompt del proyecto de Copy.',
     subtitle: 'Es el mismo prompt para GPT Work y GPT Chat.',
-    time: '33–36 min',
+    time: '17–18 min',
     kind: 'statement',
     copyText: {
       label: 'Copiar prompt',
@@ -160,7 +160,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Práctica individual',
     title: 'Ahora cada persona trabaja su Copy.',
     subtitle: 'Usá una idea elegida en la clase 1. Si todavía no tenés una, retomá el caso del pet shop.',
-    time: '36–49 min',
+    time: '18–25 min',
     kind: 'practice',
     bullets: [
       'Pegá la idea creativa seleccionada.',
@@ -173,7 +173,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Puente hacia el diseño',
     title: 'Del Copy llevamos solamente la planificación creativa.',
     subtitle: 'La descripción de la publicación queda lista para acompañar la pieza cuando se publique.',
-    time: '49–53 min',
+    time: '25–27 min',
     kind: 'statement',
     highlight: 'Copiá el Bloque 1: planificación creativa.',
   },
@@ -182,7 +182,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Antes del diseño',
     title: 'Buscá referencias, no plantillas para copiar.',
     subtitle: 'Guardá lo que orienta la pieza: composición, color, fotografía, tipografía y lenguaje visual.',
-    time: '53–58 min',
+    time: '27–29 min',
     kind: 'statement',
     highlight: 'Las referencias orientan. No reemplazan el criterio ni se copian.',
   },
@@ -191,7 +191,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Práctica individual',
     title: 'Cuatro lugares para explorar.',
     subtitle: 'Elegí y guardá referencias que ayuden a resolver la pieza de tu propio negocio.',
-    time: '58–65 min',
+    time: '29–33 min',
     kind: 'resources',
     references: [
       {
@@ -225,7 +225,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Mismas instrucciones',
     title: 'El prompt es el mismo. La conducción cambia.',
     subtitle: 'GPT Work aprovecha más el proyecto; en GPT Chat avanzamos de forma explícita y paso a paso.',
-    time: '65–70 min',
+    time: '33–35 min',
     kind: 'comparison',
     comparison: [
       {
@@ -257,7 +257,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Proyecto 02',
     title: 'Creamos el proyecto de Diseño.',
     subtitle: 'Nombre sugerido: Diseño — nombre del emprendimiento.',
-    time: '70–76 min',
+    time: '35–38 min',
     kind: 'bullets',
     bullets: [
       'Subí el logo original del negocio.',
@@ -270,7 +270,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Instrucciones compartidas',
     title: 'Prompt del proyecto de Diseño.',
     subtitle: 'Es el mismo prompt para GPT Work y GPT Chat.',
-    time: '76–79 min',
+    time: '38–40 min',
     kind: 'statement',
     copyText: {
       label: 'Copiar prompt',
@@ -283,7 +283,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Paso obligatorio en GPT Chat',
     title: 'Antes de diseñar, pedimos las fuentes y las instrucciones.',
     subtitle: 'Esperá la respuesta. Recién después pegá la planificación creativa.',
-    time: '79–83 min',
+    time: '40–42 min',
     kind: 'statement',
     copyText: {
       label: 'Copiar pregunta',
@@ -296,7 +296,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Práctica individual',
     title: 'Generamos el diseño paso a paso.',
     subtitle: 'Usá el Bloque 1 de planificación creativa dentro del proyecto de Diseño.',
-    time: '83–101 min',
+    time: '42–50 min',
     kind: 'practice',
     bullets: [
       'En GPT Chat, primero recuperá las fuentes e instrucciones.',
@@ -310,7 +310,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Edición',
     title: 'Una imagen lista también se puede ajustar.',
     subtitle: 'No hace falta empezar de cero para corregir un detalle concreto.',
-    time: '101–108 min',
+    time: '50–54 min',
     kind: 'bullets',
     bullets: [
       'Cambiar un texto o un elemento puntual.',
@@ -323,7 +323,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Último ajuste',
     title: 'Adaptamos la pieza para Feed o Stories.',
     subtitle: 'Conservamos el concepto y la identidad visual al preparar otra versión de la misma pieza.',
-    time: '108–114 min',
+    time: '54–57 min',
     kind: 'statement',
     highlight: 'Pedí un cambio de formato, no un concepto nuevo.',
   },
@@ -332,7 +332,7 @@ export const lessonTwoSlides = [
     eyebrow: 'Cierre',
     title: 'Completá la encuesta antes de salir.',
     subtitle: 'Nos ayuda a revisar lo que aprendimos y mejorar las próximas clases.',
-    time: '114–120 min',
+    time: '57–60 min',
     kind: 'statement',
     externalLink: {
       label: 'Abrir encuesta',
