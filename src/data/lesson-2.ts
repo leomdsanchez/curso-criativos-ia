@@ -112,22 +112,13 @@ export const lessonTwoSlides = [
     eyebrow: 'Objetivo de hoy',
     title: 'Hoy seguimos este flujo.',
     subtitle: 'Vamos a pasar de una idea a piezas listas para publicar.',
-    time: '12–13 min',
+    time: '12–14 min',
     kind: 'bullets',
     bullets: [
       '1. Crear el proyecto de Copy y generar la planificación creativa.',
       '2. Crear el proyecto de Diseño, buscar referencias y ajustar las instrucciones.',
       '3. Crear, editar y adaptar piezas para distintos formatos.',
     ],
-  },
-  {
-    id: 'mapa-proceso',
-    eyebrow: 'El recorrido de hoy',
-    title: 'Una idea pasa por cuatro etapas.',
-    subtitle: 'No mezclamos tareas: cada proyecto resuelve una parte del trabajo.',
-    time: '13–14 min',
-    kind: 'statement',
-    highlight: 'Idea creativa → Copy → Planificación creativa → Diseño',
   },
   {
     id: 'proyecto-copy',
