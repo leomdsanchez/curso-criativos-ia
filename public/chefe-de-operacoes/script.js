@@ -1,3 +1,5 @@
+/* global document, window, IntersectionObserver, HTMLInputElement, HTMLTextAreaElement */
+
 (() => {
   const slides = [...document.querySelectorAll(".slide")];
   const dots = [...document.querySelectorAll(".progress-dot")];
