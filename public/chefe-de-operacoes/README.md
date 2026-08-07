@@ -1,6 +1,6 @@
 # Chefe de operações — Neural Think
 
-Apresentação web estática de cinco slides, com estética editorial inspirada no distill.pub.
+Apresentação web estática de dez slides, com estética editorial inspirada no distill.pub.
 
 ## Uso local
 
