@@ -9,6 +9,7 @@ import {
   Goal,
   MessageCircle,
   Network,
+  PackageOpen,
   PlugZap,
   Puzzle,
   Settings2,
@@ -38,6 +39,7 @@ const slideIcons: Record<SlideIcon, LucideIcon> = {
   skill: Puzzle,
   tool: Wrench,
   plug: PlugZap,
+  package: PackageOpen,
   trigger: CalendarClock,
   approval: CheckCircle2,
 }
@@ -317,6 +319,34 @@ function SlideContent({ slide }: { slide: Slide }) {
             ))}
           </div>
         </div>
+      </div>
+    )
+  }
+
+  if (slide.kind === 'capability' && slide.icon && slide.diagram) {
+    return (
+      <div className="lesson-three-layout capability-layout">
+        <SlideHeading slide={slide} />
+        <div className="capability-body">
+          <div className="capability-visual" aria-hidden="true">
+            <div className="capability-core">
+              <ConceptIcon name={slide.icon} />
+              <strong>{slide.title.split(':')[0]}</strong>
+            </div>
+            <div className="capability-orbit">
+              {slide.diagram.map((item) => <span key={item}>{item}</span>)}
+            </div>
+          </div>
+          <ul className="capability-bullets">
+            {slide.bullets?.map((bullet, index) => (
+              <li key={bullet} style={{ animationDelay: `${index * 90}ms` }}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{bullet}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {slide.highlight && <div className="capability-key-message">{slide.highlight}</div>}
       </div>
     )
   }

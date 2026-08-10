@@ -46,6 +46,7 @@ export type SlideIcon =
   | 'skill'
   | 'tool'
   | 'plug'
+  | 'package'
   | 'trigger'
   | 'approval'
 
@@ -68,9 +69,11 @@ export type Slide = {
   subtitle?: string
   time: string
   density?: 'compact'
-  kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice' | 'briefing' | 'comparison' | 'resources' | 'concept-grid' | 'agent-comparison' | 'agent-cycle' | 'agent-environment'
+  kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice' | 'briefing' | 'comparison' | 'resources' | 'concept-grid' | 'agent-comparison' | 'agent-cycle' | 'agent-environment' | 'capability'
   bullets?: readonly string[]
   highlight?: string
+  icon?: SlideIcon
+  diagram?: readonly string[]
   pillars?: readonly Pillar[]
   comparison?: readonly [ComparisonColumn, ComparisonColumn]
   references?: readonly ReferenceLink[]
