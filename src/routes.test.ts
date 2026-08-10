@@ -29,6 +29,8 @@ describe('course routes', () => {
     expect(getCourseView('#aula-1/portada')).toBe('lesson-1')
     expect(getCourseView('#aula-2')).toBe('lesson-2')
     expect(getCourseView('#aula-2/portada')).toBe('lesson-2')
+    expect(getCourseView('#aula-3')).toBe('lesson-3')
+    expect(getCourseView('#aula-3/ciclo-agente')).toBe('lesson-3')
   })
 
   it('keeps the final survey concrete and balances correct alternatives', () => {

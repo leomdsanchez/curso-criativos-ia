@@ -1,13 +1,50 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import {
+  Bot,
+  BrainCircuit,
+  CalendarClock,
+  CheckCircle2,
+  ClipboardCheck,
+  FileText,
+  Goal,
+  MessageCircle,
+  Network,
+  PlugZap,
+  Puzzle,
+  Settings2,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react'
 import { useFullscreen } from '../navigation/useFullscreen'
 import { useSlideNavigation } from '../navigation/useSlideNavigation'
-import type { CopyLinkAction, CopyTextAction, ExternalLinkAction, Slide, SlideDeck } from '../types/slide'
+import type { CopyLinkAction, CopyTextAction, ExternalLinkAction, Slide, SlideDeck, SlideIcon } from '../types/slide'
 import { copyText } from '../utils/clipboard'
 
 type LessonDeckProps = {
   lessonNumber: number
   slides: SlideDeck
   courseTitle?: string
+}
+
+const slideIcons: Record<SlideIcon, LucideIcon> = {
+  message: MessageCircle,
+  task: ClipboardCheck,
+  agent: Bot,
+  network: Network,
+  brain: BrainCircuit,
+  machine: Settings2,
+  target: Goal,
+  instructions: FileText,
+  skill: Puzzle,
+  tool: Wrench,
+  plug: PlugZap,
+  trigger: CalendarClock,
+  approval: CheckCircle2,
+}
+
+function ConceptIcon({ name }: { name: SlideIcon }) {
+  const Icon = slideIcons[name]
+  return <Icon aria-hidden="true" strokeWidth={1.8} />
 }
 
 function ArrowIcon({ direction }: { direction: 'left' | 'right' }) {
@@ -192,6 +229,93 @@ function SlideContent({ slide }: { slide: Slide }) {
               <strong>Visitar <span aria-hidden="true">↗</span></strong>
             </a>
           ))}
+        </div>
+      </div>
+    )
+  }
+
+  if (slide.kind === 'concept-grid' && slide.cards) {
+    return (
+      <div className="lesson-three-layout concept-grid-layout">
+        <SlideHeading slide={slide} />
+        <div className="concept-card-grid">
+          {slide.cards.map((card, index) => (
+            <article className="concept-card" key={card.title} style={{ animationDelay: `${index * 90}ms` }}>
+              <div className="concept-card-topline">
+                <span className="concept-icon"><ConceptIcon name={card.icon} /></span>
+                {card.label && <strong>{card.label}</strong>}
+              </div>
+              <h3>{card.title}</h3>
+              <p>{card.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  if (slide.kind === 'agent-comparison' && slide.cards) {
+    return (
+      <div className="lesson-three-layout agent-comparison-layout">
+        <SlideHeading slide={slide} />
+        <div className="agent-comparison-visual">
+          {slide.cards.map((card, index) => (
+            <div className="agent-comparison-group" key={card.title}>
+              {index > 0 && <span className="agent-comparison-arrow" aria-hidden="true">→</span>}
+              <article className={`agent-system-card ${index > 0 ? 'is-agent' : ''}`}>
+                <div className="agent-system-icon"><ConceptIcon name={card.icon} /></div>
+                <div>
+                  {card.label && <span>{card.label}</span>}
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                </div>
+              </article>
+            </div>
+          ))}
+        </div>
+        {slide.highlight && <div className="agent-key-message">{slide.highlight}</div>}
+      </div>
+    )
+  }
+
+  if (slide.kind === 'agent-cycle' && slide.steps) {
+    return (
+      <div className="lesson-three-layout agent-cycle-layout">
+        <SlideHeading slide={slide} />
+        <div className="agent-cycle" aria-label="Ciclo de trabajo de un agente">
+          {slide.steps.map((step, index) => (
+            <article className="agent-cycle-step" key={step.title}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </article>
+          ))}
+        </div>
+        {slide.highlight && <p className="agent-cycle-note">{slide.highlight}</p>}
+      </div>
+    )
+  }
+
+  if (slide.kind === 'agent-environment' && slide.cards) {
+    return (
+      <div className="lesson-three-layout agent-environment-layout">
+        <SlideHeading slide={slide} />
+        <div className="agent-environment-map">
+          <div className="agent-environment-core">
+            <ConceptIcon name="agent" />
+            <strong>Agente</strong>
+          </div>
+          <div className="agent-environment-grid">
+            {slide.cards.map((card) => (
+              <article className="environment-card" key={card.title}>
+                <span><ConceptIcon name={card.icon} /></span>
+                <div>
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     )

@@ -1,4 +1,4 @@
-export type CourseView = 'home' | 'briefing' | 'lesson-1-overview' | 'lesson-1' | 'lesson-2' | 'survey'
+export type CourseView = 'home' | 'briefing' | 'lesson-1-overview' | 'lesson-1' | 'lesson-2' | 'lesson-3' | 'survey'
 
 export const BRIEFING_HASH = '#briefing'
 export const SURVEY_HASH = '#encuesta'
@@ -31,6 +31,7 @@ export function getCourseView(hash = window.location.hash): CourseView {
   if (hash === SURVEY_HASH) return 'survey'
   if (hash === LEGACY_LESSON_ONE_CONTENT_HASH || getLessonSlideId(1, hash)) return 'lesson-1'
   if (hash === lessonOverviewHash(2) || getLessonSlideId(2, hash)) return 'lesson-2'
+  if (hash === lessonOverviewHash(3) || getLessonSlideId(3, hash)) return 'lesson-3'
   if (hash === lessonOverviewHash(1)) return 'lesson-1-overview'
   return 'home'
 }

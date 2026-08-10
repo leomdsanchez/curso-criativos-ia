@@ -24,6 +24,6 @@ export const courseLessons = [
     number: '03',
     title: 'Sistema de automatización',
     description: 'Ideas, aprobaciones, tareas recurrentes y archivos organizados en Drive.',
-    status: 'soon',
+    status: 'available',
   },
 ] satisfies readonly LessonSummary[]
