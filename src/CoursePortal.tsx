@@ -160,7 +160,7 @@ export function CoursePortal() {
                 {isAvailable && (
                   <div className="lesson-card-footer">
                     <button onClick={openLesson} type="button">
-                      {lesson.number === '02' ? 'Iniciar la clase 2' : 'Abrir'}
+                      Abrir la clase
                       <span aria-hidden="true">→</span>
                     </button>
                   </div>
