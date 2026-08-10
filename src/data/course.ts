@@ -16,14 +16,14 @@ export const courseLessons = [
   },
   {
     number: '02',
-    title: 'Diseño con IA',
-    description: 'Automatización, referencias y creación visual para las piezas.',
+    title: 'Copy y diseño con IA',
+    description: 'Planificación creativa, referencias y creación de piezas con IA.',
     status: 'available',
   },
   {
     number: '03',
-    title: 'Creación de piezas con IA',
-    description: 'Diseño y adaptación a distintos formatos.',
+    title: 'Sistema de automatización',
+    description: 'Ideas, aprobaciones, tareas recurrentes y archivos organizados en Drive.',
     status: 'soon',
   },
 ] satisfies readonly LessonSummary[]
