@@ -184,28 +184,11 @@ export const lessonThreeSlides = [
     highlight: 'El agente actúa, observa la respuesta y continúa investigando dentro de la misma conversación.',
   },
   {
-    id: 'herramientas-conector',
-    eyebrow: 'Acciones disponibles',
-    title: 'Cada acción del conector es una herramienta.',
-    subtitle: 'Las herramientas definen qué puede hacer el agente dentro del sistema conectado.',
-    time: '26–29 min',
-    kind: 'tool-grid',
-    cards: [
-      { title: 'Comprobar correos', description: 'Lista los mensajes recientes.', icon: 'inbox' },
-      { title: 'Buscar mensajes', description: 'Filtra por remitente, asunto o fecha.', icon: 'search' },
-      { title: 'Visualizar un correo', description: 'Abre el contenido y sus detalles.', icon: 'mail' },
-      { title: 'Descargar un adjunto', description: 'Obtiene archivos incluidos en el mensaje.', icon: 'download' },
-      { title: 'Crear un borrador', description: 'Prepara una respuesta sin enviarla.', icon: 'draft' },
-      { title: 'Añadir etiquetas', description: 'Organiza los mensajes de la bandeja.', icon: 'tag' },
-    ],
-    highlight: 'Las herramientas son los verbos: consultar, buscar, descargar, crear y actualizar.',
-  },
-  {
     id: 'skills',
     eyebrow: 'Enseñar una forma de trabajar',
     title: 'Una skill convierte herramientas en un proceso.',
     subtitle: 'Es una instrucción reutilizable que define qué hacer, en qué orden y con qué criterios.',
-    time: '29–32 min',
+    time: '26–30 min',
     kind: 'skill-process',
     steps: [
       { title: 'Comprobar', description: 'Revisar los correos no leídos.' },
@@ -221,7 +204,7 @@ export const lessonThreeSlides = [
     eyebrow: 'Todo en un solo paquete',
     title: 'Un plugin reúne un pequeño ecosistema de capacidades.',
     subtitle: 'Al instalarlo, el agente recibe las piezas necesarias para trabajar con un servicio.',
-    time: '32–35 min',
+    time: '30–34 min',
     kind: 'plugin-bundle',
     cards: [
       { title: 'Conector MCP', description: 'Acceso al servicio.', icon: 'plug' },
@@ -238,7 +221,7 @@ export const lessonThreeSlides = [
     eyebrow: 'La máquina que vamos a construir',
     title: 'Un sistema para organizar y ejecutar nuestra producción de contenido.',
     subtitle: 'Todoist organiza el flujo, ChatGPT ejecuta las etapas y las programaciones mantienen la máquina en movimiento.',
-    time: '35–37 min',
+    time: '34–37 min',
     kind: 'machine-overview',
     cards: [
       { title: 'Todoist', description: 'Organiza el trabajo.', icon: 'task' },
