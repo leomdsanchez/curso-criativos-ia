@@ -49,6 +49,13 @@ export type SlideIcon =
   | 'package'
   | 'trigger'
   | 'approval'
+  | 'inbox'
+  | 'search'
+  | 'mail'
+  | 'download'
+  | 'draft'
+  | 'tag'
+  | 'script'
 
 export type ConceptCard = {
   label?: string
@@ -62,6 +69,18 @@ export type CycleStep = {
   description: string
 }
 
+export type ConnectorMessage = {
+  role: 'agent' | 'connector'
+  label: string
+  mention?: string
+  text: string
+  items?: readonly string[]
+  details?: readonly {
+    label: string
+    value: string
+  }[]
+}
+
 export type Slide = {
   id: string
   eyebrow: string
@@ -69,11 +88,12 @@ export type Slide = {
   subtitle?: string
   time: string
   density?: 'compact'
-  kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice' | 'briefing' | 'comparison' | 'resources' | 'concept-grid' | 'agent-comparison' | 'agent-cycle' | 'agent-environment' | 'capability'
+  kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice' | 'briefing' | 'comparison' | 'resources' | 'concept-grid' | 'agent-comparison' | 'agent-cycle' | 'agent-environment' | 'connector-map' | 'connector-chat' | 'tool-grid' | 'skill-process' | 'plugin-bundle'
   bullets?: readonly string[]
   highlight?: string
   icon?: SlideIcon
   diagram?: readonly string[]
+  chat?: readonly ConnectorMessage[]
   pillars?: readonly Pillar[]
   comparison?: readonly [ComparisonColumn, ComparisonColumn]
   references?: readonly ReferenceLink[]

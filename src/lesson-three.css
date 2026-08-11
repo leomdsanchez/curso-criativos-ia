@@ -286,128 +286,7 @@
   font-size: clamp(14px, 0.98vw, 16px);
 }
 
-.capability-layout {
-  gap: clamp(22px, 2.8vw, 38px);
-}
-
-.capability-body {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
-  gap: clamp(30px, 4vw, 64px);
-  align-items: center;
-}
-
-.capability-visual {
-  position: relative;
-  display: grid;
-  min-height: 280px;
-  place-items: center;
-}
-
-.capability-visual::before {
-  content: "";
-  position: absolute;
-  width: min(86%, 340px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(216, 255, 95, 0.16);
-  border-radius: 50%;
-  box-shadow: inset 0 0 70px rgba(216, 255, 95, 0.035);
-}
-
-.capability-core {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  width: 150px;
-  height: 150px;
-  place-content: center;
-  place-items: center;
-  border: 1px solid rgba(216, 255, 95, 0.42);
-  border-radius: 40px;
-  color: #07080c;
-  background: var(--accent);
-  box-shadow: 0 24px 70px rgba(216, 255, 95, 0.17);
-  transform: rotate(-2deg);
-}
-
-.capability-core svg {
-  width: 43px;
-  height: 43px;
-  margin-bottom: 12px;
-}
-
-.capability-core strong {
-  font-size: 22px;
-  letter-spacing: -0.04em;
-}
-
-.capability-orbit {
-  position: absolute;
-  inset: 0;
-}
-
-.capability-orbit span {
-  position: absolute;
-  z-index: 2;
-  padding: 9px 13px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--text);
-  background: #15171d;
-  font-size: 13px;
-  font-weight: 750;
-  letter-spacing: 0.01em;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-}
-
-.capability-orbit span:nth-child(1) {
-  top: 4%;
-  left: 8%;
-}
-
-.capability-orbit span:nth-child(2) {
-  top: 17%;
-  right: 0;
-}
-
-.capability-orbit span:nth-child(3) {
-  right: 12%;
-  bottom: 3%;
-}
-
-.capability-bullets {
-  display: grid;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.capability-bullets li {
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
-  gap: 17px;
-  padding: 18px 20px;
-  align-items: center;
-  border-bottom: 1px solid var(--line);
-  animation: card-enter 520ms cubic-bezier(0.2, 0.9, 0.25, 1) both;
-}
-
-.capability-bullets li > span {
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-}
-
-.capability-bullets p {
-  margin: 0;
-  color: var(--text);
-  font-size: clamp(17px, 1.35vw, 22px);
-  line-height: 1.38;
-}
-
-.capability-key-message {
+.lesson-three-key-message {
   padding: 16px 22px;
   border-left: 3px solid var(--accent);
   color: #eefbc7;
@@ -415,6 +294,356 @@
   font-size: clamp(18px, 1.45vw, 24px);
   font-weight: 760;
   letter-spacing: -0.025em;
+}
+
+.connector-map-layout,
+.connector-chat-layout,
+.tool-grid-layout,
+.skill-process-layout,
+.plugin-bundle-layout {
+  gap: clamp(20px, 2.5vw, 34px);
+}
+
+.connector-map {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(36px, 5vw, 78px);
+  max-width: 980px;
+  width: 100%;
+  margin: 8px auto;
+  align-items: stretch;
+}
+
+.connector-map-group {
+  position: relative;
+  display: grid;
+}
+
+.connector-arrow {
+  position: absolute;
+  top: 50%;
+  left: clamp(-57px, -3.6vw, -35px);
+  color: var(--accent);
+  font-size: clamp(24px, 2.2vw, 34px);
+  transform: translateY(-50%);
+}
+
+.connector-node {
+  display: grid;
+  min-height: 185px;
+  padding: 26px;
+  place-content: center;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.2);
+}
+
+.connector-node.is-1 {
+  border-color: rgba(216, 255, 95, 0.4);
+  color: #07080c;
+  background: var(--accent);
+  box-shadow: 0 24px 70px rgba(216, 255, 95, 0.14);
+}
+
+.connector-node svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  color: var(--accent);
+}
+
+.connector-node.is-1 svg {
+  color: #07080c;
+}
+
+.connector-node strong {
+  font-size: clamp(21px, 1.8vw, 28px);
+  letter-spacing: -0.04em;
+}
+
+.connector-conversation {
+  display: grid;
+  gap: 16px;
+  max-width: 990px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.connector-message {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  animation: card-enter 520ms cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+
+.connector-message.is-connector {
+  margin-left: clamp(36px, 5vw, 80px);
+  border-color: rgba(216, 255, 95, 0.24);
+  background: linear-gradient(135deg, rgba(216, 255, 95, 0.08), rgba(255, 255, 255, 0.025));
+  animation-delay: 120ms;
+}
+
+.connector-message > header {
+  display: flex;
+  gap: 11px;
+  padding: 22px;
+  align-items: center;
+  border-right: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.connector-message > header span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--accent);
+  background: rgba(216, 255, 95, 0.08);
+}
+
+.connector-message > header svg {
+  width: 19px;
+  height: 19px;
+}
+
+.connector-message-content {
+  padding: 21px 24px;
+}
+
+.connector-mention {
+  display: inline-block;
+  margin-bottom: 7px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+}
+
+.connector-message-content h3 {
+  margin: 0;
+  font-size: clamp(19px, 1.55vw, 25px);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.connector-message-content ul {
+  display: grid;
+  gap: 6px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.connector-message-content li {
+  padding: 7px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--muted);
+  font-size: clamp(14px, 1vw, 16px);
+}
+
+.connector-message-content dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px 22px;
+  margin: 14px 0 0;
+}
+
+.connector-message-content dl > div {
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.connector-message-content dt {
+  margin-bottom: 3px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.connector-message-content dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(13px, 0.95vw, 15px);
+  line-height: 1.35;
+}
+
+.tool-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tool-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 15px;
+  min-height: 116px;
+  padding: 20px;
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  animation: card-enter 500ms cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+
+.tool-card > span,
+.plugin-parts article > span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(216, 255, 95, 0.22);
+  border-radius: 12px;
+  color: var(--accent);
+  background: rgba(216, 255, 95, 0.06);
+}
+
+.tool-card svg,
+.plugin-parts svg {
+  width: 19px;
+  height: 19px;
+}
+
+.tool-card h3,
+.plugin-parts h3,
+.skill-steps h3 {
+  margin: 0 0 6px;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.tool-card p,
+.plugin-parts p,
+.skill-steps p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(13px, 0.9vw, 15px);
+  line-height: 1.35;
+}
+
+.skill-process-body {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: clamp(30px, 4vw, 62px);
+  align-items: stretch;
+}
+
+.skill-document,
+.plugin-package {
+  display: grid;
+  padding: 28px;
+  place-content: center;
+  place-items: start;
+  border: 1px solid rgba(216, 255, 95, 0.36);
+  border-radius: 27px;
+  color: #07080c;
+  background: var(--accent);
+  box-shadow: 0 26px 70px rgba(216, 255, 95, 0.14);
+}
+
+.skill-document > span {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 28px;
+  place-items: center;
+  border: 1px solid rgba(7, 8, 12, 0.2);
+  border-radius: 15px;
+}
+
+.skill-document svg,
+.plugin-package svg {
+  width: 28px;
+  height: 28px;
+}
+
+.skill-document small,
+.plugin-package small {
+  margin-bottom: 7px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.skill-document strong,
+.plugin-package strong {
+  font-size: clamp(21px, 1.7vw, 27px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.skill-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-steps li {
+  display: grid;
+  grid-template-columns: 33px minmax(0, 1fr);
+  gap: 12px;
+  padding: 13px 0;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+}
+
+.skill-steps li > span {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.plugin-bundle-body {
+  display: grid;
+  grid-template-columns: 235px minmax(0, 1fr);
+  gap: clamp(28px, 3.5vw, 54px);
+  align-items: stretch;
+}
+
+.plugin-package {
+  place-items: center;
+  text-align: center;
+}
+
+.plugin-package svg {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 26px;
+}
+
+.plugin-parts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.plugin-parts article {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 13px;
+  min-height: 106px;
+  padding: 17px;
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 @media (max-width: 980px) {
@@ -440,9 +669,18 @@
     grid-template-columns: 1fr;
   }
 
-  .capability-body {
-    grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
-    gap: 24px;
+  .connector-message {
+    grid-template-columns: 165px minmax(0, 1fr);
+  }
+
+  .tool-card-grid,
+  .plugin-parts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skill-process-body,
+  .plugin-bundle-body {
+    grid-template-columns: 220px minmax(0, 1fr);
   }
 
   .agent-environment-core {
@@ -459,7 +697,12 @@
   .agent-comparison-visual,
   .agent-cycle,
   .agent-environment-grid,
-  .capability-body {
+  .connector-map,
+  .tool-card-grid,
+  .skill-process-body,
+  .plugin-bundle-body,
+  .plugin-parts,
+  .skill-steps {
     grid-template-columns: 1fr;
   }
 
@@ -566,28 +809,64 @@
     border-radius: 18px;
   }
 
-  .capability-visual {
-    min-height: 230px;
+  .connector-map {
+    gap: 34px;
   }
 
-  .capability-core {
-    width: 124px;
-    height: 124px;
-    border-radius: 32px;
+  .connector-arrow {
+    top: -29px;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
   }
 
-  .capability-core svg {
-    width: 35px;
-    height: 35px;
+  .connector-node {
+    min-height: 120px;
+    border-radius: 21px;
   }
 
-  .capability-bullets li {
-    grid-template-columns: 32px minmax(0, 1fr);
-    gap: 12px;
-    padding: 14px 8px;
+  .connector-node svg {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 10px;
   }
 
-  .capability-bullets p {
+  .connector-message,
+  .connector-message.is-connector {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+
+  .connector-message > header {
+    padding: 14px 17px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .connector-message-content {
+    padding: 17px;
+  }
+
+  .connector-message-content dl {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card,
+  .plugin-parts article {
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .skill-document,
+  .plugin-package {
+    min-height: 165px;
+  }
+
+  .skill-steps li {
+    padding: 12px 0;
+  }
+
+  .lesson-three-key-message {
+    padding: 14px 17px;
     font-size: 16px;
   }
 }

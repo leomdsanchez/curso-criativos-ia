@@ -5,14 +5,21 @@ import {
   CalendarClock,
   CheckCircle2,
   ClipboardCheck,
+  Download,
+  FileCode2,
+  FilePenLine,
   FileText,
   Goal,
+  Inbox,
+  MailOpen,
   MessageCircle,
   Network,
   PackageOpen,
   PlugZap,
   Puzzle,
+  Search,
   Settings2,
+  Tags,
   Wrench,
   type LucideIcon,
 } from 'lucide-react'
@@ -42,6 +49,13 @@ const slideIcons: Record<SlideIcon, LucideIcon> = {
   package: PackageOpen,
   trigger: CalendarClock,
   approval: CheckCircle2,
+  inbox: Inbox,
+  search: Search,
+  mail: MailOpen,
+  download: Download,
+  draft: FilePenLine,
+  tag: Tags,
+  script: FileCode2,
 }
 
 function ConceptIcon({ name }: { name: SlideIcon }) {
@@ -323,30 +337,134 @@ function SlideContent({ slide }: { slide: Slide }) {
     )
   }
 
-  if (slide.kind === 'capability' && slide.icon && slide.diagram) {
+  if (slide.kind === 'connector-map' && slide.diagram) {
     return (
-      <div className="lesson-three-layout capability-layout">
+      <div className="lesson-three-layout connector-map-layout">
         <SlideHeading slide={slide} />
-        <div className="capability-body">
-          <div className="capability-visual" aria-hidden="true">
-            <div className="capability-core">
-              <ConceptIcon name={slide.icon} />
-              <strong>{slide.title.split(':')[0]}</strong>
+        <div className="connector-map" aria-label="Agente conectado a Gmail mediante MCP">
+          {slide.diagram.map((item, index) => (
+            <div className="connector-map-group" key={item}>
+              {index > 0 && <span className="connector-arrow" aria-hidden="true">↔</span>}
+              <article className={`connector-node is-${index}`}>
+                <ConceptIcon name={index === 0 ? 'agent' : index === 1 ? 'plug' : 'mail'} />
+                <strong>{item}</strong>
+              </article>
             </div>
-            <div className="capability-orbit">
-              {slide.diagram.map((item) => <span key={item}>{item}</span>)}
-            </div>
+          ))}
+        </div>
+        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
+      </div>
+    )
+  }
+
+  if (slide.kind === 'connector-chat' && slide.chat) {
+    return (
+      <div className="lesson-three-layout connector-chat-layout">
+        <SlideHeading slide={slide} />
+        <div className="connector-conversation">
+          {slide.chat.map((message) => (
+            <article className={`connector-message is-${message.role}`} key={`${message.role}-${message.text}`}>
+              <header>
+                <span>{message.role === 'agent' ? <ConceptIcon name="agent" /> : <ConceptIcon name="mail" />}</span>
+                <strong>{message.label}</strong>
+              </header>
+              <div className="connector-message-content">
+                {message.mention && <span className="connector-mention">{message.mention}</span>}
+                <h3>{message.text}</h3>
+                {message.items && (
+                  <ul>
+                    {message.items.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                )}
+                {message.details && (
+                  <dl>
+                    {message.details.map((detail) => (
+                      <div key={detail.label}>
+                        <dt>{detail.label}</dt>
+                        <dd>{detail.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
+      </div>
+    )
+  }
+
+  if (slide.kind === 'tool-grid' && slide.cards) {
+    return (
+      <div className="lesson-three-layout tool-grid-layout">
+        <SlideHeading slide={slide} />
+        <div className="tool-card-grid">
+          {slide.cards.map((card, index) => (
+            <article className="tool-card" key={card.title} style={{ animationDelay: `${index * 70}ms` }}>
+              <span><ConceptIcon name={card.icon} /></span>
+              <div>
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
+      </div>
+    )
+  }
+
+  if (slide.kind === 'skill-process' && slide.steps) {
+    return (
+      <div className="lesson-three-layout skill-process-layout">
+        <SlideHeading slide={slide} />
+        <div className="skill-process-body">
+          <div className="skill-document">
+            <span><ConceptIcon name="skill" /></span>
+            <small>Skill</small>
+            <strong>Organizar la bandeja de entrada</strong>
           </div>
-          <ul className="capability-bullets">
-            {slide.bullets?.map((bullet, index) => (
-              <li key={bullet} style={{ animationDelay: `${index * 90}ms` }}>
+          <ol className="skill-steps">
+            {slide.steps.map((step, index) => (
+              <li key={step.title}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
-                <p>{bullet}</p>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
-        {slide.highlight && <div className="capability-key-message">{slide.highlight}</div>}
+        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
+      </div>
+    )
+  }
+
+  if (slide.kind === 'plugin-bundle' && slide.cards) {
+    return (
+      <div className="lesson-three-layout plugin-bundle-layout">
+        <SlideHeading slide={slide} />
+        <div className="plugin-bundle-body">
+          <div className="plugin-package">
+            <ConceptIcon name="package" />
+            <small>Plugin</small>
+            <strong>Gmail</strong>
+          </div>
+          <div className="plugin-parts">
+            {slide.cards.map((card) => (
+              <article key={card.title}>
+                <span><ConceptIcon name={card.icon} /></span>
+                <div>
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
       </div>
     )
   }
