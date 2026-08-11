@@ -47,7 +47,6 @@ export const lessonThreeSlides = [
     id: 'ia-versus-agente',
     eyebrow: 'Concepto clave',
     title: 'La inteligencia artificial es el motor.',
-    subtitle: 'Un agente es ese motor dentro de un sistema que le permite trabajar con mayor autonomía.',
     time: '09–12 min',
     kind: 'agent-comparison',
     cards: [
