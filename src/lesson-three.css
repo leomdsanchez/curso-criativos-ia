@@ -320,71 +320,121 @@
 }
 
 .agent-environment-map {
+  position: relative;
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  gap: 22px;
-  align-items: stretch;
+  width: min(100%, 780px);
+  min-height: 350px;
+  margin: 0 auto;
+  place-items: center;
+}
+
+.agent-environment-ring {
+  position: absolute;
+  border: 1px solid rgba(216, 255, 95, 0.16);
+  border-radius: 50%;
+}
+
+.agent-environment-ring.is-outer {
+  inset: 24px 120px;
+}
+
+.agent-environment-ring.is-inner {
+  inset: 76px 212px;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.agent-environment-track {
+  position: absolute;
+  inset: 24px 120px;
+  animation: environment-orbit 34s linear infinite;
 }
 
 .agent-environment-core {
   display: grid;
-  min-height: 300px;
-  padding: 26px;
+  z-index: 3;
+  width: 138px;
+  height: 138px;
   place-content: center;
   place-items: center;
   border: 1px solid rgba(216, 255, 95, 0.4);
-  border-radius: 28px;
+  border-radius: 50%;
   color: #07080c;
   background: var(--accent);
-  box-shadow: 0 26px 75px rgba(216, 255, 95, 0.15);
+  box-shadow: 0 0 90px rgba(216, 255, 95, 0.2);
 }
 
 .agent-environment-core svg {
-  width: 58px;
-  height: 58px;
-  margin-bottom: 18px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 9px;
 }
 
 .agent-environment-core strong {
-  font-size: 25px;
+  font-size: 19px;
   letter-spacing: -0.04em;
 }
 
-.agent-environment-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+.environment-orbit-node {
+  position: absolute;
+  z-index: 4;
 }
 
-.environment-card {
+.environment-orbit-node:nth-child(1) { top: -18px; left: 50%; transform: translateX(-50%); }
+.environment-orbit-node:nth-child(2) { top: 18%; right: -74px; }
+.environment-orbit-node:nth-child(3) { right: -62px; bottom: 13%; }
+.environment-orbit-node:nth-child(4) { bottom: -22px; left: 50%; transform: translateX(-50%); }
+.environment-orbit-node:nth-child(5) { bottom: 13%; left: -62px; }
+.environment-orbit-node:nth-child(6) { top: 18%; left: -70px; }
+
+.environment-orbit-node-inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 15px;
-  min-height: 138px;
-  padding: 20px;
-  align-items: start;
+  gap: 7px;
+  min-width: 110px;
+  justify-items: center;
+  animation: environment-counter-orbit 34s linear infinite;
+}
+
+.environment-orbit-node span {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
   border: 1px solid var(--line);
-  border-radius: 21px;
-  background: rgba(255, 255, 255, 0.045);
+  border-radius: 50%;
+  color: var(--accent);
+  background: #121319;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
 }
 
-.environment-card > span {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+.environment-orbit-node.is-focus span {
+  border-color: var(--accent);
+  color: #07080c;
+  background: var(--accent);
 }
 
-.environment-card svg {
-  width: 20px;
-  height: 20px;
+.environment-orbit-node svg {
+  width: 23px;
+  height: 23px;
 }
 
-.environment-card h3 {
-  font-size: clamp(17px, 1.3vw, 22px);
+.environment-orbit-node strong {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
-.environment-card p {
-  font-size: clamp(14px, 0.98vw, 16px);
+.environment-orbit-node.is-focus strong {
+  color: var(--text);
+  font-size: 13px;
+}
+
+@keyframes environment-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes environment-counter-orbit {
+  to { transform: rotate(-360deg); }
 }
 
 .lesson-three-key-message {
@@ -1073,8 +1123,7 @@
 }
 
 @media (max-width: 980px) {
-  .concept-card-grid,
-  .agent-environment-grid {
+  .concept-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1089,10 +1138,6 @@
   .agent-cycle-step:nth-child(2)::after,
   .agent-cycle-step:nth-child(4)::after {
     display: none;
-  }
-
-  .agent-environment-map {
-    grid-template-columns: 1fr;
   }
 
   .connector-message {
@@ -1117,9 +1162,6 @@
     display: none;
   }
 
-  .agent-environment-core {
-    min-height: 150px;
-  }
 }
 
 @media (max-width: 620px) {
@@ -1130,7 +1172,6 @@
   .concept-card-grid,
   .agent-comparison-visual,
   .agent-cycle,
-  .agent-environment-grid,
   .connector-map,
   .tool-card-grid,
   .skill-process-body,
@@ -1216,21 +1257,47 @@
     margin-bottom: 15px;
   }
 
+  .agent-environment-map {
+    min-height: 500px;
+    align-content: start;
+  }
+
+  .agent-environment-ring {
+    display: none;
+  }
+
+  .agent-environment-track {
+    inset: 156px 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 8px;
+    animation: none;
+  }
+
+  .environment-orbit-node,
+  .environment-orbit-node:nth-child(n) {
+    position: static;
+    transform: none;
+  }
+
+  .environment-orbit-node-inner {
+    min-width: 0;
+    animation: none;
+  }
+
   .agent-environment-core {
-    min-height: 130px;
-    border-radius: 22px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 122px;
+    height: 122px;
+    transform: translateX(-50%);
   }
 
   .agent-environment-core svg {
     width: 44px;
     height: 44px;
-    margin-bottom: 12px;
-  }
-
-  .environment-card {
-    min-height: 0;
-    padding: 17px;
-    border-radius: 18px;
+    margin-bottom: 8px;
   }
 
   .connector-map {

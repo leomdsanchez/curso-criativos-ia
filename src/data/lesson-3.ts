@@ -98,40 +98,34 @@ export const lessonThreeSlides = [
   {
     id: 'entorno-agente',
     eyebrow: 'El entorno del agente',
-    title: 'El modelo piensa. El entorno le permite trabajar.',
-    subtitle: 'Para actuar con autonomía, el agente necesita un sistema que defina qué sabe, qué puede hacer y hasta dónde puede llegar.',
+    title: 'El agente trabaja dentro de un entorno.',
+    subtitle: 'Existen muchas capacidades a su alrededor. En esta clase nos enfocaremos en tres: MCP, Skills y Plugins.',
     time: '17–20 min',
     kind: 'agent-environment',
     cards: [
       {
-        title: 'Objetivo e instrucciones',
-        description: 'Definen qué debe hacer y cuáles son sus límites.',
-        icon: 'instructions',
-      },
-      {
-        title: 'Skills',
-        description: 'Le enseñan cómo realizar determinados trabajos.',
-        icon: 'skill',
-      },
-      {
-        title: 'Herramientas',
-        description: 'Le permiten ejecutar acciones concretas.',
-        icon: 'tool',
-      },
-      {
-        title: 'MCP y conectores',
-        description: 'Lo conectan con aplicaciones y fuentes de información.',
+        title: 'MCP',
         icon: 'plug',
       },
       {
-        title: 'Agendamientos y webhooks',
-        description: 'Determinan cuándo debe comenzar una tarea.',
-        icon: 'trigger',
+        title: 'Skills',
+        icon: 'skill',
       },
       {
-        title: 'Permisos y aprobaciones',
-        description: 'Definen qué puede hacer solo y qué necesita autorización.',
-        icon: 'approval',
+        title: 'Plugins',
+        icon: 'package',
+      },
+      {
+        title: 'Herramientas',
+        icon: 'tool',
+      },
+      {
+        title: 'Instrucciones',
+        icon: 'instructions',
+      },
+      {
+        title: 'Automatizaciones',
+        icon: 'trigger',
       },
     ],
   },

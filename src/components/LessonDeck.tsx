@@ -441,20 +441,21 @@ function SlideContent({ slide }: { slide: Slide }) {
       <div className="lesson-three-layout agent-environment-layout">
         <SlideHeading slide={slide} />
         <div className="agent-environment-map">
+          <div className="agent-environment-ring is-outer" aria-hidden="true" />
+          <div className="agent-environment-ring is-inner" aria-hidden="true" />
+          <div className="agent-environment-track">
+            {slide.cards.map((card, index) => (
+              <div className={`environment-orbit-node ${index < 3 ? 'is-focus' : 'is-secondary'}`} key={card.title}>
+                <div className="environment-orbit-node-inner">
+                  <span><ConceptIcon name={card.icon} /></span>
+                  <strong>{card.title}</strong>
+                </div>
+              </div>
+            ))}
+          </div>
           <div className="agent-environment-core">
             <ConceptIcon name="agent" />
             <strong>Agente</strong>
-          </div>
-          <div className="agent-environment-grid">
-            {slide.cards.map((card) => (
-              <article className="environment-card" key={card.title}>
-                <span><ConceptIcon name={card.icon} /></span>
-                <div>
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </div>
