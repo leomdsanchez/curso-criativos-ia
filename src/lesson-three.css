@@ -1222,6 +1222,84 @@
   transform: translateY(0);
 }
 
+.prompt-library-layout {
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.prompt-library-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.prompt-library-card {
+  display: flex;
+  min-height: 250px;
+  padding: clamp(22px, 2vw, 30px);
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02));
+}
+
+.prompt-library-card-heading {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.prompt-library-card-heading > span {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 14px;
+  color: #07080c;
+  background: var(--accent);
+}
+
+.prompt-library-card-heading svg {
+  width: 23px;
+  height: 23px;
+}
+
+.prompt-library-card h3 {
+  margin: 0;
+  font-size: clamp(23px, 1.8vw, 29px);
+  letter-spacing: -0.04em;
+}
+
+.prompt-library-card p {
+  margin: 26px 0;
+  color: rgba(247, 247, 242, 0.38);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.prompt-library-card button {
+  min-height: 48px;
+  margin-top: auto;
+  padding: 0 20px;
+  border: 1px solid rgba(216, 255, 95, 0.35);
+  border-radius: 14px;
+  color: var(--accent);
+  background: rgba(216, 255, 95, 0.06);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.prompt-library-card button:hover,
+.prompt-library-card button:focus-visible {
+  color: #07080c;
+  background: var(--accent);
+  outline: none;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 980px) {
   .concept-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1273,6 +1351,7 @@
   .plugin-equation,
   .skill-steps,
   .machine-equation,
+  .prompt-library-grid,
   .machine-roadmap {
     grid-template-columns: 1fr;
   }

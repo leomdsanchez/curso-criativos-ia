@@ -145,6 +145,37 @@ function SlideHeading({ slide }: { slide: Slide }) {
   )
 }
 
+function PromptLibrary({ slide }: { slide: Slide }) {
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
+
+  const handleCopy = async (content: string, index: number) => {
+    try {
+      await copyText(content)
+      setCopiedIndex(index)
+      window.setTimeout(() => setCopiedIndex((current) => current === index ? null : current), 1800)
+    } catch {
+      setCopiedIndex(null)
+    }
+  }
+
+  return (
+    <div className="prompt-library-grid">
+      {slide.cards?.map((card, index) => (
+        <article className="prompt-library-card" key={card.title}>
+          <div className="prompt-library-card-heading">
+            <span><ConceptIcon name={card.icon} /></span>
+            <h3>{card.title}</h3>
+          </div>
+          <p>{card.description}</p>
+          <button type="button" onClick={() => void handleCopy(card.description ?? '', index)}>
+            {copiedIndex === index ? 'Prompt copiado' : 'Copiar prompt'}
+          </button>
+        </article>
+      ))}
+    </div>
+  )
+}
+
 function ConnectorChat({ slide }: { slide: Slide }) {
   const messages = slide.chat ?? []
   const [visibleCount, setVisibleCount] = useState(0)
@@ -589,6 +620,15 @@ function SlideContent({ slide }: { slide: Slide }) {
             </li>
           ))}
         </ol>
+      </div>
+    )
+  }
+
+  if (slide.kind === 'prompt-library' && slide.cards) {
+    return (
+      <div className="lesson-three-layout prompt-library-layout">
+        <SlideHeading slide={slide} />
+        <PromptLibrary slide={slide} />
       </div>
     )
   }

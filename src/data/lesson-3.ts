@@ -238,4 +238,16 @@ export const lessonThreeSlides = [
       { title: 'Programar actividades', description: 'Creamos las rutinas que ejecutarán cada etapa.' },
     ],
   },
+  {
+    id: 'prompts-agendamientos',
+    eyebrow: 'Recursos para la práctica',
+    title: 'Prompts para programar la máquina.',
+    time: '40–100 min',
+    kind: 'prompt-library',
+    cards: [
+      { title: 'Ideas', description: '[Placeholder: prompt para crear la programación de ideas]', icon: 'message' },
+      { title: 'Copy', description: '[Placeholder: prompt para crear la programación de copy]', icon: 'draft' },
+      { title: 'Diseño', description: '[Placeholder: prompt para crear la programación de diseño]', icon: 'skill' },
+    ],
+  },
 ] satisfies SlideDeck
