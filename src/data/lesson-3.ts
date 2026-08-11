@@ -53,11 +53,13 @@ export const lessonThreeSlides = [
       {
         label: 'Motor',
         title: 'Inteligencia artificial',
+        description: 'Interpreta información, razona y genera respuestas.',
         icon: 'brain',
       },
       {
         label: 'Sistema',
         title: 'Agente',
+        description: 'Combina la IA con un objetivo, contexto, capacidades, decisiones y permisos.',
         icon: 'agent',
       },
     ],

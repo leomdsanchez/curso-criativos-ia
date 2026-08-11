@@ -402,13 +402,16 @@ function SlideContent({ slide }: { slide: Slide }) {
         <SlideHeading slide={slide} />
         <div className="agent-comparison-visual">
           {slide.cards.map((card, index) => (
-            <article className={`agent-system-card ${index > 0 ? 'is-agent' : ''}`} key={card.title}>
-              <div className="agent-system-copy">
-                {card.label && <span>{card.label}</span>}
-                <h3>{card.title}</h3>
-              </div>
-              <div className="agent-system-icon"><ConceptIcon name={card.icon} /></div>
-            </article>
+            <div className="agent-comparison-item" key={card.title}>
+              <article className={`agent-system-card ${index > 0 ? 'is-agent' : ''}`}>
+                <div className="agent-system-copy">
+                  {card.label && <span>{card.label}</span>}
+                  <h3>{card.title}</h3>
+                </div>
+                <div className="agent-system-icon"><ConceptIcon name={card.icon} /></div>
+              </article>
+              {card.description && <p className="agent-system-caption">{card.description}</p>}
+            </div>
           ))}
         </div>
       </div>
