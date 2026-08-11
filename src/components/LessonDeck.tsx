@@ -582,17 +582,13 @@ function SlideContent({ slide }: { slide: Slide }) {
         <SlideHeading slide={slide} />
         <ol className="machine-roadmap">
           {slide.steps.map((step, index) => (
-            <li key={step.title}>
+            <li key={step.title} tabIndex={0}>
               <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{step.title}</h3>
               <p>{step.description}</p>
             </li>
           ))}
         </ol>
-        <div className="machine-roadmap-caption" aria-hidden="true">
-          <span>Crear</span><i>→</i><span>Organizar</span><i>→</i><span>Conectar</span><i>→</i><span>Programar</span>
-        </div>
-        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
       </div>
     )
   }

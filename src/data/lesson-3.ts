@@ -228,7 +228,7 @@ export const lessonThreeSlides = [
   {
     id: 'maquina-pasos',
     eyebrow: 'Cómo vamos a construirla',
-    title: 'Cuatro pasos para poner la máquina en funcionamiento.',
+    title: 'Cuatro pasos para construir la máquina.',
     time: '37–40 min',
     kind: 'machine-roadmap',
     steps: [
@@ -237,6 +237,5 @@ export const lessonThreeSlides = [
       { title: 'Conectar ChatGPT', description: 'Instalamos el plugin y autorizamos Todoist.' },
       { title: 'Programar actividades', description: 'Creamos las rutinas que ejecutarán cada etapa.' },
     ],
-    highlight: 'Primero construimos el sistema. Después, dejamos que los agentes trabajen dentro de él.',
   },
 ] satisfies SlideDeck
