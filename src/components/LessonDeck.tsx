@@ -151,6 +151,8 @@ function PromptLibrary({ slide }: { slide: Slide }) {
   const [flowName, setFlowName] = useState('')
   const [recurrence, setRecurrence] = useState('')
   const [formError, setFormError] = useState('')
+  const [toastMessage, setToastMessage] = useState('')
+  const toastTimeoutRef = useRef<number | null>(null)
   const activeCard = activeIndex === null ? null : slide.cards?.[activeIndex]
 
   useEffect(() => {
@@ -163,6 +165,10 @@ function PromptLibrary({ slide }: { slide: Slide }) {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [activeIndex])
+
+  useEffect(() => () => {
+    if (toastTimeoutRef.current !== null) window.clearTimeout(toastTimeoutRef.current)
+  }, [])
 
   const openModal = (index: number) => {
     setActiveIndex(index)
@@ -188,7 +194,13 @@ function PromptLibrary({ slide }: { slide: Slide }) {
     try {
       await copyText(content)
       setCopiedIndex(activeIndex)
+      setToastMessage(`Prompt de ${activeCard.title} copiado al portapapeles.`)
       setActiveIndex(null)
+      if (toastTimeoutRef.current !== null) window.clearTimeout(toastTimeoutRef.current)
+      toastTimeoutRef.current = window.setTimeout(() => {
+        setToastMessage('')
+        toastTimeoutRef.current = null
+      }, 2900)
       window.setTimeout(() => setCopiedIndex((current) => current === activeIndex ? null : current), 1800)
     } catch {
       setFormError('No fue posible copiar el prompt. Intentá nuevamente.')
@@ -273,6 +285,13 @@ function PromptLibrary({ slide }: { slide: Slide }) {
               </div>
             </form>
           </section>
+        </div>
+      )}
+
+      {toastMessage && (
+        <div aria-live="polite" className="prompt-copy-toast" role="status">
+          <CheckCircle2 aria-hidden="true" />
+          <span>{toastMessage}</span>
         </div>
       )}
     </>
