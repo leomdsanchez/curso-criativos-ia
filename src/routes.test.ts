@@ -8,6 +8,8 @@ import {
   SURVEY_HASH,
 } from './routes'
 import { surveyAnswerKey, surveyQuestions } from './data/survey'
+import { lessonTwoSlides } from './data/lesson-2'
+import { lessonThreeSlides } from './data/lesson-3'
 
 describe('course routes', () => {
   it('builds overview and encoded slide hashes', () => {
@@ -41,5 +43,10 @@ describe('course routes', () => {
     for (const letter of ['A', 'B', 'C', 'D']) {
       expect(surveyAnswerKey.filter((answer) => answer === letter)).toHaveLength(5)
     }
+  })
+
+  it('places the final survey at the end of lesson three', () => {
+    expect(lessonTwoSlides.some((slide) => slide.id === 'encuesta-final')).toBe(false)
+    expect(lessonThreeSlides.at(-1)?.id).toBe('encuesta-final')
   })
 })

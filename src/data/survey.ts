@@ -9,87 +9,88 @@ export const surveyConfig = {
 
 export const surveyQuestions = [
   {
-    question: '¿Cuál es la función principal de un briefing antes de crear una pieza de comunicación?',
-    options: ['Elegir automáticamente la tipografía y los colores finales.', 'Reunir objetivo, público, mensaje, contexto y entrega esperada.', 'Publicar la pieza en redes sociales.', 'Reemplazar la investigación de referencias.'],
+    question: '¿Para qué sirve un briefing antes de crear un anuncio?',
+    options: ['Para definir solamente el estilo visual.', 'Para reunir la información esencial del negocio, el público y el objetivo.', 'Para programar la publicación del anuncio.', 'Para escribir directamente el texto final.'],
   },
   {
-    question: '¿Qué es un prompt en el trabajo con inteligencia artificial?',
-    options: ['Un archivo que guarda imágenes generadas.', 'Una herramienta para programar publicaciones.', 'Un formato obligatorio para carruseles.', 'Una instrucción que indica a la IA qué tarea debe realizar y con qué criterios.'],
+    question: '¿Qué es un prompt cuando trabajamos con inteligencia artificial?',
+    options: ['El resultado que entrega la inteligencia artificial.', 'Una carpeta donde guardamos archivos.', 'El nombre de un proyecto de trabajo.', 'Una instrucción que explica qué debe hacer la inteligencia artificial.'],
   },
   {
-    question: '¿Qué permite el agendamiento dentro de ChatGPT?',
-    options: ['Pedir que ChatGPT realice una tarea recurrente en un día u horario definido.', 'Publicar automáticamente una imagen en redes sociales.', 'Cambiar las fuentes de un proyecto.', 'Guardar una imagen en la biblioteca de ChatGPT.'],
+    question: '¿Cuál es la función principal de un anuncio?',
+    options: ['Llevar personas hacia el negocio.', 'Cerrar todas las ventas sin ayuda.', 'Definir la identidad visual de la marca.', 'Organizar las tareas del equipo.'],
   },
   {
-    question: '¿Para qué se crea primero el proyecto de Copy?',
-    options: ['Para generar la imagen final del anuncio.', 'Para almacenar únicamente el logo de la marca.', 'Para convertir una idea elegida en copy y planificación creativa.', 'Para publicar la pieza directamente en redes sociales.'],
+    question: '¿Qué necesitamos antes de comenzar a desarrollar el copy?',
+    options: ['La imagen final ya creada.', 'El horario de publicación.', 'Una idea creativa seleccionada.', 'El diseño adaptado a todos los formatos.'],
   },
   {
-    question: '¿Qué debe estar disponible en el proyecto de Diseño para mantener coherencia con la marca?',
-    options: ['Solo la idea inicial escrita en una frase.', 'El logo original, referencias visuales e instrucciones del proyecto.', 'Únicamente el texto de la publicación.', 'Una lista de horarios de publicación.'],
+    question: '¿Qué ayuda al proyecto de Diseño a mantener la identidad de la marca?',
+    options: ['Solamente el horario de publicación.', 'El logo, las referencias visuales y las instrucciones del proyecto.', 'La lista completa de tareas terminadas.', 'Solamente el llamado a la acción.'],
   },
   {
-    question: 'Al trabajar con GPT Chat en el proyecto de Diseño, ¿qué se debe preguntar antes de pegar la planificación creativa?',
-    options: ['¿Cuál es la red social más popular?', '¿Podés crear todas las imágenes en un único archivo?', '¿Qué día debería publicar la pieza?', '¿Cuáles son las fuentes y las instrucciones de este proyecto?'],
+    question: '¿Para qué buscamos referencias visuales antes de diseñar?',
+    options: ['Para repetir exactamente una pieza que ya existe.', 'Para reemplazar la información del briefing.', 'Para decidir cuándo se publicará el anuncio.', 'Para orientar la dirección visual sin copiar otra solución.'],
   },
   {
-    question: '¿Cuál es la diferencia práctica principal entre GPT Work y GPT Chat dentro de este flujo?',
-    options: ['GPT Work solo sirve para texto y GPT Chat solo sirve para imágenes.', 'GPT Chat no puede trabajar con proyectos.', 'GPT Work puede trabajar de forma más autónoma con el contexto del proyecto; en GPT Chat se debe guiar el proceso paso a paso.', 'No existe ninguna diferencia en la forma de trabajar.'],
+    question: '¿Cuál es el orden básico del proceso creativo que aprendimos?',
+    options: ['Diseño → idea → copy → planificación creativa.', 'Copy → diseño → idea → planificación creativa.', 'Idea → copy → planificación creativa → diseño.', 'Planificación creativa → diseño → idea → copy.'],
   },
   {
-    question: '¿Para qué se buscan referencias visuales antes de diseñar?',
-    options: ['Para orientar la dirección visual de la pieza sin copiar una solución.', 'Para evitar usar el logo de la marca.', 'Para reemplazar el briefing.', 'Para decidir la fecha de publicación.'],
+    question: 'Si todavía no definimos el formato de una pieza, ¿qué debemos confirmar?',
+    options: ['Si será Feed, Stories o ambos, y si será una pieza única o un carrusel.', 'Si cambiaremos el objetivo del anuncio.', 'Si descartaremos la idea seleccionada.', 'Si crearemos un nuevo briefing.'],
   },
   {
-    question: '¿Cuál es el orden correcto del flujo de trabajo enseñado?',
-    options: ['Diseño → idea → publicación → copy.', 'Copy → publicación → referencias → idea.', 'Referencias → publicación → idea → diseño.', 'Idea → copy → planificación creativa → diseño.'],
+    question: '¿Cómo se deben generar las imágenes de un carrusel?',
+    options: ['Como una sola imagen con todas las páginas.', 'Como varias versiones de la misma portada.', 'Como un collage sin separar las páginas.', 'Como una imagen independiente para cada página.'],
   },
   {
-    question: 'Antes de desarrollar el copy, ¿qué se debe tener definido?',
-    options: ['La imagen final ya generada.', 'Una idea creativa seleccionada.', 'La planilla de respuestas de la encuesta.', 'El horario exacto de publicación.'],
+    question: 'Al adaptar una pieza para otro formato, ¿qué debemos conservar?',
+    options: ['La misma composición, aunque pierda legibilidad.', 'El concepto central y la identidad visual.', 'Exactamente las mismas dimensiones.', 'La posición de todos los elementos.'],
   },
   {
-    question: 'Si todavía no se definió el formato de una pieza, ¿qué debe confirmar el proyecto de Copy?',
-    options: ['El nombre de quien diseñará la pieza.', 'La plataforma donde se buscarán referencias.', 'Si será Feed 4:5, Stories 9:16 o ambos, y si será pieza única o carrusel.', 'La contraseña del proyecto.'],
+    question: '¿Cuál es la forma más básica de utilizar la inteligencia artificial?',
+    options: ['Conectarla con todas nuestras aplicaciones.', 'Programarla para trabajar cada semana.', 'Hacer una pregunta y recibir una respuesta.', 'Dejar que complete todo el proceso sin revisión.'],
   },
   {
-    question: 'Después de aprobar una opción de copy y propuesta visual, ¿qué se prepara antes de entregar los bloques finales?',
-    options: ['La descripción final que acompañará la publicación.', 'Un nuevo briefing desde cero.', 'Una segunda investigación de público obligatoria.', 'Todas las imágenes del carrusel en un solo archivo.'],
+    question: '¿Cuál es la diferencia más simple entre una inteligencia artificial y un agente?',
+    options: ['La IA es el motor; el agente es ese motor dentro de un sistema que puede actuar.', 'La IA trabaja con texto y el agente solamente con imágenes.', 'El agente funciona sin inteligencia artificial.', 'La IA y el agente son exactamente lo mismo.'],
   },
   {
-    question: '¿Qué contenido se lleva del proyecto de Copy al proyecto de Diseño?',
-    options: ['La lista de enlaces de redes sociales.', 'La planificación creativa aprobada.', 'La encuesta completada por los alumnos.', 'El calendario de la próxima semana.'],
+    question: '¿Qué significa que un agente pueda trabajar con autonomía?',
+    options: ['Que puede trabajar sin un objetivo definido.', 'Que puede planificar, actuar, observar y ajustar sin recibir una orden después de cada paso.', 'Que puede cambiar las reglas del proyecto.', 'Que siempre toma decisiones sin consultar información.'],
   },
   {
-    question: 'Si el briefing solicita un carrusel de varias páginas, ¿cómo deben generarse las imágenes?',
-    options: ['Como una sola imagen que contenga todas las páginas.', 'Solo se genera la portada; las demás se improvisan después.', 'Como un collage sin orden de lectura.', 'Como imágenes independientes, una por cada página.'],
+    question: '¿Qué es un MCP en el ejemplo visto en clase?',
+    options: ['Una instrucción con una forma de trabajar.', 'Una programación que activa una tarea.', 'Un proyecto que organiza las etapas.', 'Un conector que permite a la IA consultar o actuar en otro sistema.'],
   },
   {
-    question: '¿Por qué se genera y revisa una imagen por vez en un carrusel?',
-    options: ['Para eliminar la necesidad de una planificación creativa.', 'Para que cada página tenga un logo diferente.', 'Para validar cada resultado antes de continuar con la siguiente página.', 'Para evitar usar referencias visuales.'],
+    question: '¿Para qué sirve una Skill?',
+    options: ['Para conectar la IA con una aplicación externa.', 'Para definir cuándo se repite una tarea.', 'Para enseñar una forma de trabajar, con pasos y criterios.', 'Para organizar las columnas de un proyecto.'],
   },
   {
-    question: '¿Qué caracteriza una edición puntual de una pieza ya generada?',
-    options: ['Modificar un elemento específico sin cambiar innecesariamente toda la pieza.', 'Volver a empezar el proyecto completo en todos los casos.', 'Eliminar el logo para simplificar la imagen.', 'Cambiar el objetivo definido en el briefing.'],
+    question: 'En el modelo simplificado de esta clase, ¿qué reúne un Plugin?',
+    options: ['MCP + Skill.', 'MCP + agendamiento.', 'Todoist + Gmail.', 'Prompt + calendario.'],
   },
   {
-    question: 'Al adaptar una pieza de Feed para Stories, ¿qué se debe conservar?',
-    options: ['Exactamente la misma composición, aunque no se lea bien.', 'El concepto central y la identidad visual de la pieza.', 'El mismo tamaño de imagen sin ajustes.', 'La fecha de creación del archivo original.'],
+    question: '¿Qué función cumple Todoist dentro de la máquina que construimos?',
+    options: ['Generar los diseños finales.', 'Organizar las tareas y las etapas del trabajo.', 'Escribir todas las ideas y los copies.', 'Aprobar automáticamente las piezas.'],
   },
   {
-    question: '¿Cómo se puede usar el agendamiento para el proyecto de Ideas?',
-    options: ['Para crear una imagen nueva cada vez que se abre el proyecto.', 'Para publicar el copy sin revisión.', 'Para reemplazar las instrucciones del proyecto.', 'Para pedir que ChatGPT genere ideas cada lunes de forma recurrente.'],
+    question: '¿Para qué usamos los agendamientos dentro de la máquina?',
+    options: ['Para elegir el estilo visual de la marca.', 'Para aprobar las ideas seleccionadas.', 'Para reemplazar el flujo de trabajo.', 'Para activar tareas según la recurrencia definida.'],
   },
   {
-    question: '¿Para qué sirven las instrucciones dentro de un proyecto de IA?',
-    options: ['Para guardar únicamente archivos descargados.', 'Para sustituir el logo original de la marca.', 'Para orientar el comportamiento, el proceso y los límites del trabajo de la IA.', 'Para decidir automáticamente el presupuesto de anuncios.'],
+    question: '¿Cuál es el orden para montar nuestra máquina?',
+    options: ['Conectar ChatGPT → crear la cuenta → programar → construir el flujo.', 'Construir el flujo → programar → crear la cuenta → conectar ChatGPT.', 'Crear la cuenta → construir el flujo → conectar ChatGPT → programar actividades.', 'Programar actividades → conectar ChatGPT → construir el flujo → crear la cuenta.'],
   },
   {
-    question: '¿Cuál de estos materiales es una fuente útil para el proyecto de Diseño?',
-    options: ['El logo original y referencias visuales pertinentes de la marca.', 'Respuestas aleatorias de otros alumnos.', 'Un calendario sin relación con la campaña.', 'Una imagen de cualquier marca competidora, sin analizarla.'],
+    question: '¿Qué datos completamos antes de copiar un prompt de agendamiento?',
+    options: ['El nombre del flujo y la recurrencia.', 'El formato de la pieza y el CTA.', 'El logo y las referencias visuales.', 'El nombre de cada tarea terminada.'],
   },
 ] as const
 
+// La integración externa corrige por posición. Conservá esta secuencia al reemplazar preguntas.
 export const surveyAnswerKey = [
   'B', 'D', 'A', 'C', 'B',
   'D', 'C', 'A', 'D', 'B',

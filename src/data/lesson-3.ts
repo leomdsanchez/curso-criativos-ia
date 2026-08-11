@@ -1,4 +1,5 @@
 import type { SlideDeck } from '../types/slide'
+import { surveyConfig } from './survey'
 
 const ideasSchedulePrompt = `Usá el conector de Todoist del usuario y, antes de crear el agendamiento:
 
@@ -332,5 +333,18 @@ export const lessonThreeSlides = [
         icon: 'skill',
       },
     ],
+  },
+  {
+    id: 'encuesta-final',
+    eyebrow: 'Cierre de la clase 03',
+    title: 'Completá la encuesta antes de salir.',
+    subtitle: 'Una revisión simple de los conceptos esenciales de las tres clases.',
+    time: '100–120 min',
+    kind: 'statement',
+    externalLink: {
+      label: 'Abrir encuesta',
+      url: surveyConfig.formUrl,
+      unavailableLabel: 'El enlace de la encuesta se configurará antes de la clase.',
+    },
   },
 ] satisfies SlideDeck

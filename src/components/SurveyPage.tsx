@@ -68,9 +68,9 @@ export function SurveyPage({ onBack }: SurveyPageProps) {
       <section className="survey-card" aria-live="polite">
         {stage === 'name' && (
           <form className="survey-name-form" onSubmit={startSurvey}>
-            <p className="survey-eyebrow">Encuesta final · Aula 2</p>
+            <p className="survey-eyebrow">Encuesta final · Clases 1–3</p>
             <h1>Antes de salir, dejá tus respuestas.</h1>
-            <p>Son 20 preguntas sobre lo que trabajamos. Tus respuestas quedan registradas al finalizar.</p>
+            <p>Son {surveyQuestions.length} preguntas simples sobre lo que trabajamos. Tus respuestas quedan registradas al finalizar.</p>
             <label htmlFor="survey-name">Nombre y apellido</label>
             <input
               autoComplete="name"

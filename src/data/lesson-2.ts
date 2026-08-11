@@ -1,6 +1,5 @@
 import type { SlideDeck } from '../types/slide'
 import { CREATIVE_PROMPT } from './lesson-1'
-import { surveyConfig } from './survey'
 
 const COPY_PROJECT_PROMPT = `Actuá como copywriter creativo para redes sociales.
 
@@ -279,18 +278,5 @@ export const lessonTwoSlides = [
     time: '54–57 min',
     kind: 'statement',
     highlight: 'Pedí un cambio de formato, no un concepto nuevo.',
-  },
-  {
-    id: 'encuesta-final',
-    eyebrow: 'Cierre',
-    title: 'Completá la encuesta antes de salir.',
-    subtitle: 'Nos ayuda a revisar lo que aprendimos y mejorar las próximas clases.',
-    time: '57–60 min',
-    kind: 'statement',
-    externalLink: {
-      label: 'Abrir encuesta',
-      url: surveyConfig.formUrl,
-      unavailableLabel: 'El enlace de la encuesta se configurará antes de la clase.',
-    },
   },
 ] satisfies SlideDeck
