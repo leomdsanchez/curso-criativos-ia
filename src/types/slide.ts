@@ -60,7 +60,7 @@ export type SlideIcon =
 export type ConceptCard = {
   label?: string
   title: string
-  description: string
+  description?: string
   icon: SlideIcon
 }
 

@@ -54,17 +54,14 @@ export const lessonThreeSlides = [
       {
         label: 'Motor',
         title: 'Inteligencia artificial',
-        description: 'Interpreta información, razona y genera respuestas.',
         icon: 'brain',
       },
       {
         label: 'Sistema',
         title: 'Agente',
-        description: 'Combina la IA con un objetivo, contexto, capacidades, decisiones y permisos.',
-        icon: 'machine',
+        icon: 'agent',
       },
     ],
-    highlight: 'La IA genera una respuesta. El agente trabaja para alcanzar un objetivo.',
   },
   {
     id: 'ciclo-agente',
