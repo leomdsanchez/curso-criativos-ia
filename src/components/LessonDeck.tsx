@@ -424,7 +424,7 @@ function SlideContent({ slide }: { slide: Slide }) {
         <SlideHeading slide={slide} />
         <div className="agent-cycle" aria-label="Ciclo de trabajo de un agente">
           {slide.steps.map((step, index) => (
-            <article className="agent-cycle-step" key={step.title}>
+            <article className="agent-cycle-step" key={step.title} tabIndex={0}>
               <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{step.title}</h3>
               <p>{step.description}</p>

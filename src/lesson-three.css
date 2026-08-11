@@ -199,6 +199,15 @@
   color: var(--muted);
   font-size: clamp(14px, 1vw, 16px);
   line-height: 1.45;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 200ms ease, transform 240ms cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+.agent-comparison-item:hover .agent-system-caption,
+.agent-comparison-item:focus-within .agent-system-caption {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .agent-cycle {
@@ -209,11 +218,25 @@
 
 .agent-cycle-step {
   position: relative;
+  isolation: isolate;
   min-height: 176px;
   padding: 23px;
   border: 1px solid var(--line);
   border-radius: 23px;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.02));
+  outline: none;
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.25, 1), border-color 220ms ease, box-shadow 260ms ease;
+}
+
+.agent-cycle-step::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 220ms ease;
 }
 
 .agent-cycle-step:not(:last-child)::after {
@@ -241,6 +264,45 @@
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.15em;
+  transition: color 220ms ease;
+}
+
+.agent-cycle-step h3 {
+  transition: color 220ms ease;
+}
+
+.agent-cycle-step p {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: color 220ms ease, opacity 200ms ease, transform 240ms cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+.agent-cycle-step:hover,
+.agent-cycle-step:focus-visible {
+  z-index: 3;
+  border-color: var(--accent);
+  box-shadow: 0 24px 68px rgba(216, 255, 95, 0.2);
+  transform: scale(1.035);
+}
+
+.agent-cycle-step:hover::before,
+.agent-cycle-step:focus-visible::before {
+  opacity: 1;
+}
+
+.agent-cycle-step:hover > span,
+.agent-cycle-step:hover h3,
+.agent-cycle-step:hover p,
+.agent-cycle-step:focus-visible > span,
+.agent-cycle-step:focus-visible h3,
+.agent-cycle-step:focus-visible p {
+  color: #07080c;
+}
+
+.agent-cycle-step:hover p,
+.agent-cycle-step:focus-visible p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .agent-cycle-note {
