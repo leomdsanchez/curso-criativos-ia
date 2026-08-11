@@ -166,7 +166,6 @@ function PromptLibrary({ slide }: { slide: Slide }) {
 
   const openModal = (index: number) => {
     setActiveIndex(index)
-    setFlowName('')
     setRecurrence('')
     setFormError('')
   }

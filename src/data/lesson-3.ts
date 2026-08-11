@@ -36,6 +36,22 @@ Al finalizar cada ejecución, informá brevemente qué comentarios fueron respon
 
 Finalmente, confirmá que el agendamiento fue creado, su frecuencia, zona horaria y el proyecto de Todoist utilizado.`
 
+const copySchedulePrompt = `Creá una tarea programada recurrente con la siguiente recurrencia: {{RECURRENCIA}}, en la zona horaria \`America/Montevideo\`, con acceso a Todoist. La tarea deberá ejecutar exactamente estas instrucciones:
+
+Leé y seguí integralmente las instrucciones del proyecto de ChatGPT antes de actuar. Después, abrí el proyecto \`{{NOMBRE_FLUJO}}\` en Todoist y trabajá siempre dentro de la misma tarea, sin eliminarla, recrearla ni duplicarla. Como la cuenta es compartida, todos tus comentarios deben comenzar exactamente con \`agente: \`.
+
+Ejecutá el proceso en este orden:
+
+1. Revisá primero todas las tareas de la columna \`Copy\` y leé el historial completo de comentarios de cada una. Respondé únicamente si existe un comentario nuevo o una solicitud pendiente que requiera una acción. Aplicá los ajustes solicitados sin modificar el concepto central. Si una opción fue aprobada, redactá la descripción de la publicación y esperá su aprobación. Si la descripción final fue aprobada, entregá dentro de la misma tarea los dos bloques finales exigidos por las instrucciones del proyecto. No repitas respuestas ni versiones ya publicadas.
+
+2. Después, procesá las tareas de la columna \`Ideias Selecionadas\`. Leé el título, la descripción y todos los comentarios. Conservá la idea original y su historial. Si el formato todavía no está definido, preguntá en un comentario si será Feed 4:5, Stories 9:16 o ambos; si será una pieza única o un carrusel; y, en caso de ser un carrusel, cuántas páginas tendrá. En ese caso, no generes las opciones de copy ni muevas la tarea hasta recibir una respuesta.
+
+3. Cuando exista información suficiente, generá tres opciones diferentes de copy y propuesta visual, siguiendo exactamente las instrucciones del proyecto. Para una pieza única, incluí el texto visible y la descripción de la imagen. Para un carrusel, detallá el texto visible y la descripción de la imagen de cada página. Publicá todo en un único comentario iniciado con \`agente: \` y mové la misma tarea a la columna \`Copy\`.
+
+No inventes información, no generes imágenes ni prompts de imagen y no realices modificaciones fuera de este flujo.
+
+Antes de finalizar, verificá que el agendamiento conserve integralmente todas estas reglas. Luego, crealo y confirmá la frecuencia configurada.`
+
 export const lessonThreeSlides = [
   {
     id: 'portada',
@@ -289,8 +305,8 @@ export const lessonThreeSlides = [
       },
       {
         title: 'Copy',
-        description: '[Placeholder: prompt para crear la programación de copy]',
-        prompt: '[Placeholder para el flujo {{NOMBRE_FLUJO}} con recurrencia: {{RECURRENCIA}}]',
+        description: 'Prompt configurable para programar la creación de copy.',
+        prompt: copySchedulePrompt,
         icon: 'draft',
       },
       {
