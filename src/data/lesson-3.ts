@@ -52,6 +52,22 @@ No inventes información, no generes imágenes ni prompts de imagen y no realice
 
 Antes de finalizar, verificá que el agendamiento conserve integralmente todas estas reglas. Luego, crealo y confirmá la frecuencia configurada.`
 
+const designSchedulePrompt = `Creá un agendamiento recurrente con la siguiente recurrencia: {{RECURRENCIA}}, hora de Uruguay (\`America/Montevideo\`). No ejecutes ahora el flujo operativo. Usá íntegramente el siguiente texto como instrucción del agendamiento:
+
+En Todoist, ejecutá este flujo:
+
+1. Localizá el proyecto \`{{NOMBRE_FLUJO}}\` y consultá en Todoist sus IDs actuales y los de sus columnas. No dependas de IDs fijos.
+
+2. Revisá primero todos los cards de \`Diseños\`. Leé título, descripción y el historial completo de comentarios. Actuá únicamente si existe un comentario nuevo o una corrección pendiente. Aplicá el ajuste solicitado sin modificar el concepto aprobado, generá solamente las piezas necesarias, adjuntalas al mismo card y no repitas versiones ya entregadas. Mantené el card en esa columna.
+
+3. Después, procesá todos los cards de \`Copy Selecionadas\`. Leé íntegramente título, descripción y comentarios, además de las instrucciones y fuentes vigentes de este proyecto GPT. Usá el logo original y el lenguaje visual de referencia como inputs. Antes de generar, validá con un subagente en nivel 10/10 lo que vas a producir, enviándole el briefing completo y las instrucciones vigentes del proyecto. Luego generá el diseño usando la capacidad de generación de imágenes. Respetá el formato indicado; si es un carrusel, generá una imagen independiente por página, sin numeración y manteniendo continuidad visual.
+
+4. Adjuntá todas las piezas al mismo card y, únicamente después de confirmar que los archivos fueron generados y adjuntados correctamente, movelo a \`Diseños\`.
+
+Todo comentario debe comenzar exactamente con \`agente: \`. No elimines, recrees ni dupliques tareas. No inventes información ni alteres el concepto aprobado. Si falta información esencial o falla la generación o el adjunto, comentá la pendencia en el card y no lo muevas.
+
+Creá efectivamente el agendamiento usando la herramienta de automatizaciones disponible y confirmame solamente después de verificar que quedó guardado correctamente.`
+
 export const lessonThreeSlides = [
   {
     id: 'portada',
@@ -311,8 +327,8 @@ export const lessonThreeSlides = [
       },
       {
         title: 'Diseño',
-        description: '[Placeholder: prompt para crear la programación de diseño]',
-        prompt: '[Placeholder para el flujo {{NOMBRE_FLUJO}} con recurrencia: {{RECURRENCIA}}]',
+        description: 'Prompt configurable para programar la creación de diseños.',
+        prompt: designSchedulePrompt,
         icon: 'skill',
       },
     ],
