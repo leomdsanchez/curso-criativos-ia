@@ -469,6 +469,51 @@ function SlideContent({ slide }: { slide: Slide }) {
     )
   }
 
+  if (slide.kind === 'machine-overview' && slide.cards) {
+    return (
+      <div className="lesson-three-layout machine-overview-layout">
+        <SlideHeading slide={slide} />
+        <div className="machine-equation">
+          {slide.cards.map((card, index) => (
+            <div className="machine-equation-group" key={card.title}>
+              {index > 0 && <span className="machine-plus" aria-hidden="true">+</span>}
+              <article className={`machine-part is-${index}`}>
+                <span><ConceptIcon name={card.icon} /></span>
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+              </article>
+            </div>
+          ))}
+        </div>
+        <div className="machine-result" aria-hidden="true">
+          <span>Idea</span><i>→</i><span>Producción</span><i>→</i><span>Aprobación</span><i>→</i><span>Publicación</span>
+        </div>
+        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
+      </div>
+    )
+  }
+
+  if (slide.kind === 'machine-roadmap' && slide.steps) {
+    return (
+      <div className="lesson-three-layout machine-roadmap-layout">
+        <SlideHeading slide={slide} />
+        <ol className="machine-roadmap">
+          {slide.steps.map((step, index) => (
+            <li key={step.title}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="machine-roadmap-caption" aria-hidden="true">
+          <span>Crear</span><i>→</i><span>Organizar</span><i>→</i><span>Conectar</span><i>→</i><span>Programar</span>
+        </div>
+        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
+      </div>
+    )
+  }
+
   return (
     <div className={`slide-content ${slide.kind === 'practice' ? 'practice-slide' : ''} ${slide.density === 'compact' ? 'is-compact' : ''}`}>
       <SlideHeading slide={slide} />

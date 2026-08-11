@@ -252,4 +252,32 @@ export const lessonThreeSlides = [
     ],
     highlight: 'Instalamos un plugin. El agente recibe conexiones, herramientas y formas de trabajar.',
   },
+  {
+    id: 'maquina-vision',
+    eyebrow: 'La máquina que vamos a construir',
+    title: 'Un sistema para organizar y ejecutar nuestra producción de contenido.',
+    subtitle: 'Todoist organiza el flujo, ChatGPT ejecuta las etapas y las programaciones mantienen la máquina en movimiento.',
+    time: '35–37 min',
+    kind: 'machine-overview',
+    cards: [
+      { title: 'Todoist', description: 'Organiza el trabajo.', icon: 'task' },
+      { title: 'ChatGPT', description: 'Ejecuta cada etapa.', icon: 'agent' },
+      { title: 'Programaciones', description: 'Activan las rutinas.', icon: 'trigger' },
+    ],
+    highlight: 'Un proceso conectado que transforma ideas en piezas listas para publicar.',
+  },
+  {
+    id: 'maquina-pasos',
+    eyebrow: 'Cómo vamos a construirla',
+    title: 'Cuatro pasos para poner la máquina en funcionamiento.',
+    time: '37–40 min',
+    kind: 'machine-roadmap',
+    steps: [
+      { title: 'Crear la cuenta', description: 'Preparamos nuestro espacio en Todoist.' },
+      { title: 'Construir el flujo', description: 'Creamos el proyecto y sus etapas de producción.' },
+      { title: 'Conectar ChatGPT', description: 'Instalamos el plugin y autorizamos Todoist.' },
+      { title: 'Programar actividades', description: 'Creamos las rutinas que ejecutarán cada etapa.' },
+    ],
+    highlight: 'Primero construimos el sistema. Después, dejamos que los agentes trabajen dentro de él.',
+  },
 ] satisfies SlideDeck

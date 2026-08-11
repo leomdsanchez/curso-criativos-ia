@@ -88,7 +88,7 @@ export type Slide = {
   subtitle?: string
   time: string
   density?: 'compact'
-  kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice' | 'briefing' | 'comparison' | 'resources' | 'concept-grid' | 'agent-comparison' | 'agent-cycle' | 'agent-environment' | 'connector-map' | 'connector-chat' | 'tool-grid' | 'skill-process' | 'plugin-bundle'
+  kind: 'cover' | 'statement' | 'bullets' | 'pillars' | 'case' | 'practice' | 'briefing' | 'comparison' | 'resources' | 'concept-grid' | 'agent-comparison' | 'agent-cycle' | 'agent-environment' | 'connector-map' | 'connector-chat' | 'tool-grid' | 'skill-process' | 'plugin-bundle' | 'machine-overview' | 'machine-roadmap'
   bullets?: readonly string[]
   highlight?: string
   icon?: SlideIcon
