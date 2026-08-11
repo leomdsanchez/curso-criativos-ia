@@ -364,11 +364,11 @@
 }
 
 .connector-conversation {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
   height: clamp(270px, 36vh, 370px);
   padding: 18px;
-  align-content: start;
   overflow-y: auto;
   overscroll-behavior: contain;
   scroll-behavior: smooth;
@@ -463,6 +463,7 @@
 
 .connector-message {
   display: grid;
+  flex: 0 0 auto;
   grid-template-columns: 190px minmax(0, 1fr);
   overflow: hidden;
   border: 1px solid var(--line);
