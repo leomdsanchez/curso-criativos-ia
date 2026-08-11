@@ -145,6 +145,132 @@ function SlideHeading({ slide }: { slide: Slide }) {
   )
 }
 
+function ConnectorChat({ slide }: { slide: Slide }) {
+  const messages = slide.chat ?? []
+  const [visibleCount, setVisibleCount] = useState(0)
+  const [isWaiting, setIsWaiting] = useState(false)
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const timeoutRef = useRef<number | null>(null)
+  const totalRounds = Math.ceil(messages.length / 2)
+  const currentRound = Math.ceil(visibleCount / 2)
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [isWaiting, visibleCount])
+
+  useEffect(() => () => {
+    if (timeoutRef.current !== null) window.clearTimeout(timeoutRef.current)
+  }, [])
+
+  const revealNextRound = () => {
+    if (isWaiting || visibleCount >= messages.length) return
+
+    const nextCount = Math.min(messages.length, visibleCount + 1)
+    setVisibleCount(nextCount)
+
+    if (nextCount < messages.length) {
+      setIsWaiting(true)
+      timeoutRef.current = window.setTimeout(() => {
+        setVisibleCount(Math.min(messages.length, nextCount + 1))
+        setIsWaiting(false)
+        timeoutRef.current = null
+      }, 760)
+    }
+  }
+
+  const hidePreviousRound = () => {
+    if (timeoutRef.current !== null) {
+      window.clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+    setIsWaiting(false)
+    setVisibleCount((count) => Math.max(0, count - (count % 2 === 0 ? 2 : 1)))
+  }
+
+  return (
+    <div className="lesson-three-layout connector-chat-layout">
+      <SlideHeading slide={slide} />
+      <section className="connector-chat-shell" aria-label="Conversación entre la inteligencia artificial y Gmail">
+        <header className="connector-chat-toolbar">
+          <div>
+            <span><ConceptIcon name="mail" /></span>
+            <strong>Conector Gmail</strong>
+          </div>
+          <small><i aria-hidden="true" /> Conectado</small>
+        </header>
+
+        <div className="connector-conversation" ref={scrollRef} aria-live="polite">
+          {visibleCount === 0 && (
+            <div className="connector-chat-empty">
+              <ConceptIcon name="message" />
+              <p>Usa los controles para iniciar la conversación.</p>
+            </div>
+          )}
+
+          {messages.slice(0, visibleCount).map((message) => (
+            <article className={`connector-message is-${message.role}`} key={`${message.role}-${message.text}`}>
+              <header>
+                <span>{message.role === 'agent' ? <ConceptIcon name="agent" /> : <ConceptIcon name="mail" />}</span>
+                <strong>{message.label}</strong>
+              </header>
+              <div className="connector-message-content">
+                {message.mention && <span className="connector-mention">{message.mention}</span>}
+                <h3>{message.text}</h3>
+                {message.items && (
+                  <ul>
+                    {message.items.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                )}
+                {message.details && (
+                  <dl>
+                    {message.details.map((detail) => (
+                      <div key={detail.label}>
+                        <dt>{detail.label}</dt>
+                        <dd>{detail.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+              </div>
+            </article>
+          ))}
+
+          {isWaiting && (
+            <article className="connector-message is-connector is-typing" aria-label="El conector está respondiendo">
+              <header>
+                <span><ConceptIcon name="mail" /></span>
+                <strong>Conector Gmail</strong>
+              </header>
+              <div className="connector-typing-dots" aria-hidden="true"><i /><i /><i /></div>
+            </article>
+          )}
+        </div>
+
+        <footer className="connector-chat-controls">
+          <button type="button" aria-label="Interacción anterior" disabled={visibleCount === 0} onClick={hidePreviousRound}>
+            <ArrowIcon direction="left" />
+          </button>
+          <div>
+            <span>{visibleCount === 0 ? 'Lista para comenzar' : `Interacción ${currentRound} de ${totalRounds}`}</span>
+            <div className="connector-chat-dots" aria-hidden="true">
+              {Array.from({ length: totalRounds }, (_, index) => (
+                <i className={index < currentRound ? 'is-active' : ''} key={index} />
+              ))}
+            </div>
+          </div>
+          <button type="button" aria-label="Siguiente interacción" disabled={isWaiting || visibleCount >= messages.length} onClick={revealNextRound}>
+            <ArrowIcon direction="right" />
+          </button>
+        </footer>
+      </section>
+      {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
+    </div>
+  )
+}
+
 function SlideContent({ slide }: { slide: Slide }) {
   if (slide.kind === 'cover') {
     return (
@@ -358,41 +484,7 @@ function SlideContent({ slide }: { slide: Slide }) {
   }
 
   if (slide.kind === 'connector-chat' && slide.chat) {
-    return (
-      <div className="lesson-three-layout connector-chat-layout">
-        <SlideHeading slide={slide} />
-        <div className="connector-conversation">
-          {slide.chat.map((message) => (
-            <article className={`connector-message is-${message.role}`} key={`${message.role}-${message.text}`}>
-              <header>
-                <span>{message.role === 'agent' ? <ConceptIcon name="agent" /> : <ConceptIcon name="mail" />}</span>
-                <strong>{message.label}</strong>
-              </header>
-              <div className="connector-message-content">
-                {message.mention && <span className="connector-mention">{message.mention}</span>}
-                <h3>{message.text}</h3>
-                {message.items && (
-                  <ul>
-                    {message.items.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
-                )}
-                {message.details && (
-                  <dl>
-                    {message.details.map((detail) => (
-                      <div key={detail.label}>
-                        <dt>{detail.label}</dt>
-                        <dd>{detail.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
-      </div>
-    )
+    return <ConnectorChat slide={slide} />
   }
 
   if (slide.kind === 'tool-grid' && slide.cards) {

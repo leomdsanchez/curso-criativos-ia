@@ -150,9 +150,9 @@ export const lessonThreeSlides = [
   {
     id: 'conector-consulta',
     eyebrow: 'Cómo funciona un conector',
-    title: 'El agente solicita una acción.',
-    subtitle: 'El conector traduce la intención en una operación dentro de Gmail.',
-    time: '22–24 min',
+    title: 'Así conversa el agente con un conector.',
+    subtitle: 'Cada respuesta añade contexto para que la inteligencia artificial decida su próximo paso.',
+    time: '22–26 min',
     kind: 'connector-chat',
     chat: [
       {
@@ -171,17 +171,6 @@ export const lessonThreeSlides = [
           '#03 · Factura pendiente — Proveedor',
         ],
       },
-    ],
-    highlight: 'El conector ejecuta la consulta y devuelve información estructurada.',
-  },
-  {
-    id: 'conector-detalle',
-    eyebrow: 'Más contexto',
-    title: 'El agente puede continuar investigando.',
-    subtitle: 'Utiliza la respuesta anterior para decidir su próximo paso.',
-    time: '24–26 min',
-    kind: 'connector-chat',
-    chat: [
       {
         role: 'agent',
         label: 'Inteligencia artificial',
@@ -200,7 +189,7 @@ export const lessonThreeSlides = [
         ],
       },
     ],
-    highlight: 'Cada respuesta añade contexto para que el agente decida el siguiente paso.',
+    highlight: 'El agente actúa, observa la respuesta y continúa investigando dentro de la misma conversación.',
   },
   {
     id: 'herramientas-conector',
