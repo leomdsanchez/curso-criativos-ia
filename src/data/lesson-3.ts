@@ -1,5 +1,41 @@
 import type { SlideDeck } from '../types/slide'
 
+const ideasSchedulePrompt = `Usá el conector de Todoist del usuario y, antes de crear el agendamiento:
+
+1. Localizá el proyecto \`{{NOMBRE_FLUJO}}\`.
+2. Consultá sus secciones y obtené los IDs actuales del proyecto y de cada columna mencionada abajo.
+3. Validá que cada ID corresponda al nombre correcto. No uses IDs proporcionados anteriormente ni los inventes.
+4. Si falta alguna columna o existe ambigüedad, no crees el agendamiento e informá el bloqueo.
+
+Después, creá un agendamiento recurrente con estos parámetros:
+
+- Recurrencia: {{RECURRENCIA}}
+- Zona horaria: \`America/Montevideo\`
+
+Incluí estas instrucciones con los IDs encontrados:
+
+En Todoist, abrí el proyecto \`{{NOMBRE_FLUJO}}\` y ejecutá este flujo en el orden indicado:
+
+1. Leé integralmente las orientaciones y el briefing vigentes de este proyecto GPT. Trabajá como especialista del equipo en ideas publicitarias y mantené como objetivo principal generar nuevos agendamientos para el pet shop.
+
+2. Leé todas las tareas, descripciones y comentarios de \`Ideas Descartadas\`. Usá los conceptos y motivos de descarte como lista de exclusión: no vuelvas a proponer la misma idea, mecanismo, promesa o insight, aunque cambien el nombre o la redacción.
+
+3. Leé las tareas existentes del resto del proyecto, especialmente \`Nuevas Ideias\`, \`Ideias Selecionadas\`, \`Copy\`, \`Copy Selecionadas\`, \`Diseños\`, \`Diseños Selecionados\` y \`Concluídos\`. Construí un inventario de los conceptos ya propuestos o en producción para evitar duplicados semánticos en cualquier etapa.
+
+4. Revisá todos los comentarios de las tareas de \`Nuevas Ideias\`. Respondé únicamente los comentarios nuevos o accionables y resolvelos antes de generar ideas. Todo comentario que escribas debe comenzar exactamente con \`agente: \`. No respondas comentarios ya atendidos ni publiques mensajes innecesarios.
+
+5. Investigá en internet campañas similares con resultados comprobables, sin copiar conceptos ni inventar resultados.
+
+6. Generá exactamente cinco ideas nuevas, diferentes entre sí y distintas de todas las ideas existentes o descartadas. Antes de crear cada tarea, compará la propuesta con el inventario anterior. Si coincide en concepto, mecanismo, promesa o insight, reemplazala.
+
+7. Creá una tarea independiente por idea en \`Nuevas Ideias\`. Usá el nombre de la idea como título y, en la descripción, incluí: ruptura visual de patrón, identificación visual y conceptual, resultado, CTA y concepto. No desarrolles todavía el formato, el copy ni el diseño final.
+
+Usá dentro de estas instrucciones los IDs actuales encontrados para identificar inequívocamente el proyecto y cada columna.
+
+Al finalizar cada ejecución, informá brevemente qué comentarios fueron respondidos, cuáles fueron las cinco tareas creadas y cualquier bloqueo real. No inventes información.
+
+Finalmente, confirmá que el agendamiento fue creado, su frecuencia, zona horaria y el proyecto de Todoist utilizado.`
+
 export const lessonThreeSlides = [
   {
     id: 'portada',
@@ -245,9 +281,24 @@ export const lessonThreeSlides = [
     time: '40–100 min',
     kind: 'prompt-library',
     cards: [
-      { title: 'Ideas', description: '[Placeholder: prompt para crear la programación de ideas]', icon: 'message' },
-      { title: 'Copy', description: '[Placeholder: prompt para crear la programación de copy]', icon: 'draft' },
-      { title: 'Diseño', description: '[Placeholder: prompt para crear la programación de diseño]', icon: 'skill' },
+      {
+        title: 'Ideas',
+        description: 'Prompt configurable para programar la generación de ideas.',
+        prompt: ideasSchedulePrompt,
+        icon: 'message',
+      },
+      {
+        title: 'Copy',
+        description: '[Placeholder: prompt para crear la programación de copy]',
+        prompt: '[Placeholder para el flujo {{NOMBRE_FLUJO}} con recurrencia: {{RECURRENCIA}}]',
+        icon: 'draft',
+      },
+      {
+        title: 'Diseño',
+        description: '[Placeholder: prompt para crear la programación de diseño]',
+        prompt: '[Placeholder para el flujo {{NOMBRE_FLUJO}} con recurrencia: {{RECURRENCIA}}]',
+        icon: 'skill',
+      },
     ],
   },
 ] satisfies SlideDeck

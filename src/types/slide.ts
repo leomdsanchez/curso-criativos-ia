@@ -61,6 +61,7 @@ export type ConceptCard = {
   label?: string
   title: string
   description?: string
+  prompt?: string
   icon: SlideIcon
 }
 

@@ -147,32 +147,136 @@ function SlideHeading({ slide }: { slide: Slide }) {
 
 function PromptLibrary({ slide }: { slide: Slide }) {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [flowName, setFlowName] = useState('')
+  const [recurrence, setRecurrence] = useState('')
+  const [formError, setFormError] = useState('')
+  const activeCard = activeIndex === null ? null : slide.cards?.[activeIndex]
 
-  const handleCopy = async (content: string, index: number) => {
+  useEffect(() => {
+    if (activeIndex === null) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActiveIndex(null)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [activeIndex])
+
+  const openModal = (index: number) => {
+    setActiveIndex(index)
+    setFlowName('')
+    setRecurrence('')
+    setFormError('')
+  }
+
+  const handleCopy = async () => {
+    if (activeIndex === null || !activeCard) return
+
+    const normalizedFlowName = flowName.trim()
+    const normalizedRecurrence = recurrence.trim()
+
+    if (!normalizedFlowName || !normalizedRecurrence) {
+      setFormError('Completá el nombre del flujo y la recurrencia.')
+      return
+    }
+
+    const content = (activeCard.prompt ?? activeCard.description ?? '')
+      .replace(/\{\{NOMBRE_FLUJO\}\}/g, normalizedFlowName)
+      .replace(/\{\{RECURRENCIA\}\}/g, normalizedRecurrence)
+
     try {
       await copyText(content)
-      setCopiedIndex(index)
-      window.setTimeout(() => setCopiedIndex((current) => current === index ? null : current), 1800)
+      setCopiedIndex(activeIndex)
+      setActiveIndex(null)
+      window.setTimeout(() => setCopiedIndex((current) => current === activeIndex ? null : current), 1800)
     } catch {
-      setCopiedIndex(null)
+      setFormError('No fue posible copiar el prompt. Intentá nuevamente.')
     }
   }
 
   return (
-    <div className="prompt-library-grid">
-      {slide.cards?.map((card, index) => (
-        <article className="prompt-library-card" key={card.title}>
-          <div className="prompt-library-card-heading">
-            <span><ConceptIcon name={card.icon} /></span>
-            <h3>{card.title}</h3>
-          </div>
-          <p>{card.description}</p>
-          <button type="button" onClick={() => void handleCopy(card.description ?? '', index)}>
-            {copiedIndex === index ? 'Prompt copiado' : 'Copiar prompt'}
-          </button>
-        </article>
-      ))}
-    </div>
+    <>
+      <div className="prompt-library-grid">
+        {slide.cards?.map((card, index) => (
+          <article className="prompt-library-card" key={card.title}>
+            <div className="prompt-library-card-heading">
+              <span><ConceptIcon name={card.icon} /></span>
+              <h3>{card.title}</h3>
+            </div>
+            <p>{card.description}</p>
+            <button type="button" onClick={() => openModal(index)}>
+              {copiedIndex === index ? 'Prompt copiado' : 'Configurar y copiar'}
+            </button>
+          </article>
+        ))}
+      </div>
+
+      {activeCard && (
+        <div
+          className="prompt-modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setActiveIndex(null)
+          }}
+        >
+          <section
+            aria-labelledby="prompt-modal-title"
+            aria-modal="true"
+            className="prompt-modal"
+            role="dialog"
+          >
+            <button
+              aria-label="Cerrar"
+              className="prompt-modal-close"
+              type="button"
+              onClick={() => setActiveIndex(null)}
+            >
+              ×
+            </button>
+            <p className="prompt-modal-eyebrow">Configurar prompt</p>
+            <h3 id="prompt-modal-title">Programación de {activeCard.title.toLowerCase()}</h3>
+            <form
+              onSubmit={(event) => {
+                event.preventDefault()
+                void handleCopy()
+              }}
+            >
+              <label>
+                <span>Nombre del flujo</span>
+                <input
+                  autoFocus
+                  type="text"
+                  value={flowName}
+                  placeholder="Ej.: Flujo anuncios test"
+                  onChange={(event) => {
+                    setFlowName(event.target.value)
+                    setFormError('')
+                  }}
+                />
+              </label>
+              <label>
+                <span>Recurrencia</span>
+                <input
+                  type="text"
+                  value={recurrence}
+                  placeholder="Ej.: todos los lunes a las 08:00"
+                  onChange={(event) => {
+                    setRecurrence(event.target.value)
+                    setFormError('')
+                  }}
+                />
+              </label>
+              {formError && <p className="prompt-modal-error" role="alert">{formError}</p>}
+              <div className="prompt-modal-actions">
+                <button className="is-secondary" type="button" onClick={() => setActiveIndex(null)}>Cancelar</button>
+                <button className="is-primary" type="submit">Copiar prompt</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      )}
+    </>
   )
 }
 
