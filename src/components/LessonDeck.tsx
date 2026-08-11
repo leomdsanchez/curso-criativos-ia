@@ -537,25 +537,17 @@ function SlideContent({ slide }: { slide: Slide }) {
     return (
       <div className="lesson-three-layout plugin-bundle-layout">
         <SlideHeading slide={slide} />
-        <div className="plugin-bundle-body">
-          <div className="plugin-package">
-            <ConceptIcon name="package" />
-            <small>Plugin</small>
-            <strong>Gmail</strong>
-          </div>
-          <div className="plugin-parts">
-            {slide.cards.map((card) => (
-              <article key={card.title}>
+        <div className="plugin-equation" aria-label="MCP más Skill es igual a Plugin">
+          {slide.cards.map((card, index) => (
+            <div className="plugin-equation-group" key={card.title}>
+              {index > 0 && <span className="plugin-equation-operator" aria-hidden="true">{index === 2 ? '=' : '+'}</span>}
+              <article className={`plugin-equation-card ${index === 2 ? 'is-result' : ''}`}>
                 <span><ConceptIcon name={card.icon} /></span>
-                <div>
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
-                </div>
+                <h3>{card.title}</h3>
               </article>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-        {slide.highlight && <div className="lesson-three-key-message">{slide.highlight}</div>}
       </div>
     )
   }

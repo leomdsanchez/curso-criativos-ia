@@ -202,19 +202,14 @@ export const lessonThreeSlides = [
   {
     id: 'plugins',
     eyebrow: 'Todo en un solo paquete',
-    title: 'Un plugin reúne un pequeño ecosistema de capacidades.',
-    subtitle: 'Al instalarlo, el agente recibe las piezas necesarias para trabajar con un servicio.',
+    title: 'Un plugin reúne conexión y forma de trabajar.',
     time: '30–34 min',
     kind: 'plugin-bundle',
     cards: [
-      { title: 'Conector MCP', description: 'Acceso al servicio.', icon: 'plug' },
-      { title: 'Herramientas', description: 'Acciones disponibles.', icon: 'tool' },
-      { title: 'Skills', description: 'Formas de trabajar.', icon: 'skill' },
-      { title: 'Documentación', description: 'Contexto y referencias.', icon: 'instructions' },
-      { title: 'Scripts', description: 'Procesos auxiliares.', icon: 'script' },
-      { title: 'Configuración', description: 'Permisos y dependencias.', icon: 'machine' },
+      { title: 'MCP', icon: 'plug' },
+      { title: 'Skill', icon: 'skill' },
+      { title: 'Plugin', icon: 'package' },
     ],
-    highlight: 'Instalamos un plugin. El agente recibe conexiones, herramientas y formas de trabajar.',
   },
   {
     id: 'maquina-vision',
