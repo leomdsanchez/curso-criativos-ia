@@ -320,10 +320,11 @@
 }
 
 .agent-environment-map {
+  --environment-orbit-size: clamp(310px, 26vw, 350px);
   position: relative;
   display: grid;
-  width: min(100%, 780px);
-  min-height: 350px;
+  width: min(100%, 720px);
+  min-height: 390px;
   margin: 0 auto;
   place-items: center;
 }
@@ -335,18 +336,31 @@
 }
 
 .agent-environment-ring.is-outer {
-  inset: 24px 120px;
+  top: 50%;
+  left: 50%;
+  width: var(--environment-orbit-size);
+  height: var(--environment-orbit-size);
+  transform: translate(-50%, -50%);
 }
 
 .agent-environment-ring.is-inner {
-  inset: 76px 212px;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--environment-orbit-size) - 112px);
+  height: calc(var(--environment-orbit-size) - 112px);
   border-color: rgba(255, 255, 255, 0.08);
+  transform: translate(-50%, -50%);
 }
 
 .agent-environment-track {
   position: absolute;
-  inset: 24px 120px;
+  top: 50%;
+  left: 50%;
+  width: var(--environment-orbit-size);
+  height: var(--environment-orbit-size);
   animation: environment-orbit 34s linear infinite;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
 }
 
 .agent-environment-core {
@@ -380,11 +394,11 @@
 }
 
 .environment-orbit-node:nth-child(1) { top: -18px; left: 50%; transform: translateX(-50%); }
-.environment-orbit-node:nth-child(2) { top: 18%; right: -74px; }
-.environment-orbit-node:nth-child(3) { right: -62px; bottom: 13%; }
-.environment-orbit-node:nth-child(4) { bottom: -22px; left: 50%; transform: translateX(-50%); }
-.environment-orbit-node:nth-child(5) { bottom: 13%; left: -62px; }
-.environment-orbit-node:nth-child(6) { top: 18%; left: -70px; }
+.environment-orbit-node:nth-child(2) { top: 18%; right: -54px; }
+.environment-orbit-node:nth-child(3) { right: -44px; bottom: 13%; }
+.environment-orbit-node:nth-child(4) { bottom: -18px; left: 50%; transform: translateX(-50%); }
+.environment-orbit-node:nth-child(5) { bottom: 13%; left: -44px; }
+.environment-orbit-node:nth-child(6) { top: 18%; left: -52px; }
 
 .environment-orbit-node-inner {
   display: grid;
@@ -430,7 +444,8 @@
 }
 
 @keyframes environment-orbit {
-  to { transform: rotate(360deg); }
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 @keyframes environment-counter-orbit {
@@ -1267,11 +1282,17 @@
   }
 
   .agent-environment-track {
-    inset: 156px 0 auto;
+    top: 156px;
+    right: auto;
+    bottom: auto;
+    left: 0;
     display: grid;
+    width: 100%;
+    height: auto;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px 8px;
     animation: none;
+    transform: none;
   }
 
   .environment-orbit-node,
