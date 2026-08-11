@@ -403,7 +403,7 @@ function SlideContent({ slide }: { slide: Slide }) {
         <div className="agent-comparison-visual">
           {slide.cards.map((card, index) => (
             <div className="agent-comparison-item" key={card.title}>
-              <article className={`agent-system-card ${index > 0 ? 'is-agent' : ''}`}>
+              <article className={`agent-system-card ${index > 0 ? 'is-agent' : ''}`} tabIndex={0}>
                 <div className="agent-system-copy">
                   {card.label && <span>{card.label}</span>}
                   <h3>{card.title}</h3>
