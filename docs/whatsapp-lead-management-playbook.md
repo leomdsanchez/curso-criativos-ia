@@ -32,6 +32,68 @@ Conduzir cada pessoa de forma consultiva, rápida e humana. O objetivo não é p
 
 Há uma inconsistência a confirmar: o anúncio menciona cinco horas totais, enquanto três aulas de uma hora e meia somam quatro horas e meia. Até a confirmação, não combinar essas duas afirmações na mesma mensagem.
 
+## Linha de base observada
+
+Análise inicial feita em 4 de setembro de 2026 sobre 11 leads da campanha. A amostra é pequena e serve para orientar testes, não para declarar um padrão definitivo.
+
+Para evitar que uma conversa muito ativa distorça o resultado, a métrica principal limita cada lead a uma ocorrência por faixa de duas horas. Um mesmo lead pode aparecer novamente quando teve atividade em outra faixa.
+
+| Faixa | Leads distintos com mensagens recebidas |
+| --- | ---: |
+| 00h–02h | 2 |
+| 06h–08h | 4 |
+| 08h–10h | 1 |
+| 10h–12h | 2 |
+| 12h–14h | 1 |
+| 14h–16h | 1 |
+| 16h–18h | 5 |
+| 18h–20h | 1 |
+| 20h–22h | 1 |
+
+Leitura provisória:
+
+- maior concentração observada: 16h–18h;
+- segunda concentração: 06h–08h;
+- 10h–12h é uma janela secundária a testar;
+- os acompanhamentos proativos devem ser testados primeiro entre 10h30–12h30 e 16h30–18h30;
+- atividade depois das 20h existe, mas ainda não justifica acompanhamento proativo tarde da noite.
+
+Tempo até a primeira resposta humana nos 11 leads:
+
+- mediana: 8 minutos;
+- média: aproximadamente 97 minutos;
+- 8 de 11 leads foram respondidos em até 60 minutos;
+- três atrasos, de aproximadamente 5 a 6 horas, distorceram a média;
+- entre os oito atendimentos sem esses atrasos, a média foi de aproximadamente 10 minutos.
+
+Tempo do lead para responder depois de uma mensagem nossa, em 19 pares observáveis:
+
+- mediana: 4 minutos;
+- 11 de 19 respostas chegaram em até 10 minutos;
+- 13 de 19 chegaram em até 20 minutos;
+- percentil 75 aproximado: 43 minutos.
+
+Por isso, a média isolada não deve orientar a operação. Usar mediana, percentis, proporção atendida dentro do SLA e leads únicos por faixa.
+
+Não consolidar horários ou cadências como definitivos antes de pelo menos 30 leads únicos e duas semanas de observação. O ideal é chegar a 50 leads e ao menos 10 observações por faixa antes de uma mudança estrutural.
+
+## SLA de atendimento
+
+| Situação | SLA operacional |
+| --- | --- |
+| Novo lead entre 06h30 e 23h30 | Detectar no próximo ciclo, em até 60 minutos. Depois da detecção, revisar histórico, consultar o conselheiro e preparar a resposta em até 10 minutos. |
+| Novo lead entre 23h30 e 06h30 | Tratar no ciclo das 06h30, sem mensagem proativa durante a madrugada. |
+| Nova resposta em conversa ativa | Prioridade máxima. Recalcular estágio e preparar resposta em até 10 minutos após a detecção. |
+| Pagamento, comprovante ou compromisso vencido | Prioridade no primeiro ciclo elegível, respeitando o prazo combinado e sem duas cobranças no mesmo dia. |
+| Dúvida ou objeção | Responder no primeiro ciclo elegível, depois de entender a objeção real e consultar o conselheiro. |
+
+Metas de qualidade:
+
+- mediana da primeira resposta humana igual ou inferior a 10 minutos;
+- pelo menos 90% dos novos leads tratados em até 60 minutos dentro da janela operacional;
+- nenhuma mensagem proposta sem histórico completo, estágio, última entrada, última saída e cadência aplicável;
+- o tempo final de envio pode depender da confirmação do usuário exigida pelo canal.
+
 ## Estágios do funil
 
 1. **Novo:** chegou pela campanha e ainda não recebeu atendimento humano.
@@ -48,7 +110,7 @@ Para cada lead, manter mentalmente ou em registro privado: identificador mascara
 
 ## Ciclo operacional horário
 
-Executar a cada hora, das 06h30 às 23h30, cobrindo a janela de atendimento até meia-noite.
+Executar a cada hora, das 06h30 às 23h30. O último ciclo inicia às 23h30; mensagens posteriores entram no ciclo das 06h30.
 
 1. Verificar novos leads, respostas, compromissos vencidos e acompanhamentos previstos.
 2. Atualizar o estágio de cada conversa afetada.
@@ -63,21 +125,26 @@ O ciclo horário é uma inspeção, não uma obrigação de contatar todos os le
 
 Quando houver atividade real após uma mensagem:
 
-1. Verificar novamente depois de 1 minuto.
-2. Se não houver resposta, verificar 3 minutos depois.
-3. Se ainda não houver resposta, verificar 10 minutos depois.
+1. Verificar novamente 2 minutos depois do envio.
+2. Se não houver resposta, verificar aos 8 minutos contados desde o envio.
+3. Se ainda não houver resposta, verificar aos 20 minutos contados desde o envio.
 4. Sem resposta ao final, encerrar a vigília curta e voltar ao próximo ciclo horário.
 
 Esses intervalos servem apenas para observar. Não enviar novas mensagens sem uma nova resposta ou outro motivo legítimo.
 
+A sequência 2/8/20 substitui a hipótese inicial de 1/3/10. Ela reduz verificações quase duplicadas e cobre 68% dos tempos de resposta observados, contra 58% cobertos em até 10 minutos. Se chegar uma resposta, zerar o relógio depois da próxima mensagem enviada.
+
 ## Cadência sem resposta
 
 - Lead novo: atender no mesmo ciclo em que for identificado.
-- Conversa ativa: usar a sequência de observação de 1, 3 e 10 minutos.
-- Lead quente sem resposta: geralmente retomar em 24 horas.
-- Interesse moderado: retomar em 48 a 72 horas.
-- Prazo pedido pelo lead: falar apenas na data combinada.
-- Depois de duas ou três tentativas sem resposta: fazer um último contato respeitoso, fácil de responder, e pausar.
+- Conversa ativa: usar a sequência de observação de 2, 8 e 20 minutos.
+- Novo lead sem resposta à abordagem: primeiro acompanhamento em 24 horas; segundo aproximadamente 48 horas depois, ou 72 horas após a abordagem inicial; encerramento leve no sétimo dia.
+- Lead qualificado aguardando uma resposta simples: retomar em 4 a 6 horas úteis ou na próxima boa janela; depois em 24 horas e, se houver valor novo, em 72 horas.
+- Objeção respondida: aguardar 24 horas; fazer uma segunda tentativa em 72 horas somente com prova, exemplo ou solução pertinente; depois pausar.
+- Pagamento prometido: respeitar o horário combinado; conferir uma ou duas horas depois ou na manhã seguinte; depois em 24 horas e 72 horas, sem duas cobranças no mesmo dia.
+- Dados de pagamento enviados sem horário prometido: acompanhamento leve em 24 horas e nova avaliação em 72 horas.
+- Prazo pedido pelo lead: falar apenas na data e hora combinadas. Se foi combinada somente a data, priorizar 10h30–12h.
+- Depois da cadência final: fazer um encerramento respeitoso, fácil de responder, e pausar.
 - À noite: priorizar respostas a conversas já ativas; acompanhamentos proativos podem aguardar um horário comercial adequado.
 
 A cadência é um ponto de partida. O contexto da conversa sempre prevalece.
