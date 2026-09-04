@@ -94,6 +94,30 @@ Metas de qualidade:
 - nenhuma mensagem proposta sem histórico completo, estágio, última entrada, última saída e cadência aplicável;
 - o tempo final de envio pode depender da confirmação do usuário exigida pelo canal.
 
+## Mensagens de voz
+
+Áudios recebidos são parte do histórico e devem ser compreendidos antes de classificar o lead ou propor uma resposta. Nunca inferir o conteúdo apenas pela duração, pelo contexto anterior ou pela mensagem seguinte.
+
+Fluxo local validado:
+
+1. Baixar somente o áudio necessário pelo menu da própria mensagem no WhatsApp.
+2. Verificar formato, duração e integridade com `ffprobe` e decodificação completa com `ffmpeg`.
+3. Converter temporariamente para WAV mono, PCM 16-bit e 16 kHz.
+4. Transcrever localmente com `nemo-speech` e o modelo Parakeet multilíngue instalado na máquina, usando espanhol como idioma quando for a língua do lead.
+5. Ler a transcrição junto com as mensagens anteriores e posteriores.
+6. Tratar nomes, marcas, valores e termos de pagamento como potencialmente ambíguos; corrigir apenas quando o contexto for inequívoco.
+7. Se um trecho importante continuar duvidoso, não inventar. Sinalizar a incerteza e pedir esclarecimento antes de agir.
+
+Teste validado em 4 de setembro de 2026:
+
+- áudio do WhatsApp em OGG/Opus, mono, 48 kHz e 22,93 segundos;
+- conversão temporária para WAV mono/16 kHz concluída;
+- transcrição Parakeet concluída localmente em aproximadamente 12 segundos;
+- resultado coerente com o contexto comercial e com timestamps por palavra;
+- nenhum áudio ou transcrição foi enviado a serviço externo.
+
+Os arquivos de áudio e as transcrições não devem ser adicionados ao repositório. Registrar somente a informação comercial necessária, de forma anonimizada.
+
 ## Estágios do funil
 
 1. **Novo:** chegou pela campanha e ainda não recebeu atendimento humano.
