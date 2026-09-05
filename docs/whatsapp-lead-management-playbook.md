@@ -192,6 +192,7 @@ Executar a cada hora, das 06h30 às 23h30. O último ciclo inicia às 23h30; men
 8. Ao confirmar uma entrada, criar ou atualizar a agenda individual do saldo antes de encerrar o ciclo.
 9. Ao confirmar o pagamento integral, concluir a agenda do saldo, compartilhar o convite privado do grupo uma única vez e marcar o aluno como inscrito.
 10. Atualizar o registro privado e o ponto de controle da varredura; registrar a hipótese do envio e observar o resultado para melhorar o protocolo.
+11. Ao terminar cada execução, sempre enviar ao usuário um resumo iniciado pelo horário real da execução no fuso `America/Montevideo`, no formato `Ciclo HH:MM`. Se nada mudou, declarar explicitamente que não houve nova resposta, novo lead, pagamento, compromisso vencido nem ação executada. Se houve mudança, resumir somente os contatos mascarados afetados, o que ocorreu e a próxima ação.
 
 O ciclo horário é uma inspeção, não uma obrigação de contatar todos os leads.
 
