@@ -1,6 +1,95 @@
-# Protocolo de atendimento de leads no WhatsApp
+# Playbook de venda do minicurso no WhatsApp
 
 Documento vivo para orientar o atendimento dos leads do minicurso vindos das campanhas do Instagram (Uruguay).
+
+## Caminho feliz — executar nesta ordem
+
+Esta é a regra comercial principal, definida pelo usuário em 5 de setembro de 2026. Substitui a orientação anterior de mandar valor, horário, preço e entrada juntos. As seções operacionais abaixo não alteram esta sequência.
+
+**VALOR → HORÁRIO → PREÇO E RESERVA → ENTRADA → SALDO → GRUPO.**
+
+Enviar uma mensagem da etapa atual e esperar a resposta. Avançar com o aceite correspondente. Não despejar todas as etapas numa mensagem e não criar perguntas extras. Usar espanhol rioplatense e parágrafos curtos. Antes de enviar, localizar a etapa no histórico e consultar o conselheiro.
+
+### 1. VALOR: apresentar o resultado e identificar a aplicação
+
+Quando o lead chegar pedindo informações, enviar:
+
+> ¡Hola! Soy Leonardo, de Neural Think. En el minicurso vas a crear tu propio compañero de trabajo con IA para ayudarte a generar ideas, contenidos y anuncios sin empezar de cero cada vez. ¿Te interesa aplicarlo en tu negocio o aprender a ofrecer ese servicio a otros?
+
+- Se responder “negócio próprio”, “oferecer serviços” ou explicar um objetivo compatível: ir para HORÁRIO. A resposta já é suficiente; não exigir um “sim” adicional.
+- Se o objetivo já estiver na mensagem de entrada: conectar o benefício ao objetivo em uma frase e apresentar HORÁRIO na mesma resposta, sem repetir a pergunta de aplicação.
+- Não perguntar nicho, tipo de produto, tipo de comida, público-alvo ou detalhes do negócio para continuar a venda.
+- Se surgir dúvida sobre utilidade: responder à dúvida e voltar ao próximo passo pendente.
+
+### 2. HORÁRIO: confirmar a participação e tratar a objeção de agenda
+
+Depois da resposta sobre aplicação, enviar:
+
+> Perfecto, vas a poder aplicar ese trabajo a tu negocio. Son tres clases online en vivo de una hora y media cada una. Empezamos el 30 de setiembre y son siempre los miércoles a las 19:30, hora de Uruguay. ¿Te queda bien ese día y horario?
+
+Se o objetivo for oferecer serviços, trocar apenas a primeira frase por: “Perfecto, vas a poder aplicar lo aprendido para ofrecer creación de contenidos y anuncios a otros negocios.”
+
+- Se disser que sim: ir para PREÇO E RESERVA.
+- Se disser que não pode nesse horário: enviar a alternativa abaixo e esperar a resposta.
+
+> No hay problema: las clases quedan grabadas para que puedas verlas cuando te quede cómodo, y tenés un grupo de WhatsApp para consultar tus dudas. ¿De esa forma te sirve?
+
+- Se aceitar a alternativa: ir para PREÇO E RESERVA. Não voltar a perguntar sobre participação ao vivo.
+- Se a gravação também não resolver: entender o impedimento e tratar somente essa objeção; não presumir aceite.
+- Nesta etapa, mencionar o grupo apenas como suporte incluído. Enviar o convite somente após pagamento integral, na etapa GRUPO.
+
+### 3. PREÇO E RESERVA: apresentar o valor e pedir a decisão
+
+Depois de aceitar o horário ou as gravações, enviar:
+
+> Buenísimo. El valor total de las tres clases es de 2.500 pesos uruguayos. Trabajo con pocas personas para poder acompañar bien a cada participante y me quedan pocos lugares. ¿Querés reservar el tuyo?
+
+- A turma pequena e os poucos lugares restantes foram informados pelo usuário em 5 de setembro de 2026. Usar essa informação para esta turma; não inventar quantidade de vagas, contagem regressiva ou prazo promocional. Se houver atualização de disponibilidade, respeitá-la.
+- Se disser que sim: ir para ENTRADA.
+- Se levantar objeção de preço, confiança ou decisão: tratar a objeção e retomar a pergunta de reserva quando resolvida.
+- Não enviar os dados bancários antes do aceite da reserva, salvo pedido explícito do lead.
+
+### 4. ENTRADA: enviar as condições e os dados para reservar
+
+Depois de aceitar a reserva, enviar:
+
+> Genial. Para reservar tu lugar, la seña es de 1.000 pesos. El saldo de 1.500 pesos se abona hasta el 15 de setiembre.
+>
+> [Inserir aqui os dados de pagamento da fonte privada aprovada. Nunca enviar este marcador.]
+>
+> Cuando hagas la transferencia, mandame el comprobante por acá y te confirmo la reserva.
+
+- Acordos individuais já existentes, como saldo em 20 de setembro, continuam válidos. Não substituir o prazo combinado pelo padrão.
+- “Vou pagar” é promessa; não marcar como entrada recebida. Registrar o compromisso e respeitar o horário.
+- Entrada confirmada: confirmar a reserva, registrar saldo e vencimento e criar ou atualizar a agenda individual de cobrança.
+
+### 5. SALDO E GRUPO: concluir a inscrição
+
+- Acompanhar o saldo na data combinada, verificando primeiro se já foi pago.
+- Pagamento integral confirmado: concluir a agenda de cobrança, enviar uma única vez o convite da configuração privada e registrar a inscrição e o envio.
+
+### Desvios: responder à objeção e voltar ao ponto pendente
+
+1. Identificar a etapa atual e a pergunta ou objeção real do lead.
+2. Responder diretamente com informação confirmada. Se faltar informação para entender a objeção, fazer uma única pergunta específica.
+3. Retomar a decisão pendente, sem reiniciar a apresentação nem repetir etapas aceitas.
+4. Quando a pessoa confirmar que a objeção foi resolvida, avançar à próxima etapa.
+
+| Resposta do lead | Ação obrigatória |
+| --- | --- |
+| “Negocio propio” ou objetivo já explicado | HORÁRIO; nunca perguntar o nicho. |
+| “Sí” à pergunta de horário | PREÇO E RESERVA. |
+| “No puedo los miércoles” | Oferecer gravações e grupo; perguntar se assim serve. |
+| “Sí” às gravações | PREÇO E RESERVA; não repetir a pergunta de horário. |
+| “Sí, quiero reservar” | ENTRADA: 1.000, saldo de 1.500 até dia 15 e dados privados. |
+| Pergunta preço antes da etapa prevista | Responder 2.500 diretamente; depois retomar o horário se ainda não confirmado. Quando aceitar horário ou gravações, informar turma pequena/poucas vagas e perguntar se quer reservar, sem repetir o preço já informado. |
+| “No puedo pagar todo ahora” | Explicar entrada de 1.000 e saldo de 1.500 até dia 15; não inventar desconto ou parcelamento. |
+| Pergunta algo fora do roteiro | Esclarecer e voltar à decisão pendente. Uma pergunta informativa não significa recusa. |
+| “Lo voy a pensar” | Oferecer esclarecer a dúvida e combinar retomada se a pessoa quiser; respeitar o prazo. |
+| “No me interesa” ou pedido para parar | Encerrar respeitosamente e suspender contatos. Não tentar reconduzir após recusa clara. |
+| Silêncio, reação ou resposta automática | Não interpretar como aceite ou objeção. Aguardar a cadência da etapa. |
+
+Para contatos já em andamento, reconstruir pelo histórico `sales_step` (valor, horario, preco_reserva, entrada, saldo, grupo ou encerrado), `pending_question` e `objection_summary` no registro privado. Não reiniciar o fluxo para aplicar este playbook e não enviar uma mensagem corretiva só porque o roteiro mudou.
 
 ## Objetivo
 
@@ -13,7 +102,7 @@ Conduzir cada pessoa de forma consultiva, rápida e humana. O objetivo não é p
 - Responder ao que a pessoa realmente disse e no idioma dela.
 - Aportar valor antes do preço, sem esconder o preço quando ele for perguntado diretamente.
 - Uma mensagem deve cumprir uma função clara: entender, aportar valor, esclarecer, tratar uma objeção ou combinar um próximo passo.
-- Evitar pulverizar a oferta em mensagens demais. Reunir benefício personalizado, informação essencial e uma pergunta simples quando fizer sentido.
+- Cada etapa tem uma mensagem e uma decisão. Não fragmentar a mesma etapa em vários envios nem juntar etapas que dependem da resposta anterior.
 - Antecipar apenas as objeções relevantes para aquele lead.
 - Não usar urgência ou escassez que não sejam verdadeiras.
 - Respeitar prazos pedidos pelo lead e interromper contatos quando houver desinteresse.
@@ -33,7 +122,7 @@ Conduzir cada pessoa de forma consultiva, rápida e humana. O objetivo não é p
 - Vencimento padrão do saldo: 15 de setembro. Usar 20 de setembro somente quando esse prazo tiver sido combinado explicitamente com o aluno; o acordo individual prevalece sobre a regra geral.
 - Dados de pagamento devem ser enviados somente a partir da fonte privada já aprovada, nunca copiados para este documento.
 
-Há uma inconsistência a confirmar: o anúncio menciona cinco horas totais, enquanto três aulas de uma hora e meia somam quatro horas e meia. Até a confirmação, não combinar essas duas afirmações na mesma mensagem.
+O usuário confirmou três aulas de uma hora e meia em 5 de setembro de 2026. Esta é a duração a informar. O anúncio anterior menciona cinco horas; não repetir essa duração antiga no atendimento.
 
 ## Linha de base observada
 
@@ -225,46 +314,11 @@ A sequência 2/8/20 substitui a hipótese inicial de 1/3/10. Ela reduz verifica�
 
 A cadência é um ponto de partida. O contexto da conversa sempre prevalece.
 
-## Estrutura recomendada da conversa
-
-### Abertura
-
-Apresentar-se, conectar o curso ao resultado prometido no anúncio e fazer uma pergunta simples sobre o objetivo da pessoa.
-
-### Valor personalizado
-
-Usar a resposta do lead para explicar, de forma concreta, como o agente de IA poderia ajudá-lo no trabalho, negócio ou geração de renda.
-
-A pergunta “negócio próprio ou oferecer o serviço a terceiros?” é a bifurcação suficiente para escolher a proposta. Quando o lead responder uma dessas opções, encerrar a descoberta e avançar para a oferta. Não perguntar o nicho, produto ou segmento apenas para personalizar exemplos quando essa informação não altera aderência, condições, conteúdo nem recomendação. Perguntas adicionais só são válidas quando a resposta puder mudar materialmente a solução proposta.
-
-### Oferta
-
-Quando houver aderência, apresentar em uma mensagem suficientemente completa:
-
-- benefício conectado ao objetivo;
-- formato, data e horário;
-- gravações e grupo de acompanhamento, neutralizando a objeção de não poder participar ao vivo;
-- explicação de que a aplicação serve ao negócio independentemente do nicho, sem exigir outra rodada de descoberta;
-- preço e condições;
-- uma pergunta simples de avanço, preferencialmente oferecendo o próximo passo de reserva ou perguntando o que ainda precisa ficar claro para decidir.
-
-Depois que o lead escolher “negócio próprio”, a resposta-padrão deve combinar valor, oferta e quebra preventiva das objeções previsíveis em uma única mensagem: aplicação prática no negócio, três aulas online, quartas às 19h30, início em 30 de setembro, gravações, grupo para consultas, preço de 2.500 pesos, possibilidade de reservar com 1.000 e saldo de 1.500 no prazo aplicável. Não alongar o funil com perguntas de curiosidade comercial.
-
-Se a pessoa perguntar preço diretamente, responder com transparência na mesma resposta. É aceitável contextualizar o valor antes, mas não criar várias etapas para revelar o preço.
-
-### Objeções
-
-- Identificar a objeção real antes de argumentar.
-- Responder somente àquela objeção.
-- Ajudar a pessoa a avaliar alternativas, sem empurrar uma decisão.
-- Finalizar com uma pergunta que favoreça reflexão, como: “¿De esa forma te serviría?” ou “¿Qué necesitarías tener claro para decidir?”.
-
-### Fechamento
-
-Combinar uma ação concreta: reservar, enviar o comprovante, responder uma dúvida ou retomar em uma data específica. Não deixar um lead quente com um “depois falamos” indefinido. Quando a entrada for confirmada, informar o saldo e o vencimento acordado e criar imediatamente a agenda individual da segunda parte.
-
 ## Checklist do conselheiro antes do envio
 
+- Qual é a etapa atual do caminho feliz e qual resposta permite avançar?
+- O rascunho segue o texto e a decisão dessa etapa, sem juntar horário, preço e entrada prematuramente?
+- Se houve objeção, o texto responde a ela e retoma o ponto pendente sem reiniciar a venda?
 - A mensagem responde ao que o lead disse?
 - Traz valor novo?
 - Está adequada ao estágio do funil?
@@ -283,8 +337,8 @@ Revisões de preço, pagamento, objeções e reativação exigem atenção maior
 Manter uma abordagem-base e alterar apenas uma variável por vez, por exemplo:
 
 - abertura;
-- ordem entre valor e preço;
-- quantidade de informações na proposta;
+- clareza de uma frase dentro da etapa, preservando a ordem VALOR → HORÁRIO → PREÇO E RESERVA → ENTRADA;
+- tamanho de uma mensagem da etapa, preservando as informações obrigatórias;
 - pergunta de fechamento;
 - momento do primeiro acompanhamento.
 
@@ -299,6 +353,8 @@ Não concluir que uma abordagem funciona com base em uma ou duas conversas. Comp
 - sinais de confiança, clareza ou incômodo.
 
 Fazer uma revisão curta diariamente e consolidar aprendizados semanalmente neste documento. Preservar exemplos anonimizados do que funcionou e do que falhou.
+
+Não alterar por teste a ordem do caminho feliz, os critérios de aceite ou as condições comerciais definidos pelo usuário.
 
 ## Limites operacionais
 
